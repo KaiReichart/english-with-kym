@@ -8,10 +8,9 @@ import type { SiteContent } from '../i18n/types';
 interface Props {
 	lang: 'de' | 'en';
 	content: SiteContent;
-	otherLangHref: string;
 }
 
-const { lang, content, otherLangHref } = Astro.props;
+const { lang, content } = Astro.props;
 ---
 
 <Layout
@@ -21,9 +20,8 @@ const { lang, content, otherLangHref } = Astro.props;
 	skipLink={content.skipLink}
 	nav={content.nav}
 	switchLabel={content.switchLabel}
-	otherLangHref={otherLangHref}
 	footer={content.footer}
-	alternates={{ de: '/', en: '/en/' }}
+	hasAlternates
 >
 	<section class="hero">
 		<div class="container hero-inner">

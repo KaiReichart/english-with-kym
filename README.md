@@ -36,3 +36,17 @@ All commands are run from the root of the project:
 | `npm run dev`       | Start local dev server at `localhost:4321`  |
 | `npm run build`     | Build the production site to `./dist/`      |
 | `npm run preview`   | Preview the production build locally        |
+
+## Deployment
+
+The site deploys to GitHub Pages via `.github/workflows/deploy.yml`, which builds
+and publishes on every push to `main` (or manually via workflow_dispatch). In the
+repo settings, **Pages → Source** must be set to **"GitHub Actions"** (not a branch).
+
+It's served at the default Pages URL for a project site:
+`https://kaireichart.github.io/english-with-kym/`. Because of that, `astro.config.mjs`
+sets both `site` (the domain) and `base` (`/english-with-kym`, the repo name) — every
+internal link/asset uses `import.meta.env.BASE_URL` or the `astro:i18n` helpers
+(`getRelativeLocaleUrl` / `getAbsoluteLocaleUrl`) so it resolves correctly under that
+path. If a custom domain is set up later, switch to it by removing `base` and changing
+`site` to the new domain — no other code changes needed.

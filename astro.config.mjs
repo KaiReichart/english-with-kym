@@ -3,8 +3,10 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	// TODO: set `site` to the production domain once it is known
-	// (needed for absolute canonical/hreflang URLs and a future sitemap).
+	// GitHub Pages project site (no custom domain yet). To move to a custom
+	// domain later: remove `base` and change `site` to the new domain.
+	site: 'https://kaireichart.github.io',
+	base: '/english-with-kym',
 	i18n: {
 		defaultLocale: 'de',
 		locales: ['de', 'en'],

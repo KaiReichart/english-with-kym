@@ -5,6 +5,7 @@ interface Props {
 
 const { footer } = Astro.props;
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <footer class="site-footer">
@@ -15,8 +16,8 @@ const year = new Date().getFullYear();
 		</div>
 		<nav aria-label="Legal">
 			<ul>
-				<li><a href="/impressum">{footer.impressum}</a></li>
-				<li><a href="/datenschutz">{footer.datenschutz}</a></li>
+				<li><a href={`${base}/impressum`}>{footer.impressum}</a></li>
+				<li><a href={`${base}/datenschutz`}>{footer.datenschutz}</a></li>
 			</ul>
 		</nav>
 	</div>

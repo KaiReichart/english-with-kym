@@ -26,8 +26,23 @@ Astro's built-in i18n (`astro.config.mjs`): `defaultLocale: 'de'`,
 `prefixDefaultLocale: false`, so German pages live directly under `src/pages/` and
 English under `src/pages/en/`.
 
+## Deployment
+
+Deployed to GitHub Pages via `.github/workflows/deploy.yml` (build + deploy on push
+to `main`, or manually via workflow_dispatch). Repo setting **Pages → Source** must
+be **"GitHub Actions"**.
+
+Served at the default Pages URL `https://kaireichart.github.io/english-with-kym/`
+(no custom domain yet), so `astro.config.mjs` sets `site: 'https://kaireichart.github.io'`
+and `base: '/english-with-kym'`. Because of `base`, every internal link/asset
+reference (nav, language switcher, hreflang alternates, canonical, favicon, footer
+legal links) uses `import.meta.env.BASE_URL` or the `astro:i18n` helpers
+(`getRelativeLocaleUrl` / `getAbsoluteLocaleUrl`) instead of hardcoded `/` paths —
+don't reintroduce hardcoded absolute paths, they'll 404 under the base path.
+
+To move to a custom domain later: remove `base` and change `site` to the new
+domain — no other code changes needed.
+
 ## Known gaps for a later pass
 
-- `astro.config.mjs` has no `site` set (no production domain yet) — hreflang/canonical
-  links are relative. Set `site` once the domain is known.
 - Impressum/Datenschutz have placeholder name and postal address.
