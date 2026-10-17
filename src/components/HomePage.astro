@@ -1,0 +1,271 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from './Icon.astro';
+import OfferCard from './OfferCard.astro';
+import { CONTACT } from '../consts';
+import type { SiteContent } from '../i18n/types';
+
+interface Props {
+	lang: 'de' | 'en';
+	content: SiteContent;
+	otherLangHref: string;
+}
+
+const { lang, content, otherLangHref } = Astro.props;
+---
+
+<Layout
+	lang={lang}
+	title={content.meta.title}
+	description={content.meta.description}
+	skipLink={content.skipLink}
+	nav={content.nav}
+	switchLabel={content.switchLabel}
+	otherLangHref={otherLangHref}
+	footer={content.footer}
+	alternates={{ de: '/', en: '/en/' }}
+>
+	<section class="hero">
+		<div class="container hero-inner">
+			<h1>{content.hero.brand}</h1>
+			<p class="hero-subtitle">{content.hero.subtitle}</p>
+			<p class="hero-tagline">{content.hero.tagline}</p>
+			<p class="hero-intro">{content.hero.intro}</p>
+			<p class="hero-info">{content.hero.infoLine}</p>
+			<a class="button" href="#contact">{content.hero.cta}</a>
+		</div>
+	</section>
+
+	<section id="learn">
+		<div class="container">
+			<div class="section-heading">
+				<h2>{content.learn.heading}</h2>
+			</div>
+			<div class="learn-body">
+				{content.learn.paragraphs.map((p) => <p>{p}</p>)}
+			</div>
+		</div>
+	</section>
+
+	<section id="offer">
+		<div class="container">
+			<div class="section-heading">
+				<h2>{content.offerHeading}</h2>
+			</div>
+			<div class="offer-grid">
+				{content.offers.map((card) => <OfferCard card={card} />)}
+			</div>
+		</div>
+	</section>
+
+	<section id="about">
+		<div class="container about-grid">
+			<h2>{content.about.heading}</h2>
+			<div class="about-body">
+				<p class="about-lead">{content.about.lead}</p>
+				{content.about.paragraphs.map((p) => <p>{p}</p>)}
+			</div>
+		</div>
+	</section>
+
+	<section id="lessons">
+		<div class="container">
+			<div class="section-heading">
+				<h2>{content.lessons.heading}</h2>
+				<p>{content.lessons.subheading}</p>
+			</div>
+			<ul class="lessons-items">
+				{
+					content.lessons.items.map((item) => (
+						<li>
+							<Icon name={item.icon} />
+							<span>{item.text}</span>
+						</li>
+					))
+				}
+			</ul>
+			<div class="lessons-body">
+				{content.lessons.paragraphs.map((p) => <p>{p}</p>)}
+			</div>
+		</div>
+	</section>
+
+	<section id="contact">
+		<div class="container contact-grid">
+			<div>
+				<h2>{content.contact.heading}</h2>
+				<p class="contact-lead">{content.contact.lead}</p>
+				<p>{content.contact.body}</p>
+			</div>
+			<div class="contact-card">
+				<p class="contact-brand">{content.contact.brand}</p>
+				<p class="contact-tagline">{content.contact.tagline}</p>
+				<p class="contact-line">
+					<Icon name="mail" />
+					<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+				</p>
+				<p class="contact-line">
+					<Icon name="phone" />
+					<a href={`tel:${CONTACT.phone}`}>{CONTACT.phoneDisplay}</a>
+				</p>
+				<a class="button" href={`mailto:${CONTACT.email}`}>{content.contact.cta}</a>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.hero {
+		background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+		border-top: none;
+	}
+
+	.hero-inner {
+		text-align: center;
+		max-width: 46rem;
+	}
+
+	.hero h1 {
+		font-size: 2.25rem;
+	}
+
+	.hero-subtitle {
+		font-size: 1.35rem;
+		color: var(--color-primary-dark);
+		font-weight: 600;
+	}
+
+	.hero-tagline {
+		color: var(--color-muted);
+		font-weight: 500;
+	}
+
+	.hero-intro {
+		font-size: 1.1rem;
+	}
+
+	.hero-info {
+		font-weight: 600;
+		color: var(--color-heading);
+		margin-bottom: 2rem;
+	}
+
+	.learn-body {
+		max-width: 42rem;
+		margin: 0 auto;
+	}
+
+	.offer-grid {
+		display: grid;
+		gap: 1.75rem;
+		grid-template-columns: 1fr;
+	}
+
+	@media (min-width: 860px) {
+		.offer-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.about-grid h2 {
+		text-align: center;
+	}
+
+	.about-body {
+		max-width: 42rem;
+		margin: 0 auto;
+	}
+
+	.about-lead {
+		font-size: 1.15rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+	}
+
+	.lessons-items {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem 2.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 0 0 2.5rem;
+	}
+
+	.lessons-items li {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		font-weight: 600;
+		color: var(--color-heading);
+	}
+
+	.lessons-items .icon {
+		color: var(--color-primary);
+	}
+
+	.lessons-body {
+		max-width: 42rem;
+		margin: 0 auto;
+	}
+
+	.contact-grid {
+		display: grid;
+		gap: 2.5rem;
+		grid-template-columns: 1fr;
+	}
+
+	@media (min-width: 860px) {
+		.contact-grid {
+			grid-template-columns: 1.1fr 0.9fr;
+			align-items: start;
+		}
+	}
+
+	.contact-lead {
+		font-size: 1.15rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+	}
+
+	.contact-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: 2rem;
+	}
+
+	.contact-brand {
+		font-weight: 700;
+		color: var(--color-heading);
+		margin-bottom: 0.25em;
+	}
+
+	.contact-tagline {
+		color: var(--color-muted);
+	}
+
+	.contact-line {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-bottom: 0.75em;
+	}
+
+	.contact-line .icon {
+		color: var(--color-primary);
+	}
+
+	.contact-line a {
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.contact-line a:hover {
+		text-decoration: underline;
+	}
+
+	.contact-card .button {
+		margin-top: 0.5rem;
+	}
+</style>

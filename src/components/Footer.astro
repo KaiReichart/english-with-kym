@@ -1,0 +1,73 @@
+---
+interface Props {
+	footer: { tagline: string; impressum: string; datenschutz: string; rights: string };
+}
+
+const { footer } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="container footer-inner">
+		<div>
+			<p class="footer-brand">English with Kym</p>
+			<p class="footer-tagline">{footer.tagline}</p>
+		</div>
+		<nav aria-label="Legal">
+			<ul>
+				<li><a href="/impressum">{footer.impressum}</a></li>
+				<li><a href="/datenschutz">{footer.datenschutz}</a></li>
+			</ul>
+		</nav>
+	</div>
+	<p class="copyright container">© {year} {footer.rights}</p>
+</footer>
+
+<style>
+	.site-footer {
+		background: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+		padding: 2.5rem 0 1.5rem;
+		color: var(--color-muted);
+	}
+
+	.footer-inner {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 1.5rem;
+	}
+
+	.footer-brand {
+		font-weight: 700;
+		color: var(--color-heading);
+		margin-bottom: 0.25em;
+	}
+
+	.footer-tagline {
+		margin: 0;
+	}
+
+	.site-footer nav ul {
+		display: flex;
+		gap: 1.5rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.site-footer nav a {
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.site-footer nav a:hover {
+		color: var(--color-primary);
+	}
+
+	.copyright {
+		margin: 1.5rem auto 0;
+		font-size: 0.9rem;
+	}
+</style>

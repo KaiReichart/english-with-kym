@@ -1,0 +1,86 @@
+---
+interface Props {
+	lang: 'de' | 'en';
+	nav: { offer: string; about: string; lessons: string; contact: string };
+	switchLabel: string;
+	homeHref: string;
+	otherLangHref: string;
+}
+
+const { lang, nav, switchLabel, homeHref, otherLangHref } = Astro.props;
+const otherLang = lang === 'de' ? 'en' : 'de';
+---
+
+<header class="site-header">
+	<div class="container header-inner">
+		<a class="brand" href={homeHref}>English with Kym</a>
+		<nav aria-label="Main">
+			<ul>
+				<li><a href={`${homeHref}#offer`}>{nav.offer}</a></li>
+				<li><a href={`${homeHref}#about`}>{nav.about}</a></li>
+				<li><a href={`${homeHref}#lessons`}>{nav.lessons}</a></li>
+				<li><a href={`${homeHref}#contact`}>{nav.contact}</a></li>
+			</ul>
+		</nav>
+		<a class="lang-switch" href={otherLangHref} hreflang={otherLang} lang={otherLang}>
+			{switchLabel}
+		</a>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.header-inner {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem 1.5rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	.brand {
+		font-weight: 700;
+		font-size: 1.15rem;
+		color: var(--color-heading);
+		text-decoration: none;
+		margin-right: auto;
+	}
+
+	nav ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	nav a {
+		text-decoration: none;
+		font-weight: 500;
+		color: var(--color-text);
+	}
+
+	nav a:hover {
+		color: var(--color-primary);
+	}
+
+	.lang-switch {
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		padding: 0.3em 0.9em;
+		font-size: 0.9rem;
+		text-decoration: none;
+		color: var(--color-primary-dark);
+		font-weight: 600;
+	}
+
+	.lang-switch:hover {
+		background: var(--color-bg);
+	}
+</style>

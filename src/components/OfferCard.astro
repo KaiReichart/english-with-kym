@@ -1,0 +1,56 @@
+---
+import Icon from './Icon.astro';
+import type { OfferCardContent } from '../i18n/types';
+
+interface Props {
+	card: OfferCardContent;
+}
+
+const { card } = Astro.props;
+---
+
+<article class="card">
+	<Icon name={card.icon} class="card-icon" />
+	<h3>{card.title}</h3>
+	<p class="card-subtitle">{card.subtitle}</p>
+	{card.intro.map((p) => <p>{p}</p>)}
+	{card.leadIn && <p>{card.leadIn}</p>}
+	{
+		card.bullets && (
+			<ul>
+				{card.bullets.map((item) => (
+					<li>{item}</li>
+				))}
+			</ul>
+		)
+	}
+	{card.outro.map((p) => <p>{p}</p>)}
+</article>
+
+<style>
+	.card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: 2rem;
+		height: 100%;
+	}
+
+	.card-icon {
+		color: var(--color-primary);
+		width: 2.25em;
+		height: 2.25em;
+		margin-bottom: 0.75rem;
+	}
+
+	.card-subtitle {
+		font-weight: 600;
+		color: var(--color-primary-dark);
+	}
+
+	.card :global(p:last-of-type) {
+		font-weight: 600;
+		color: var(--color-heading);
+		margin-bottom: 0;
+	}
+</style>

@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CONTACT } from '../consts';
+import { de } from '../i18n/de';
+---
+
+<Layout
+	lang="de"
+	title="Impressum – English with Kym"
+	description="Impressum von English with Kym, Englischnachhilfe und Business English in Schwabmünchen."
+	skipLink={de.skipLink}
+	nav={de.nav}
+	switchLabel={de.switchLabel}
+	otherLangHref="/en/"
+	footer={de.footer}
+>
+	<section class="legal">
+		<div class="container">
+			<h1>Impressum</h1>
+
+			<p class="placeholder-note">
+				Hinweis: Die folgenden Angaben sind als Platzhalter markiert und werden ergänzt, sobald
+				die vollständigen Daten vorliegen.
+			</p>
+
+			<h2>Angaben gemäß § 5 TMG</h2>
+			<p>
+				[Vollständiger Name]<br />
+				[Straße und Hausnummer]<br />
+				[PLZ] [Ort]
+			</p>
+
+			<h2>Kontakt</h2>
+			<p>
+				Telefon: <a href={`tel:${CONTACT.phone}`}>{CONTACT.phoneDisplay}</a><br />
+				E-Mail: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+			</p>
+
+			<h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+			<p>
+				[Vollständiger Name]<br />
+				[Anschrift wie oben]
+			</p>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.legal {
+		max-width: 42rem;
+		margin: 0 auto;
+	}
+
+	.placeholder-note {
+		font-style: italic;
+		color: var(--color-muted);
+		border: 1px dashed var(--color-border);
+		border-radius: var(--radius);
+		padding: 1em;
+	}
+</style>
