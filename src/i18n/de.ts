@@ -22,7 +22,7 @@ export const de: SiteContent = {
 			"Ob du dich auf die nächste Englischarbeit oder das Abitur vorbereitest, deine Englischkenntnisse für den Beruf verbessern möchtest oder einfach sicherer Englisch sprechen willst – ich biete dir individuellen Englischunterricht, der auf deine persönlichen Bedürfnisse abgestimmt ist.",
 		infoLine: 'Unterricht in Schwabmünchen · Einzelunterricht · Abends und samstags',
 		cta: 'Kontakt aufnehmen',
-		imageAlt: 'Ein aufgeschlagenes Buch mit Lesebrille und einer Tasse Kaffee auf einem Tisch',
+		imageAlt: 'Big Ben in London mit einer Statue im Vordergrund vor blauem Himmel',
 	},
 	learn: {
 		heading: 'Englisch mit mehr Selbstvertrauen sprechen',

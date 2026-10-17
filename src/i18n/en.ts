@@ -22,7 +22,7 @@ export const en: SiteContent = {
 			"Whether you're a student preparing for your next English test or your Abitur, a professional looking to improve your Business English, or simply someone who wants to speak English with more confidence — I offer individual English tuition tailored to your needs.",
 		infoLine: 'Lessons in Schwabmünchen · Individual tuition · Evenings & Saturdays',
 		cta: 'Get in touch',
-		imageAlt: 'An open book with reading glasses and a cup of coffee on a table',
+		imageAlt: 'Big Ben in London with a statue in the foreground against a blue sky',
 	},
 	learn: {
 		heading: 'Learn English with confidence',
