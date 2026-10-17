@@ -22,6 +22,7 @@ export const de: SiteContent = {
 			"Ob du dich auf die nächste Englischarbeit oder das Abitur vorbereitest, deine Englischkenntnisse für den Beruf verbessern möchtest oder einfach sicherer Englisch sprechen willst – ich biete dir individuellen Englischunterricht, der auf deine persönlichen Bedürfnisse abgestimmt ist.",
 		infoLine: 'Unterricht in Schwabmünchen · Einzelunterricht · Abends und samstags',
 		cta: 'Kontakt aufnehmen',
+		imageAlt: 'Ein aufgeschlagenes Buch mit Lesebrille und einer Tasse Kaffee auf einem Tisch',
 	},
 	learn: {
 		heading: 'Englisch mit mehr Selbstvertrauen sprechen',
@@ -37,6 +38,7 @@ export const de: SiteContent = {
 			icon: 'graduation',
 			title: 'Englischnachhilfe',
 			subtitle: 'Von der 5. Klasse bis zum Abitur',
+			imageAlt: 'Ein Mädchen macht Hausaufgaben an einem Schreibtisch',
 			intro: ['Brauchst du etwas zusätzliche Unterstützung in Englisch?'],
 			leadIn: 'Ich helfe dir individuell bei:',
 			bullets: [
@@ -57,6 +59,7 @@ export const de: SiteContent = {
 			icon: 'briefcase',
 			title: 'Business English',
 			subtitle: 'Englisch für den Beruf',
+			imageAlt: 'Zwei Frauen im Gespräch bei einem Meeting am Fenster',
 			intro: ['Brauchst du Englisch im Beruf, findest aber manchmal nicht die richtigen Worte?'],
 			leadIn:
 				'Mein Business-English-Unterricht orientiert sich an den Situationen, denen du im Berufsalltag tatsächlich begegnest. Dazu gehören:',
@@ -77,6 +80,8 @@ export const de: SiteContent = {
 			icon: 'chat',
 			title: 'Englisch-Konversation im Einzelunterricht',
 			subtitle: 'Mehr sprechen. Weniger Sorgen machen.',
+			imageAlt:
+				'Hände, Kaffeetassen und ein Gebäckstück auf einem Tisch bei einem entspannten Gespräch',
 			intro: [
 				'Vielleicht verstehst du Englisch schon ziemlich gut, hast aber zu wenig Gelegenheit, selbst Englisch zu sprechen.',
 				'Im individuellen Konversationsunterricht kannst du in einer entspannten und unterstützenden Atmosphäre üben.',
@@ -96,6 +101,7 @@ export const de: SiteContent = {
 			'Es macht mir Freude, Menschen dabei zu helfen, mehr Sicherheit im Umgang mit der englischen Sprache zu gewinnen – egal, ob es sich um Schüler handelt, die Unterstützung in der Schule benötigen, Berufstätige, die im Job besser kommunizieren möchten, oder Menschen, die einfach entspannter Englisch sprechen wollen.',
 			'Mein Unterricht ist individuell, praxisnah und persönlich – mit einer freundlichen und entspannten Atmosphäre.',
 		],
+		imageAlt: 'Eine rote Telefonzelle in London bei Nacht mit Lichtspuren vorbeifahrender Autos',
 	},
 	lessons: {
 		heading: 'Englischunterricht in Schwabmünchen',

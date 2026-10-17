@@ -22,6 +22,7 @@ export const en: SiteContent = {
 			"Whether you're a student preparing for your next English test or your Abitur, a professional looking to improve your Business English, or simply someone who wants to speak English with more confidence — I offer individual English tuition tailored to your needs.",
 		infoLine: 'Lessons in Schwabmünchen · Individual tuition · Evenings & Saturdays',
 		cta: 'Get in touch',
+		imageAlt: 'An open book with reading glasses and a cup of coffee on a table',
 	},
 	learn: {
 		heading: 'Learn English with confidence',
@@ -37,6 +38,7 @@ export const en: SiteContent = {
 			icon: 'graduation',
 			title: 'English Nachhilfe',
 			subtitle: 'From 5th grade through to Abitur',
+			imageAlt: 'A girl doing homework at a desk',
 			intro: ['Need a little extra help with English at school?'],
 			leadIn: 'I offer individual support with:',
 			bullets: [
@@ -57,6 +59,7 @@ export const en: SiteContent = {
 			icon: 'briefcase',
 			title: 'Business English',
 			subtitle: 'English for the workplace',
+			imageAlt: 'Two women talking during a business meeting by a window',
 			intro: ['Do you need English for your job but sometimes struggle to find the right words?'],
 			leadIn:
 				'Business English lessons can be tailored to the situations you actually encounter at work, including:',
@@ -77,6 +80,7 @@ export const en: SiteContent = {
 			icon: 'chat',
 			title: 'One-to-One Conversation',
 			subtitle: 'Speak more. Worry less.',
+			imageAlt: 'Hands, coffee cups and a pastry on a table during a relaxed conversation',
 			intro: [
 				"Perhaps you understand English quite well but don't get enough opportunity to actually speak it.",
 				'One-to-one conversation lessons give you the chance to practise in a relaxed and supportive environment.',
@@ -96,6 +100,7 @@ export const en: SiteContent = {
 			"I enjoy helping people find the confidence to use English — whether that's a student who needs support at school, a professional who wants to communicate more effectively at work, or someone who simply wants to feel more comfortable speaking English.",
 			'My lessons are individual, practical and personal, with a friendly and relaxed approach.',
 		],
+		imageAlt: 'A red telephone box in London at night with light trails from passing traffic',
 	},
 	lessons: {
 		heading: 'Lessons in Schwabmünchen',

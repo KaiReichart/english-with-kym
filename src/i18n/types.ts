@@ -12,6 +12,7 @@ export interface OfferCardContent {
 	icon: IconName;
 	title: string;
 	subtitle: string;
+	imageAlt: string;
 	intro: string[];
 	leadIn?: string;
 	bullets?: string[];
@@ -43,6 +44,7 @@ export interface SiteContent {
 		intro: string;
 		infoLine: string;
 		cta: string;
+		imageAlt: string;
 	};
 	learn: {
 		heading: string;
@@ -54,6 +56,7 @@ export interface SiteContent {
 		heading: string;
 		lead: string;
 		paragraphs: string[];
+		imageAlt: string;
 	};
 	lessons: {
 		heading: string;

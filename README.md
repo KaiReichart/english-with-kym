@@ -26,6 +26,10 @@ Some fields in `/impressum` and `/datenschutz` are placeholders (e.g. `[Vollstä
 Name]`, `[Straße und Hausnummer]`) because the postal address/legal name were not
 available yet — fill these in before going live.
 
+Photos live in `src/assets/images/` and are rendered via `astro:assets`. They're all
+CC0 (public domain, no attribution required) — see `src/assets/images/CREDITS.md` for
+sources.
+
 ## Commands
 
 All commands are run from the root of the project:
