@@ -1,0 +1,38 @@
+---
+interface Props {
+	fill: string;
+	flip?: boolean;
+	class?: string;
+}
+
+const { fill, flip = false, class: className } = Astro.props;
+---
+
+<div class:list={['v06-wave', { 'v06-wave--flip': flip }, className]} aria-hidden="true">
+	<svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+		<path
+			d="M0,48 C180,100 360,0 540,36 C720,72 900,8 1080,40 C1260,72 1350,24 1440,16 L1440,110 L0,110 Z"
+			fill={fill}
+		></path>
+	</svg>
+</div>
+
+<style>
+	.v06-wave {
+		display: block;
+		width: 100%;
+		line-height: 0;
+		margin: 0;
+		transform: translateY(1px);
+	}
+
+	.v06-wave svg {
+		display: block;
+		width: 100%;
+		height: clamp(36px, 8vw, 80px);
+	}
+
+	.v06-wave--flip svg {
+		transform: scaleY(-1);
+	}
+</style>
