@@ -1,0 +1,169 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { OfferCardContent } from '../../../i18n/types';
+
+interface Props {
+	number: string;
+	offer: OfferCardContent;
+	image: ImageMetadata;
+	reverse?: boolean;
+}
+
+const { number, offer, image, reverse = false } = Astro.props;
+---
+
+<article class:list={['offer', { reverse }]}>
+	<div class="offer-media">
+		<figure>
+			<Image src={image} alt={offer.imageAlt} width={480} height={320} format="webp" loading="lazy" />
+			<figcaption>{offer.imageAlt}</figcaption>
+		</figure>
+	</div>
+	<div class="offer-copy">
+		<span class="offer-num" aria-hidden="true">{number}</span>
+		<h3>{offer.title}</h3>
+		<p class="offer-subtitle">{offer.subtitle}</p>
+		{offer.intro.map((p) => <p>{p}</p>)}
+		{
+			offer.bullets && offer.bullets.length > 0 && (
+				<>
+					{offer.leadIn && <p class="offer-leadin">{offer.leadIn}</p>}
+					<ul class="offer-list">
+						{offer.bullets.map((b) => (
+							<li>{b}</li>
+						))}
+					</ul>
+				</>
+			)
+		}
+		{offer.outro.map((p) => <p>{p}</p>)}
+	</div>
+</article>
+
+<style>
+	.offer {
+		display: grid;
+		grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+		gap: 2rem 3rem;
+		align-items: start;
+		padding: 3rem 0;
+		border-top: 1px solid var(--rule);
+	}
+
+	.offer.reverse {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 280px);
+	}
+
+	.offer.reverse .offer-media {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.offer.reverse .offer-copy {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.offer-media figure {
+		margin: 0;
+	}
+
+	.offer-media img {
+		display: block;
+		width: 100%;
+		height: auto;
+		filter: grayscale(0.25) sepia(0.12) saturate(1.05);
+	}
+
+	.offer-media figcaption {
+		margin-top: 0.6rem;
+		font-family: var(--font-body);
+		font-style: italic;
+		font-size: 0.85rem;
+		color: var(--ink-soft);
+	}
+
+	.offer-num {
+		display: block;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 2.75rem;
+		line-height: 1;
+		color: var(--accent);
+		opacity: 0.85;
+		margin-bottom: 0.25rem;
+	}
+
+	.offer-copy h3 {
+		font-family: var(--font-display);
+		font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+		font-weight: 600;
+		margin: 0 0 0.25rem;
+		color: var(--ink);
+	}
+
+	.offer-subtitle {
+		font-family: var(--font-body);
+		font-style: italic;
+		color: var(--accent);
+		margin: 0 0 1.25rem;
+		font-size: 1.05rem;
+	}
+
+	.offer-copy p {
+		font-family: var(--font-body);
+		font-size: 1.05rem;
+		line-height: 1.65;
+		color: var(--ink);
+		margin: 0 0 1.1rem;
+	}
+
+	.offer-leadin {
+		font-style: italic;
+		color: var(--ink-soft);
+	}
+
+	.offer-list {
+		list-style: none;
+		margin: 0 0 1.25rem;
+		padding: 0;
+		border-top: 1px solid var(--rule);
+	}
+
+	.offer-list li {
+		padding: 0.6rem 0 0.6rem 1.4rem;
+		border-bottom: 1px solid var(--rule);
+		position: relative;
+		font-family: var(--font-body);
+		font-size: 1.02rem;
+		line-height: 1.5;
+	}
+
+	.offer-list li::before {
+		content: '—';
+		position: absolute;
+		left: 0;
+		color: var(--accent);
+	}
+
+	@media (max-width: 720px) {
+		.offer,
+		.offer.reverse {
+			grid-template-columns: 1fr;
+		}
+
+		.offer.reverse .offer-media,
+		.offer.reverse .offer-copy {
+			grid-column: 1;
+		}
+
+		.offer.reverse .offer-media {
+			grid-row: 1;
+		}
+
+		.offer-media {
+			max-width: 22rem;
+		}
+	}
+</style>
