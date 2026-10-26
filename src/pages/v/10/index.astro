@@ -1,0 +1,646 @@
+---
+import '@fontsource/dm-serif-display';
+import '@fontsource-variable/inter';
+
+import { Image } from 'astro:assets';
+import { de } from '../../../i18n/de';
+import { CONTACT } from '../../../consts';
+import Icon from '../../../variants/v10/Icon.astro';
+import OfferCard from '../../../variants/v10/OfferCard.astro';
+
+import heroImage from '../../../assets/images/hero.jpg';
+import nachhilfeImage from '../../../assets/images/nachhilfe.jpg';
+import businessImage from '../../../assets/images/business.jpg';
+import conversationImage from '../../../assets/images/conversation.jpg';
+import londonImage from '../../../assets/images/london.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const offerImages = [nachhilfeImage, businessImage, conversationImage];
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Variante 10 – English with Kym</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={de.meta.description} />
+		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">{de.skipLink}</a>
+
+		<header class="site-header">
+			<div class="site-header__inner">
+				<a class="brand" href={`${base}/`}>{de.hero.brand}</a>
+				<nav class="nav" aria-label="Hauptnavigation">
+					<a href="#offer">{de.nav.offer}</a>
+					<a href="#about">{de.nav.about}</a>
+					<a href="#lessons">{de.nav.lessons}</a>
+					<a href="#contact">{de.nav.contact}</a>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<section class="hero">
+				<div class="hero__text">
+					<span class="section-number">01</span>
+					<p class="hero__tagline">{de.hero.tagline}</p>
+					<h1 class="hero__heading">{de.hero.subtitle}</h1>
+					<p class="hero__intro">{de.hero.intro}</p>
+					<p class="hero__info">{de.hero.infoLine}</p>
+					<a class="button" href="#contact">{de.hero.cta}</a>
+				</div>
+				<div class="hero__media">
+					<div class="hero__frame">
+						<Image src={heroImage} alt={de.hero.imageAlt} width={560} format="webp" />
+					</div>
+				</div>
+			</section>
+
+			<section class="learn">
+				<span class="section-number">02</span>
+				<h2 class="learn__heading">{de.learn.heading}</h2>
+				<div class="learn__paragraphs">
+					{de.learn.paragraphs.map((p) => <p>{p}</p>)}
+				</div>
+			</section>
+
+			<section id="offer" class="offers">
+				<div class="offers__heading-row">
+					<span class="section-number">03</span>
+					<h2>{de.offerHeading}</h2>
+				</div>
+				<div class="offers__list">
+					{
+						de.offers.map((offer, i) => (
+							<OfferCard
+								offer={offer}
+								image={offerImages[i]}
+								index={`0${i + 1}`}
+								reverse={i % 2 === 1}
+							/>
+						))
+					}
+				</div>
+			</section>
+
+			<section id="about" class="about">
+				<div class="about__media">
+					<div class="about__frame">
+						<Image src={londonImage} alt={de.about.imageAlt} width={560} format="webp" />
+					</div>
+				</div>
+				<div class="about__text">
+					<span class="section-number">04</span>
+					<h2>{de.about.heading}</h2>
+					<p class="about__lead">{de.about.lead}</p>
+					{de.about.paragraphs.map((p) => <p>{p}</p>)}
+				</div>
+			</section>
+
+			<section id="lessons" class="lessons">
+				<span class="section-number">05</span>
+				<h2>{de.lessons.heading}</h2>
+				<p class="lessons__subheading">{de.lessons.subheading}</p>
+				<ul class="lessons__items">
+					{
+						de.lessons.items.map((item) => (
+							<li>
+								<Icon name={item.icon} class="lessons__icon" />
+								<span>{item.text}</span>
+							</li>
+						))
+					}
+				</ul>
+				<div class="lessons__paragraphs">
+					{de.lessons.paragraphs.map((p) => <p>{p}</p>)}
+				</div>
+			</section>
+
+			<section id="contact" class="contact">
+				<span class="section-number">06</span>
+				<h2>{de.contact.heading}</h2>
+				<p class="contact__lead">{de.contact.lead}</p>
+				<p class="contact__body">{de.contact.body}</p>
+				<div class="contact__links">
+					<a class="button" href={`mailto:${CONTACT.email}`}>
+						<Icon name="mail" class="contact__icon" />
+						{CONTACT.email}
+					</a>
+					<a class="button button--ghost" href={`tel:${CONTACT.phone}`}>
+						<Icon name="phone" class="contact__icon" />
+						{CONTACT.phoneDisplay}
+					</a>
+				</div>
+				<p class="contact__brandline">{de.contact.brand} &middot; {de.contact.tagline}</p>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="site-footer__inner">
+				<p class="site-footer__tagline">{de.footer.tagline}</p>
+				<nav class="site-footer__links" aria-label="Rechtliches">
+					<a href={`${base}/impressum`}>{de.footer.impressum}</a>
+					<a href={`${base}/datenschutz`}>{de.footer.datenschutz}</a>
+					<a href={`${base}/v/`}>Alle Varianten</a>
+				</nav>
+				<p class="site-footer__rights">&copy; {new Date().getFullYear()} {de.footer.rights}</p>
+			</div>
+		</footer>
+
+		<style>
+			:root {
+				--sand: #ede6d9;
+				--paper: #f7f3ea;
+				--stone: #ddd5c3;
+				--sage: #a3ad8e;
+				--sage-dark: #6c7958;
+				--charcoal: #312e28;
+				--charcoal-soft: #5c584e;
+				--white: #fffdf9;
+				--radius-lg: 1.5rem;
+				--radius-md: 1.25rem;
+				--content-width: 72rem;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto;
+				}
+			}
+
+			body {
+				margin: 0;
+				background: var(--sand);
+				color: var(--charcoal);
+				font-family: 'Inter Variable', Inter, system-ui, sans-serif;
+				font-size: 1.0625rem;
+				line-height: 1.65;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			h1,
+			h2,
+			h3 {
+				font-family: 'DM Serif Display', serif;
+				font-weight: 400;
+				color: var(--charcoal);
+			}
+
+			a {
+				color: inherit;
+			}
+
+			img {
+				max-width: 100%;
+			}
+
+			:focus-visible {
+				outline: 2px solid var(--sage-dark);
+				outline-offset: 4px;
+				border-radius: 2px;
+			}
+
+			.skip-link {
+				position: absolute;
+				left: -999px;
+				top: 0;
+				background: var(--charcoal);
+				color: var(--white);
+				padding: 0.6rem 1rem;
+				z-index: 100;
+				border-radius: 0 0 0.5rem 0;
+			}
+
+			.skip-link:focus {
+				left: 0;
+			}
+
+			.section-number {
+				display: inline-block;
+				font-family: 'DM Serif Display', serif;
+				font-size: 0.95rem;
+				letter-spacing: 0.1em;
+				color: var(--sage-dark);
+				margin-bottom: 0.75rem;
+			}
+
+			/* Header */
+			.site-header {
+				position: sticky;
+				top: 0;
+				z-index: 10;
+				background: rgba(237, 230, 217, 0.88);
+				backdrop-filter: blur(6px);
+				border-bottom: 1px solid var(--stone);
+			}
+
+			.site-header__inner {
+				max-width: var(--content-width);
+				margin: 0 auto;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1rem;
+				padding: 0.9rem 1.25rem;
+			}
+
+			.brand {
+				font-family: 'DM Serif Display', serif;
+				font-size: 1.15rem;
+				text-decoration: none;
+				color: var(--charcoal);
+				white-space: nowrap;
+			}
+
+			.nav {
+				display: flex;
+				gap: clamp(0.75rem, 2vw, 1.75rem);
+				flex-wrap: wrap;
+				justify-content: flex-end;
+			}
+
+			.nav a {
+				text-decoration: none;
+				font-size: 0.92rem;
+				color: var(--charcoal-soft);
+				padding: 0.25rem 0.1rem;
+				border-bottom: 1px solid transparent;
+				transition: border-color 0.2s ease, color 0.2s ease;
+			}
+
+			.nav a:hover {
+				color: var(--sage-dark);
+				border-color: var(--sage-dark);
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.nav a {
+					transition: none;
+				}
+			}
+
+			/* Shared section rhythm */
+			main > section {
+				max-width: var(--content-width);
+				margin: 0 auto;
+				padding: clamp(3.5rem, 7vw, 6.5rem) 1.25rem;
+			}
+
+			.button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.6rem;
+				background: var(--sage-dark);
+				color: var(--white);
+				text-decoration: none;
+				padding: 0.85rem 1.6rem;
+				border-radius: 999px;
+				font-size: 0.95rem;
+				letter-spacing: 0.01em;
+				transition: background 0.2s ease, transform 0.2s ease;
+			}
+
+			.button:hover {
+				background: #58634a;
+				transform: translateY(-1px);
+			}
+
+			.button--ghost {
+				background: transparent;
+				border: 1px solid var(--sage-dark);
+				color: var(--sage-dark);
+			}
+
+			.button--ghost:hover {
+				background: var(--paper);
+				transform: translateY(-1px);
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.button {
+					transition: none;
+				}
+				.button:hover,
+				.button--ghost:hover {
+					transform: none;
+				}
+			}
+
+			.contact__icon {
+				width: 1.1rem;
+				height: 1.1rem;
+			}
+
+			/* Hero */
+			.hero {
+				display: grid;
+				gap: 2.5rem;
+				align-items: center;
+				padding-top: clamp(3rem, 8vw, 6rem) !important;
+			}
+
+			@media (min-width: 900px) {
+				.hero {
+					grid-template-columns: 1.1fr 0.9fr;
+					gap: 4rem;
+				}
+			}
+
+			.hero__tagline {
+				color: var(--sage-dark);
+				font-size: 0.95rem;
+				letter-spacing: 0.04em;
+				margin: 0 0 0.75rem;
+			}
+
+			.hero__heading {
+				font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.4rem);
+				line-height: 1.12;
+				margin: 0 0 1.25rem;
+			}
+
+			.hero__intro {
+				color: var(--charcoal-soft);
+				max-width: 34em;
+				margin: 0 0 1rem;
+			}
+
+			.hero__info {
+				color: var(--charcoal-soft);
+				font-size: 0.95rem;
+				margin: 0 0 1.75rem;
+			}
+
+			.hero__frame {
+				border-radius: var(--radius-lg);
+				overflow: hidden;
+				border: 1px solid var(--stone);
+				background: var(--paper);
+			}
+
+			.hero__frame :global(img) {
+				display: block;
+				width: 100%;
+				height: auto;
+				filter: saturate(0.85) sepia(0.05);
+			}
+
+			@media (prefers-reduced-motion: no-preference) {
+				.hero__text > * {
+					animation: rise 0.8s ease both;
+				}
+				.hero__text > *:nth-child(2) {
+					animation-delay: 0.05s;
+				}
+				.hero__text > *:nth-child(3) {
+					animation-delay: 0.1s;
+				}
+				.hero__text > *:nth-child(4) {
+					animation-delay: 0.15s;
+				}
+				.hero__text > *:nth-child(5) {
+					animation-delay: 0.2s;
+				}
+				.hero__media {
+					animation: rise 1s ease both;
+					animation-delay: 0.15s;
+				}
+			}
+
+			@keyframes rise {
+				from {
+					opacity: 0;
+					transform: translateY(10px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			/* Learn */
+			.learn {
+				background: var(--paper);
+				border-radius: var(--radius-lg);
+				max-width: calc(var(--content-width) - 0.5rem);
+			}
+
+			.learn__heading {
+				font-size: clamp(1.8rem, 1.5rem + 1.2vw, 2.4rem);
+				max-width: 20em;
+				margin: 0 0 1.75rem;
+			}
+
+			.learn__paragraphs {
+				display: grid;
+				gap: 1.1rem;
+				max-width: 42em;
+				color: var(--charcoal-soft);
+			}
+
+			.learn__paragraphs p {
+				margin: 0;
+				line-height: 1.8;
+			}
+
+			/* Offers */
+			.offers__heading-row h2 {
+				font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.6rem);
+				margin: 0;
+			}
+
+			.offers__list {
+				margin-top: 1.5rem;
+			}
+
+			/* About */
+			.about {
+				display: grid;
+				gap: 2.5rem;
+				align-items: center;
+			}
+
+			@media (min-width: 900px) {
+				.about {
+					grid-template-columns: 0.85fr 1.15fr;
+				}
+			}
+
+			.about__frame {
+				border-radius: var(--radius-lg);
+				overflow: hidden;
+				border: 1px solid var(--stone);
+				background: var(--charcoal);
+			}
+
+			.about__frame :global(img) {
+				display: block;
+				width: 100%;
+				height: auto;
+				filter: saturate(0.8);
+			}
+
+			.about__text h2 {
+				font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.6rem);
+				margin: 0 0 1rem;
+			}
+
+			.about__lead {
+				color: var(--charcoal);
+				font-size: 1.1rem;
+				margin: 0 0 1.1rem;
+				max-width: 32em;
+			}
+
+			.about__text p {
+				color: var(--charcoal-soft);
+				margin: 0 0 1rem;
+				max-width: 36em;
+				line-height: 1.8;
+			}
+
+			/* Lessons */
+			.lessons {
+				background: var(--paper);
+				border-radius: var(--radius-lg);
+				max-width: calc(var(--content-width) - 0.5rem);
+			}
+
+			.lessons h2 {
+				font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.6rem);
+				margin: 0 0 0.5rem;
+			}
+
+			.lessons__subheading {
+				color: var(--sage-dark);
+				margin: 0 0 2rem;
+			}
+
+			.lessons__items {
+				list-style: none;
+				margin: 0 0 2rem;
+				padding: 0;
+				display: grid;
+				gap: 1rem;
+				grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+			}
+
+			.lessons__items li {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				background: var(--white);
+				border: 1px solid var(--stone);
+				border-radius: var(--radius-md);
+				padding: 1rem 1.25rem;
+			}
+
+			.lessons__icon {
+				width: 1.4rem;
+				height: 1.4rem;
+				color: var(--sage-dark);
+				flex-shrink: 0;
+			}
+
+			.lessons__paragraphs {
+				display: grid;
+				gap: 1rem;
+				max-width: 42em;
+				color: var(--charcoal-soft);
+			}
+
+			.lessons__paragraphs p {
+				margin: 0;
+				line-height: 1.8;
+			}
+
+			/* Contact */
+			.contact {
+				text-align: center;
+				max-width: 46rem;
+			}
+
+			.contact h2 {
+				font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.6rem);
+				margin: 0 0 1rem;
+			}
+
+			.contact__lead {
+				font-size: 1.15rem;
+				margin: 0 0 0.9rem;
+			}
+
+			.contact__body {
+				color: var(--charcoal-soft);
+				max-width: 36em;
+				margin: 0 auto 2rem;
+				line-height: 1.8;
+			}
+
+			.contact__links {
+				display: flex;
+				gap: 1rem;
+				justify-content: center;
+				flex-wrap: wrap;
+				margin-bottom: 1.75rem;
+			}
+
+			.contact__brandline {
+				color: var(--sage-dark);
+				font-size: 0.9rem;
+			}
+
+			/* Footer */
+			.site-footer {
+				border-top: 1px solid var(--stone);
+				background: var(--paper);
+			}
+
+			.site-footer__inner {
+				max-width: var(--content-width);
+				margin: 0 auto;
+				padding: 2.5rem 1.25rem;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				align-items: center;
+				justify-content: space-between;
+				color: var(--charcoal-soft);
+				font-size: 0.9rem;
+			}
+
+			.site-footer__links {
+				display: flex;
+				gap: 1.25rem;
+				flex-wrap: wrap;
+			}
+
+			.site-footer__links a {
+				text-decoration: none;
+				color: var(--charcoal-soft);
+				border-bottom: 1px solid transparent;
+			}
+
+			.site-footer__links a:hover {
+				border-color: var(--sage-dark);
+				color: var(--sage-dark);
+			}
+
+			.site-footer__rights {
+				margin: 0;
+			}
+		</style>
+	</body>
+</html>
