@@ -56,6 +56,12 @@ const { offer, color, rotate, number, image } = Astro.props;
 		transition: transform 0.2s ease;
 	}
 
+	@media (max-width: 480px) {
+		.sticky {
+			transform: none;
+		}
+	}
+
 	.sticky:hover {
 		transform: rotate(0deg) translateY(-3px);
 	}
