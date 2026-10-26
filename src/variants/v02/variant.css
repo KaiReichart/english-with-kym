@@ -1,0 +1,780 @@
+/* Variant 02 — Swiss / International Typographic Style
+   Strict modular grid, flush-left type, single red accent. */
+
+:root {
+	--ink: #111111;
+	--paper: #ffffff;
+	--night: #0d0d0d;
+	--night-text: #f5f5f5;
+	--red: #b3001b;
+	--line-on-paper: rgba(17, 17, 17, 0.16);
+	--line-on-night: rgba(245, 245, 245, 0.2);
+	--muted-on-paper: #4a4a4a;
+	--muted-on-night: #c9c9c9;
+
+	--font-display: 'Space Grotesk Variable', 'Space Grotesk', sans-serif;
+	--font-body: 'Inter Variable', 'Inter', sans-serif;
+
+	--gutter: clamp(1rem, 3vw, 2.5rem);
+	--col-mobile: 6;
+	--col-desktop: 12;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background: var(--paper);
+	color: var(--ink);
+	font-family: var(--font-body);
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	line-height: 1.5;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-display);
+	font-weight: 700;
+	line-height: 1.02;
+	margin: 0;
+	letter-spacing: -0.01em;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	color: inherit;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* Skip link */
+.skip-link {
+	position: absolute;
+	left: 0.75rem;
+	top: -3rem;
+	background: var(--red);
+	color: var(--paper);
+	padding: 0.6em 1em;
+	font-weight: 700;
+	text-decoration: none;
+	z-index: 100;
+	transition: top 0.15s ease;
+}
+
+.skip-link:focus-visible {
+	top: 0.75rem;
+}
+
+/* Focus ring, everywhere */
+a:focus-visible,
+button:focus-visible {
+	outline: 3px solid var(--red);
+	outline-offset: 3px;
+}
+
+/* ---------- Grid system ---------- */
+
+.wrap {
+	max-width: 90rem;
+	margin: 0 auto;
+	padding-inline: var(--gutter);
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(var(--col-mobile), 1fr);
+	column-gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+@media (min-width: 860px) {
+	.grid {
+		grid-template-columns: repeat(var(--col-desktop), 1fr);
+	}
+}
+
+/* Faint vertical grid lines behind each section — the only decoration besides type */
+.ruled {
+	position: relative;
+	background-image: linear-gradient(to right, var(--line-on-paper) 0 1px, transparent 1px 100%);
+	background-size: calc(100% / 6) 100%;
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+
+@media (min-width: 860px) {
+	.ruled {
+		background-size: calc(100% / 12) 100%;
+	}
+}
+
+.ruled.on-night {
+	background-image: linear-gradient(to right, var(--line-on-night) 0 1px, transparent 1px 100%);
+}
+
+/* ---------- Section scaffolding ---------- */
+
+.section {
+	border-top: 1px solid var(--line-on-paper);
+	padding-block: clamp(3rem, 9vw, 7rem);
+}
+
+.section.on-night {
+	border-top-color: var(--line-on-night);
+	background: var(--night);
+	color: var(--night-text);
+}
+
+.section-head {
+	display: flex;
+	align-items: baseline;
+	gap: clamp(0.75rem, 2vw, 2rem);
+	margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.section-num {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: clamp(2.5rem, 7vw, 5rem);
+	color: var(--red);
+	line-height: 1;
+	flex-shrink: 0;
+}
+
+.on-night .section-num {
+	color: var(--night-text);
+}
+
+.section-title {
+	font-size: clamp(1.75rem, 5vw, 3.25rem);
+	grid-column: 1 / -1;
+}
+
+.section-kicker {
+	display: block;
+	font-family: var(--font-body);
+	font-weight: 600;
+	font-size: 0.8125rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--muted-on-paper);
+	margin-bottom: 0.5em;
+}
+
+.on-night .section-kicker {
+	color: var(--muted-on-night);
+}
+
+/* ---------- Header ---------- */
+
+.masthead {
+	position: relative;
+	border-bottom: 1px solid var(--line-on-paper);
+}
+
+.masthead-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-block: 1rem;
+	flex-wrap: wrap;
+}
+
+.wordmark {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+	text-decoration: none;
+	color: var(--ink);
+	white-space: nowrap;
+}
+
+.wordmark span {
+	color: var(--red);
+}
+
+.nav-list {
+	display: flex;
+	gap: clamp(0.9rem, 2vw, 1.75rem);
+	flex-wrap: wrap;
+}
+
+.nav-list a {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	text-decoration: none;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ink);
+	border-bottom: 2px solid transparent;
+	padding-bottom: 0.2em;
+}
+
+.nav-list a:hover {
+	border-bottom-color: var(--red);
+}
+
+.nav-list .n {
+	color: var(--red);
+	font-weight: 700;
+	margin-right: 0.35em;
+}
+
+/* ---------- Hero ----------
+   Exactly two top-level grid children (text column + media column) so the
+   tall photo never shares a row-track with the stacked text items. */
+
+.hero {
+	background: var(--night);
+	color: var(--night-text);
+	padding-block: clamp(2.5rem, 8vw, 6rem);
+}
+
+.hero-grid {
+	align-items: start;
+}
+
+.hero-text {
+	grid-column: 1 / -1;
+	display: flex;
+	flex-direction: column;
+	order: 2;
+}
+
+.hero-media {
+	grid-column: 1 / -1;
+	order: 1;
+	margin-bottom: 2rem;
+}
+
+@media (min-width: 860px) {
+	.hero-text {
+		grid-column: 1 / 9;
+		order: 0;
+	}
+
+	.hero-media {
+		grid-column: 9 / 13;
+		order: 0;
+		margin-bottom: 0;
+	}
+}
+
+.hero-kicker {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--muted-on-night);
+	margin-bottom: clamp(1.5rem, 5vw, 3rem);
+}
+
+.hero-headline {
+	font-size: clamp(2.6rem, 9.5vw, 6.25rem);
+	margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.hero-tagline {
+	font-family: var(--font-display);
+	font-weight: 600;
+	font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+	color: var(--red);
+	background: var(--night-text);
+	display: inline-block;
+	padding: 0.15em 0.4em;
+	margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+	width: fit-content;
+}
+
+.hero-intro {
+	font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+	max-width: 34rem;
+	margin-bottom: 1.25rem;
+}
+
+.hero-info {
+	font-weight: 600;
+	margin-bottom: 2rem;
+}
+
+.hero-text .btn {
+	width: fit-content;
+}
+
+.hero-media figure {
+	margin: 0;
+}
+
+.hero-media img {
+	width: 100%;
+	height: auto;
+	filter: grayscale(1) contrast(1.08);
+	border: 1px solid var(--line-on-night);
+}
+
+.hero-media figcaption {
+	font-size: 0.75rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--muted-on-night);
+	margin-top: 0.6em;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	background: var(--red);
+	color: var(--paper);
+	font-weight: 700;
+	font-family: var(--font-display);
+	font-size: 1rem;
+	text-decoration: none;
+	padding: 0.85em 1.5em;
+	border: 1px solid var(--red);
+	width: fit-content;
+}
+
+.btn:hover {
+	background: var(--paper);
+	color: var(--red);
+}
+
+.on-night .btn:hover {
+	color: var(--red);
+}
+
+/* ---------- Lernen (01) ---------- */
+
+.lead-col {
+	grid-column: 1 / -1;
+	font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+	font-weight: 600;
+	margin-bottom: 1.5rem;
+}
+
+@media (min-width: 860px) {
+	.lead-col {
+		grid-column: 1 / 7;
+	}
+}
+
+.body-col {
+	grid-column: 1 / -1;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	font-size: 1.0625rem;
+	color: var(--muted-on-paper);
+}
+
+@media (min-width: 860px) {
+	.body-col {
+		grid-column: 8 / 13;
+	}
+}
+
+/* ---------- Angebot (02) ---------- */
+
+.offer {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: repeat(var(--col-mobile), 1fr);
+	column-gap: clamp(0.75rem, 2vw, 1.5rem);
+	padding-block: clamp(1.75rem, 4vw, 3rem);
+	border-top: 1px solid var(--line-on-paper);
+}
+
+.offer:first-child {
+	border-top: none;
+	padding-top: 0;
+}
+
+@media (min-width: 860px) {
+	.offer {
+		grid-template-columns: repeat(var(--col-desktop), 1fr);
+	}
+}
+
+.offer-index {
+	grid-column: 1 / -1;
+	font-family: var(--font-display);
+	font-weight: 700;
+	color: var(--red);
+	font-size: 1rem;
+	margin-bottom: 0.75rem;
+}
+
+@media (min-width: 860px) {
+	.offer-index {
+		grid-column: 1 / 2;
+		margin-bottom: 0;
+	}
+}
+
+.offer-media {
+	grid-column: 1 / -1;
+	margin-bottom: 1.25rem;
+}
+
+@media (min-width: 860px) {
+	.offer-media {
+		grid-column: 2 / 5;
+		margin-bottom: 0;
+	}
+}
+
+.offer-media img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	filter: grayscale(1) contrast(1.08);
+	border: 1px solid var(--line-on-paper);
+}
+
+.offer-body {
+	grid-column: 1 / -1;
+}
+
+@media (min-width: 860px) {
+	.offer-body {
+		grid-column: 6 / 13;
+	}
+}
+
+.offer-title {
+	font-size: clamp(1.4rem, 3vw, 2rem);
+	margin-bottom: 0.2em;
+}
+
+.offer-subtitle {
+	display: block;
+	font-weight: 600;
+	color: var(--red);
+	margin-bottom: 1rem;
+}
+
+.offer-body p {
+	margin-bottom: 1rem;
+	max-width: 42rem;
+}
+
+.offer-leadin {
+	font-weight: 600;
+}
+
+.offer-bullets {
+	margin-bottom: 1rem;
+	max-width: 42rem;
+}
+
+.offer-bullets li {
+	position: relative;
+	padding-left: 1.4em;
+	margin-bottom: 0.55em;
+	line-height: 1.4;
+}
+
+.offer-bullets li::before {
+	content: '—';
+	position: absolute;
+	left: 0;
+	color: var(--red);
+	font-weight: 700;
+}
+
+.offer-outro {
+	font-weight: 600;
+	color: var(--muted-on-paper);
+}
+
+/* ---------- About (03) ----------
+   Two top-level grid children (text column + media column), same reasoning
+   as the hero: keeps the stacked text from fighting the tall photo for rows. */
+
+.about-grid {
+	align-items: start;
+}
+
+.about-text {
+	grid-column: 1 / -1;
+	display: flex;
+	flex-direction: column;
+}
+
+.about-media {
+	grid-column: 1 / -1;
+	margin-bottom: 1.5rem;
+}
+
+@media (min-width: 860px) {
+	.about-text {
+		grid-column: 1 / 8;
+	}
+
+	.about-media {
+		grid-column: 9 / 13;
+		margin-bottom: 0;
+	}
+}
+
+.about-lead {
+	font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+	font-weight: 600;
+	margin-bottom: 1.5rem;
+}
+
+.about-body {
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+	color: var(--muted-on-night);
+	font-size: 1.0625rem;
+}
+
+.about-media img {
+	width: 100%;
+	height: auto;
+	filter: grayscale(1) contrast(1.1);
+	border: 1px solid var(--line-on-night);
+}
+
+.about-media figcaption {
+	font-size: 0.75rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--muted-on-night);
+	margin-top: 0.6em;
+}
+
+/* ---------- Unterricht (04) ---------- */
+
+.facts {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: repeat(var(--col-mobile), 1fr);
+	column-gap: clamp(0.75rem, 2vw, 1.5rem);
+	margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+@media (min-width: 860px) {
+	.facts {
+		grid-template-columns: repeat(var(--col-desktop), 1fr);
+	}
+}
+
+.fact {
+	grid-column: 1 / -1;
+	border-top: 1px solid var(--line-on-paper);
+	padding-top: 1rem;
+	margin-top: 1rem;
+}
+
+@media (min-width: 860px) {
+	.fact {
+		grid-column: span 4;
+	}
+}
+
+.fact-num {
+	display: block;
+	font-family: var(--font-display);
+	color: var(--red);
+	font-weight: 700;
+	margin-bottom: 0.4em;
+}
+
+.fact-text {
+	font-size: 1.15rem;
+	font-weight: 600;
+}
+
+.lessons-sub {
+	grid-column: 1 / -1;
+	font-weight: 600;
+	color: var(--muted-on-paper);
+	margin-bottom: 2rem;
+	font-size: 1.1rem;
+}
+
+.lessons-body {
+	grid-column: 1 / -1;
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+	color: var(--muted-on-paper);
+	font-size: 1.0625rem;
+}
+
+@media (min-width: 860px) {
+	.lessons-body {
+		grid-column: 1 / 8;
+	}
+}
+
+/* ---------- Kontakt (05) ----------
+   Two top-level grid children again: text column + contact card column. */
+
+.contact-text {
+	grid-column: 1 / -1;
+}
+
+.contact-card {
+	grid-column: 1 / -1;
+	border-top: 1px solid var(--line-on-night);
+	padding-top: 1.5rem;
+}
+
+@media (min-width: 860px) {
+	.contact-text {
+		grid-column: 1 / 8;
+	}
+
+	.contact-card {
+		grid-column: 9 / 13;
+		border-top: none;
+		border-left: 1px solid var(--line-on-night);
+		padding-top: 0;
+		padding-left: 2rem;
+	}
+}
+
+.contact-lead {
+	font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+	font-weight: 600;
+	margin-bottom: 0.75rem;
+}
+
+.contact-body {
+	color: var(--muted-on-night);
+	font-size: 1.0625rem;
+	margin-bottom: 2rem;
+	max-width: 38rem;
+}
+
+.contact-brand {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 1.4rem;
+	margin-bottom: 0.2em;
+}
+
+.contact-tagline {
+	color: var(--muted-on-night);
+	margin-bottom: 1.5rem;
+}
+
+.contact-line {
+	margin-bottom: 1rem;
+}
+
+.contact-line a {
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.1rem;
+	border-bottom: 2px solid var(--red);
+}
+
+.contact-line a:hover {
+	color: var(--red);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+	border-top: 1px solid var(--line-on-paper);
+	padding-block: 2rem;
+}
+
+.footer-inner {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 1rem;
+	align-items: center;
+}
+
+.footer-links {
+	display: flex;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.footer-links a {
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--ink);
+	border-bottom: 1px solid transparent;
+}
+
+.footer-links a:hover {
+	border-bottom-color: var(--red);
+}
+
+.footer-rights {
+	font-size: 0.8125rem;
+	color: var(--muted-on-paper);
+}
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero-headline,
+	.hero-tagline,
+	.hero-intro,
+	.hero-info,
+	.hero .btn {
+		animation: rise 0.6s ease-out both;
+	}
+
+	.hero-tagline {
+		animation-delay: 0.08s;
+	}
+
+	.hero-intro {
+		animation-delay: 0.16s;
+	}
+
+	.hero-info {
+		animation-delay: 0.22s;
+	}
+
+	.hero .btn {
+		animation-delay: 0.28s;
+	}
+}
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(0.6em);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
