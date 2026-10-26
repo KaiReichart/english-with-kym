@@ -18,10 +18,14 @@ interface Props {
 const { lang, title, description, skipLink, nav, switchLabel, footer, hasAlternates } = Astro.props;
 
 const otherLang = lang === 'de' ? 'en' : 'de';
-const homeHref = getRelativeLocaleUrl(lang, '/');
-const otherLangHref = getRelativeLocaleUrl(otherLang, '/');
+// While the design variants are being reviewed, "/" is the variant grid and the
+// original German homepage lives at /v/00/.
+const deHomePath = '/v/00/';
+const localeHome = (l: 'de' | 'en') => getRelativeLocaleUrl(l, l === 'de' ? deHomePath : '/');
+const homeHref = localeHome(lang);
+const otherLangHref = localeHome(otherLang);
 const alternates = hasAlternates
-	? { de: getAbsoluteLocaleUrl('de', '/'), en: getAbsoluteLocaleUrl('en', '/') }
+	? { de: getAbsoluteLocaleUrl('de', deHomePath), en: getAbsoluteLocaleUrl('en', '/') }
 	: undefined;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');

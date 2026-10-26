@@ -1,0 +1,175 @@
+---
+// Overview of all design variants (shown at / and /v/ while a design is chosen).
+import { Image } from 'astro:assets';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const shots = import.meta.glob<{ default: ImageMetadata }>('../assets/variants/*.jpg', { eager: true });
+const shot = (n: string) => shots[`../assets/variants/${n}.jpg`]?.default;
+
+const variants = [
+	['00', 'Original', 'Die aktuelle Seite: warm, schlicht, mit Fotos'],
+	['01', 'Editorial', 'Magazin-Layout mit großer Serifenschrift'],
+	['02', 'Swiss Style', 'Strenges Raster, große Typografie, Rot als Akzent'],
+	['03', "Teacher's Notebook", 'Notizbuch, Klebezettel, Handschrift'],
+	['04', 'Neo-Brutalism', 'Dicke Rahmen, harte Schatten, kräftige Farben'],
+	['05', 'The Schwabmünchen Line', 'Britisch: Penguin-Cover & Underground'],
+	['06', 'Pastellwolke', 'Pastell, rund, freundlich für Schüler & Eltern'],
+	['07', 'The Private Study', 'Dunkel & Gold, Premium-Coaching'],
+	['08', 'Trusted Advisor', 'Klar & seriös, Business-Look'],
+	['09', 'Groovy', 'Retro 70er, Orange & Senf'],
+	['10', 'Stille Stunden', 'Skandinavisch ruhig, Naturtöne'],
+] as const;
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex" />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+		<title>Design-Varianten – English with Kym</title>
+	</head>
+	<body>
+		<main>
+			<header>
+				<h1>English with Kym – Design-Varianten</h1>
+				<p>{variants.length} Entwürfe der Startseite. Klick auf eine Karte öffnet die Variante.</p>
+			</header>
+			<ul class="grid">
+				{
+					variants.map(([n, name, desc]) => {
+						const img = shot(n);
+						return (
+							<li>
+								<a href={`${base}v/${n}/`}>
+									<div class="thumb">
+										{img ? (
+											<Image src={img} alt="" width={640} widths={[400, 640]} sizes="(min-width: 720px) 360px, 100vw" format="webp" loading="lazy" />
+										) : (
+											<span class="placeholder">{n}</span>
+										)}
+									</div>
+									<div class="meta">
+										<b>{n}</b>
+										<span>
+											<strong>{name}</strong>
+											<small>{desc}</small>
+										</span>
+									</div>
+								</a>
+							</li>
+						);
+					})
+				}
+			</ul>
+			<footer>
+				<a href={`${base}en/`}>English version (original)</a> · <a href={`${base}impressum`}>Impressum</a> · <a href={`${base}datenschutz`}>Datenschutz</a>
+			</footer>
+		</main>
+	</body>
+</html>
+
+<style>
+	:global(html) {
+		font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+		color: #1d1d1f;
+		background: #f4f3f0;
+		line-height: 1.5;
+	}
+	:global(body) {
+		margin: 0;
+	}
+	main {
+		max-width: 76rem;
+		margin: 0 auto;
+		padding: 2.5rem 1.25rem 3rem;
+	}
+	h1 {
+		font-size: clamp(1.5rem, 4vw, 2.25rem);
+		margin: 0 0 0.25rem;
+	}
+	header p {
+		margin: 0 0 2rem;
+		color: #555;
+	}
+	.grid {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+		gap: 1.5rem;
+	}
+	.grid a {
+		display: block;
+		height: 100%;
+		background: #fff;
+		border-radius: 0.75rem;
+		overflow: hidden;
+		color: inherit;
+		text-decoration: none;
+		box-shadow: 0 1px 2px rgb(0 0 0 / 0.08), 0 4px 16px rgb(0 0 0 / 0.06);
+		transition: transform 0.15s ease, box-shadow 0.15s ease;
+	}
+	.grid a:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 2px 4px rgb(0 0 0 / 0.1), 0 10px 28px rgb(0 0 0 / 0.12);
+	}
+	.grid a:focus-visible {
+		outline: 3px solid #1d1d1f;
+		outline-offset: 3px;
+	}
+	.thumb {
+		aspect-ratio: 16 / 10;
+		background: #e5e3de;
+		border-bottom: 1px solid #e5e3de;
+	}
+	.thumb :global(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top;
+		display: block;
+	}
+	.placeholder {
+		display: grid;
+		place-items: center;
+		height: 100%;
+		font-size: 2rem;
+		color: #999;
+	}
+	.meta {
+		display: flex;
+		gap: 0.85rem;
+		padding: 0.9rem 1rem 1.1rem;
+	}
+	.meta b {
+		font-variant-numeric: tabular-nums;
+		color: #888;
+	}
+	.meta strong,
+	.meta small {
+		display: block;
+	}
+	.meta small {
+		color: #555;
+		font-size: 0.9rem;
+	}
+	footer {
+		margin-top: 2.5rem;
+		font-size: 0.9rem;
+		color: #555;
+	}
+	footer a {
+		color: inherit;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.grid a {
+			transition: none;
+		}
+		.grid a:hover {
+			transform: none;
+		}
+	}
+</style>
