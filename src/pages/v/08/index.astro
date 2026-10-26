@@ -1,0 +1,1005 @@
+---
+import '@fontsource-variable/dm-sans';
+import { Image } from 'astro:assets';
+import { de } from '../../../i18n/de';
+import { CONTACT } from '../../../consts';
+import Icon from '../../../variants/v08/Icon.astro';
+
+import heroImg from '../../../assets/images/hero.jpg';
+import nachhilfeImg from '../../../assets/images/nachhilfe.jpg';
+import businessImg from '../../../assets/images/business.jpg';
+import conversationImg from '../../../assets/images/conversation.jpg';
+import londonImg from '../../../assets/images/london.jpg';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const c = de;
+const offerImages = [nachhilfeImg, businessImg, conversationImg];
+const year = new Date().getFullYear();
+---
+
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Variante 08 – English with Kym</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={c.meta.description} />
+		<link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">{c.skipLink}</a>
+
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="brand" href="#top">
+					<span class="brand-mark" aria-hidden="true">EK</span>
+					<span class="brand-name">{c.hero.brand}</span>
+				</a>
+				<div class="nav-wrap">
+					<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menü öffnen" />
+					<label for="nav-toggle" class="nav-toggle-label">
+						<Icon name="menu" class="icon" />
+						<span class="sr-only">Menü</span>
+					</label>
+					<nav class="site-nav" aria-label="Hauptnavigation">
+						<ul>
+							<li><a href="#angebot">{c.nav.offer}</a></li>
+							<li><a href="#about">{c.nav.about}</a></li>
+							<li><a href="#unterricht">{c.nav.lessons}</a></li>
+							<li><a href="#kontakt" class="nav-cta">{c.nav.contact}</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<main id="main">
+			<section class="hero" id="top" aria-label={c.hero.brand}>
+				<div class="hero-inner">
+					<div class="hero-copy">
+						<p class="eyebrow">{c.hero.tagline}</p>
+						<h1>{c.hero.subtitle}</h1>
+						<p class="hero-intro">{c.hero.intro}</p>
+						<p class="hero-info">
+							<Icon name="pin" class="icon" />
+							{c.hero.infoLine}
+						</p>
+						<div class="hero-actions">
+							<a class="btn btn-primary" href="#kontakt">
+								{c.hero.cta}
+								<Icon name="arrow" class="icon" />
+							</a>
+						</div>
+					</div>
+					<div class="hero-media">
+						<Image src={heroImg} alt={c.hero.imageAlt} width={560} height={373} format="webp" />
+					</div>
+				</div>
+			</section>
+
+			<section class="stats" aria-label="Erfahrung auf einen Blick">
+				<ul>
+					<li>
+						<Icon name="globe" class="icon" />
+						<strong>London</strong>
+						<span>Geboren und aufgewachsen</span>
+					</li>
+					<li>
+						<Icon name="pin" class="icon" />
+						<strong>30+</strong>
+						<span>Jahre in Deutschland</span>
+					</li>
+					<li>
+						<Icon name="award" class="icon" />
+						<strong>35+</strong>
+						<span>Jahre Schulungsseminare &amp; Vorträge</span>
+					</li>
+					<li>
+						<Icon name="book" class="icon" />
+						<strong>15+</strong>
+						<span>Jahre privater Englischunterricht</span>
+					</li>
+				</ul>
+			</section>
+
+			<section class="learn" aria-labelledby="learn-heading">
+				<div class="wrap">
+					<p class="section-label">01</p>
+					<h2 id="learn-heading">{c.learn.heading}</h2>
+					<div class="learn-grid">
+						{
+							c.learn.paragraphs.map((p, i) => (
+								<div class="learn-card">
+									<span class="num">0{i + 1}</span>
+									<p>{p}</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section class="offers" id="angebot" aria-labelledby="offers-heading">
+				<div class="wrap">
+					<p class="section-label">02</p>
+					<h2 id="offers-heading">{c.offerHeading}</h2>
+					<div class="offer-grid">
+						{
+							c.offers.map((offer, i) => (
+								<article class="offer-card">
+									<div class="offer-media">
+										<Image
+											src={offerImages[i]}
+											alt={offer.imageAlt}
+											width={400}
+											height={267}
+											format="webp"
+										/>
+									</div>
+									<div class="offer-body">
+										<span class="offer-icon">
+											<Icon name={offer.icon} class="icon" />
+										</span>
+										<h3>{offer.title}</h3>
+										<p class="offer-subtitle">{offer.subtitle}</p>
+										{offer.intro.map((p) => (
+											<p>{p}</p>
+										))}
+										{offer.leadIn && <p class="lead-in">{offer.leadIn}</p>}
+										{offer.bullets && (
+											<ul class="bullet-list">
+												{offer.bullets.map((b) => (
+													<li>
+														<Icon name="check" class="icon" />
+														<span>{b}</span>
+													</li>
+												))}
+											</ul>
+										)}
+										{offer.outro.map((p) => (
+											<p>{p}</p>
+										))}
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section class="about" id="about" aria-labelledby="about-heading">
+				<div class="wrap about-grid">
+					<div class="about-media">
+						<Image src={londonImg} alt={c.about.imageAlt} width={480} height={340} format="webp" />
+					</div>
+					<div class="about-copy">
+						<p class="section-label">03</p>
+						<h2 id="about-heading">{c.about.heading}</h2>
+						<p class="about-lead">{c.about.lead}</p>
+						{
+							c.about.paragraphs.map((p) => (
+								<p>{p}</p>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section class="lessons" id="unterricht" aria-labelledby="lessons-heading">
+				<div class="wrap">
+					<p class="section-label">04</p>
+					<h2 id="lessons-heading">{c.lessons.heading}</h2>
+					<p class="lessons-sub">{c.lessons.subheading}</p>
+					<ul class="lesson-items">
+						{
+							c.lessons.items.map((item) => (
+								<li>
+									<Icon name={item.icon} class="icon" />
+									<span>{item.text}</span>
+								</li>
+							))
+						}
+					</ul>
+					<div class="lessons-copy">
+						{
+							c.lessons.paragraphs.map((p) => (
+								<p>{p}</p>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section class="contact" id="kontakt" aria-labelledby="contact-heading">
+				<div class="wrap contact-inner">
+					<div class="contact-card">
+						<p class="section-label section-label-inverse">05</p>
+						<h2 id="contact-heading">{c.contact.heading}</h2>
+						<p class="contact-lead">{c.contact.lead}</p>
+						<p>{c.contact.body}</p>
+						<div class="contact-brandline">
+							<strong>{c.contact.brand}</strong>
+							<span>{c.contact.tagline}</span>
+						</div>
+						<div class="contact-actions">
+							<a class="btn btn-light" href={`mailto:${CONTACT.email}`}>
+								<Icon name="mail" class="icon" />
+								{CONTACT.email}
+							</a>
+							<a class="btn btn-outline" href={`tel:${CONTACT.phone}`}>
+								<Icon name="phone" class="icon" />
+								{CONTACT.phoneDisplay}
+							</a>
+						</div>
+						<a class="btn btn-primary contact-cta" href={`mailto:${CONTACT.email}`}>
+							{c.contact.cta}
+							<Icon name="arrow" class="icon" />
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="wrap footer-inner">
+				<div class="footer-brand">
+					<span class="brand-mark" aria-hidden="true">EK</span>
+					<div>
+						<strong>{c.hero.brand}</strong>
+						<p>{c.footer.tagline}</p>
+					</div>
+				</div>
+				<nav class="footer-nav" aria-label="Rechtliches">
+					<a href={`${base}impressum`}>{c.footer.impressum}</a>
+					<a href={`${base}datenschutz`}>{c.footer.datenschutz}</a>
+					<a href={`${base}v/`}>Alle Varianten</a>
+				</nav>
+				<p class="footer-rights">© {year} {c.footer.rights}</p>
+			</div>
+		</footer>
+
+		<style>
+			@media (prefers-reduced-motion: reduce) {
+				*,
+				*::before,
+				*::after {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+					scroll-behavior: auto !important;
+				}
+			}
+
+			:root {
+				--navy-950: #0a1830;
+				--navy-900: #0f2748;
+				--navy-800: #163460;
+				--blue-600: #2454c9;
+				--blue-500: #3568e0;
+				--blue-100: #e7edfb;
+				--grey-50: #f6f8fb;
+				--grey-100: #eef1f6;
+				--grey-200: #e1e7f0;
+				--grey-400: #93a1b8;
+				--ink: #16202f;
+				--ink-soft: #46556b;
+				--white: #ffffff;
+				--radius-lg: 1.1rem;
+				--radius-md: 0.7rem;
+				--shadow-card: 0 1px 2px rgba(15, 39, 72, 0.06), 0 12px 28px -14px rgba(15, 39, 72, 0.18);
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: 'DM Sans Variable', 'DM Sans', system-ui, sans-serif;
+				color: var(--ink);
+				background: var(--white);
+				line-height: 1.65;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			h1,
+			h2,
+			h3 {
+				font-weight: 700;
+				color: var(--navy-900);
+				line-height: 1.2;
+				margin: 0 0 0.6em;
+			}
+
+			p {
+				margin: 0 0 1em;
+				color: var(--ink-soft);
+			}
+
+			a {
+				color: inherit;
+			}
+
+			img {
+				display: block;
+				max-width: 100%;
+				height: auto;
+			}
+
+			ul {
+				margin: 0;
+			}
+
+			.icon {
+				width: 1.15rem;
+				height: 1.15rem;
+				flex-shrink: 0;
+			}
+
+			.sr-only {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+				white-space: nowrap;
+				border: 0;
+			}
+
+			:focus-visible {
+				outline: 3px solid var(--blue-500);
+				outline-offset: 3px;
+				border-radius: 4px;
+			}
+
+			.skip-link {
+				position: absolute;
+				left: -9999px;
+				top: 0;
+				background: var(--blue-600);
+				color: var(--white);
+				padding: 0.75rem 1.25rem;
+				border-radius: 0 0 0.5rem 0;
+				z-index: 200;
+				font-weight: 600;
+				text-decoration: none;
+			}
+
+			.skip-link:focus-visible {
+				left: 0;
+			}
+
+			.wrap {
+				width: 100%;
+				max-width: 1120px;
+				margin-inline: auto;
+				padding-inline: 1.25rem;
+			}
+
+			.section-label {
+				font-weight: 700;
+				color: var(--blue-600);
+				letter-spacing: 0.08em;
+				font-size: 0.8rem;
+				margin: 0 0 0.5rem;
+			}
+
+			.section-label-inverse {
+				color: #9db6ef;
+			}
+
+			/* Header */
+			.site-header {
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				background: rgba(255, 255, 255, 0.92);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid var(--grey-200);
+			}
+
+			.header-inner {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				max-width: 1120px;
+				margin-inline: auto;
+				padding: 0.8rem 1.25rem;
+			}
+
+			.brand {
+				display: flex;
+				align-items: center;
+				gap: 0.65rem;
+				text-decoration: none;
+				color: var(--navy-900);
+			}
+
+			.brand-mark {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 2.3rem;
+				height: 2.3rem;
+				border-radius: 0.65rem;
+				background: var(--navy-900);
+				color: var(--white);
+				font-size: 0.85rem;
+				font-weight: 700;
+				letter-spacing: 0.02em;
+			}
+
+			.brand-name {
+				font-weight: 700;
+				font-size: 1rem;
+			}
+
+			.nav-wrap {
+				position: relative;
+				display: flex;
+				align-items: center;
+			}
+
+			.nav-toggle {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 2.6rem;
+				height: 2.6rem;
+				opacity: 0;
+				margin: 0;
+				cursor: pointer;
+				z-index: 2;
+			}
+
+			.nav-toggle-label {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 2.6rem;
+				height: 2.6rem;
+				border-radius: 0.6rem;
+				color: var(--navy-900);
+			}
+
+			.nav-toggle-label .icon {
+				width: 1.5rem;
+				height: 1.5rem;
+			}
+
+			.site-nav ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			.site-nav a {
+				text-decoration: none;
+				font-weight: 600;
+				color: var(--navy-900);
+			}
+
+			.nav-cta {
+				background: var(--blue-600);
+				color: var(--white) !important;
+				padding: 0.55rem 1.1rem;
+				border-radius: 0.55rem;
+				display: inline-block;
+			}
+
+			@media (max-width: 899px) {
+				.site-nav {
+					position: absolute;
+					top: 100%;
+					right: 0;
+					left: 0;
+					min-width: 14rem;
+					background: var(--white);
+					border: 1px solid var(--grey-200);
+					border-radius: 0 0 0.75rem 0.75rem;
+					box-shadow: var(--shadow-card);
+					max-height: 0;
+					overflow: hidden;
+					transition: max-height 0.25s ease;
+				}
+
+				.nav-toggle:checked ~ .site-nav {
+					max-height: 22rem;
+				}
+
+				.site-nav ul {
+					display: flex;
+					flex-direction: column;
+					gap: 0.25rem;
+					padding: 0.75rem 1.25rem 1.1rem;
+				}
+
+				.site-nav a {
+					display: block;
+					padding: 0.55rem 0;
+				}
+
+				.nav-cta {
+					margin-top: 0.3rem;
+					text-align: center;
+				}
+			}
+
+			@media (min-width: 900px) {
+				.nav-toggle,
+				.nav-toggle-label {
+					display: none;
+				}
+
+				.site-nav ul {
+					display: flex;
+					align-items: center;
+					gap: 1.75rem;
+				}
+			}
+
+			/* Hero */
+			.hero {
+				background: linear-gradient(180deg, var(--grey-50) 0%, var(--white) 100%);
+				padding: 2.5rem 1.25rem 3rem;
+			}
+
+			.hero-inner {
+				max-width: 1120px;
+				margin-inline: auto;
+				display: grid;
+				gap: 2.25rem;
+				align-items: center;
+			}
+
+			.eyebrow {
+				color: var(--blue-600);
+				font-weight: 700;
+				font-size: 0.85rem;
+				letter-spacing: 0.04em;
+				margin: 0 0 0.75rem;
+			}
+
+			.hero h1 {
+				font-size: clamp(1.9rem, 4.6vw, 2.75rem);
+				max-width: 24ch;
+			}
+
+			.hero-intro {
+				font-size: 1.05rem;
+				max-width: 42ch;
+			}
+
+			.hero-info {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				font-weight: 600;
+				color: var(--navy-800);
+			}
+
+			.hero-info .icon {
+				color: var(--blue-600);
+			}
+
+			.hero-actions {
+				margin-top: 1.5rem;
+			}
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				padding: 0.85rem 1.4rem;
+				border-radius: 0.6rem;
+				font-weight: 700;
+				text-decoration: none;
+				border: 2px solid transparent;
+			}
+
+			.btn-primary {
+				background: var(--blue-600);
+				color: var(--white);
+			}
+
+			.btn-primary:hover {
+				background: var(--navy-800);
+			}
+
+			.btn-light {
+				background: var(--white);
+				color: var(--navy-900);
+			}
+
+			.btn-outline {
+				border-color: rgba(255, 255, 255, 0.5);
+				color: var(--white);
+			}
+
+			.hero-media {
+				border-radius: var(--radius-lg);
+				overflow: hidden;
+				box-shadow: var(--shadow-card);
+				border: 1px solid var(--grey-200);
+			}
+
+			@media (min-width: 900px) {
+				.hero-inner {
+					grid-template-columns: 1.1fr 0.9fr;
+				}
+			}
+
+			/* Stats strip */
+			.stats {
+				background: var(--navy-900);
+				color: var(--white);
+				padding: 2.25rem 0;
+			}
+
+			.stats ul {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1.75rem 1.25rem;
+				max-width: 1120px;
+				margin: 0 auto;
+				padding: 0 1.25rem;
+				list-style: none;
+			}
+
+			@media (min-width: 800px) {
+				.stats ul {
+					grid-template-columns: repeat(4, 1fr);
+				}
+			}
+
+			.stats li {
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+			}
+
+			.stats li .icon {
+				width: 1.6rem;
+				height: 1.6rem;
+				color: #9db6ef;
+			}
+
+			.stats strong {
+				font-size: 1.6rem;
+				font-weight: 700;
+			}
+
+			.stats span {
+				font-size: 0.85rem;
+				color: rgba(255, 255, 255, 0.78);
+			}
+
+			/* Learn */
+			.learn {
+				padding: 3.5rem 0;
+			}
+
+			.learn-grid {
+				display: grid;
+				gap: 1.25rem;
+				margin-top: 1.5rem;
+			}
+
+			@media (min-width: 800px) {
+				.learn-grid {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+
+			.learn-card {
+				background: var(--grey-50);
+				border: 1px solid var(--grey-200);
+				border-radius: var(--radius-md);
+				padding: 1.5rem;
+			}
+
+			.learn-card .num {
+				display: block;
+				font-weight: 700;
+				color: var(--blue-600);
+				font-size: 0.85rem;
+				margin-bottom: 0.6rem;
+			}
+
+			.learn-card p {
+				margin: 0;
+				color: var(--ink);
+			}
+
+			/* Offers */
+			.offers {
+				padding: 1rem 0 3.5rem;
+				background: var(--grey-50);
+			}
+
+			.offer-grid {
+				display: grid;
+				gap: 1.5rem;
+				margin-top: 1.5rem;
+			}
+
+			@media (min-width: 900px) {
+				.offer-grid {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+
+			.offer-card {
+				background: var(--white);
+				border: 1px solid var(--grey-200);
+				border-radius: var(--radius-lg);
+				overflow: hidden;
+				box-shadow: var(--shadow-card);
+				display: flex;
+				flex-direction: column;
+			}
+
+			.offer-media {
+				aspect-ratio: 3 / 2;
+				overflow: hidden;
+			}
+
+			.offer-media img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.offer-body {
+				padding: 1.5rem;
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+			}
+
+			.offer-icon {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 2.4rem;
+				height: 2.4rem;
+				border-radius: 0.6rem;
+				background: var(--blue-100);
+				color: var(--blue-600);
+				margin-bottom: 0.4rem;
+			}
+
+			.offer-subtitle {
+				color: var(--blue-600);
+				font-weight: 600;
+				margin-bottom: 0.6rem;
+			}
+
+			.lead-in {
+				font-weight: 600;
+				color: var(--navy-900);
+			}
+
+			.bullet-list {
+				list-style: none;
+				padding: 0;
+				margin: 0.25rem 0 1em;
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+			}
+
+			.bullet-list li {
+				display: flex;
+				align-items: flex-start;
+				gap: 0.55rem;
+				color: var(--ink);
+			}
+
+			.bullet-list .icon {
+				color: var(--blue-600);
+				margin-top: 0.15rem;
+			}
+
+			/* About */
+			.about {
+				padding: 3.5rem 0;
+			}
+
+			.about-grid {
+				display: grid;
+				gap: 2rem;
+				align-items: center;
+			}
+
+			@media (min-width: 900px) {
+				.about-grid {
+					grid-template-columns: 0.85fr 1.15fr;
+				}
+			}
+
+			.about-media {
+				border-radius: var(--radius-lg);
+				overflow: hidden;
+				box-shadow: var(--shadow-card);
+				border: 1px solid var(--grey-200);
+			}
+
+			.about-lead {
+				font-size: 1.1rem;
+				font-weight: 600;
+				color: var(--navy-900);
+			}
+
+			/* Lessons */
+			.lessons {
+				background: var(--grey-50);
+				padding: 3.5rem 0;
+			}
+
+			.lessons-sub {
+				color: var(--navy-800);
+				font-weight: 600;
+				margin-bottom: 1.5rem;
+			}
+
+			.lesson-items {
+				display: grid;
+				gap: 1rem;
+				list-style: none;
+				padding: 0;
+				margin: 0 0 2rem;
+			}
+
+			@media (min-width: 700px) {
+				.lesson-items {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+
+			.lesson-items li {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				background: var(--white);
+				border: 1px solid var(--grey-200);
+				border-radius: var(--radius-md);
+				padding: 1rem 1.1rem;
+				font-weight: 600;
+				color: var(--navy-900);
+			}
+
+			.lesson-items .icon {
+				color: var(--blue-600);
+			}
+
+			.lessons-copy {
+				max-width: 62ch;
+			}
+
+			/* Contact */
+			.contact {
+				background: var(--navy-950);
+				padding: 3.5rem 0;
+			}
+
+			.contact-inner {
+				display: flex;
+				justify-content: center;
+			}
+
+			.contact-card {
+				max-width: 42rem;
+				text-align: left;
+			}
+
+			.contact h2 {
+				color: var(--white);
+			}
+
+			.contact-lead {
+				font-size: 1.1rem;
+				font-weight: 600;
+				color: #dce6fb;
+			}
+
+			.contact p {
+				color: #b9c6e4;
+			}
+
+			.contact-brandline {
+				display: flex;
+				flex-direction: column;
+				gap: 0.15rem;
+				border-left: 3px solid var(--blue-600);
+				padding-left: 1rem;
+				margin: 1.5rem 0;
+			}
+
+			.contact-brandline strong {
+				color: var(--white);
+			}
+
+			.contact-brandline span {
+				color: #9db6ef;
+				font-size: 0.9rem;
+			}
+
+			.contact-actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem;
+				margin-bottom: 1.25rem;
+			}
+
+			.contact-cta {
+				margin-top: 0.25rem;
+			}
+
+			/* Footer */
+			.site-footer {
+				background: var(--white);
+				border-top: 1px solid var(--grey-200);
+				padding: 2.5rem 0;
+			}
+
+			.footer-inner {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1.5rem;
+			}
+
+			.footer-brand {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+			}
+
+			.footer-brand p {
+				margin: 0;
+				font-size: 0.85rem;
+				color: var(--ink-soft);
+			}
+
+			.footer-nav {
+				display: flex;
+				gap: 1.25rem;
+				flex-wrap: wrap;
+			}
+
+			.footer-nav a {
+				text-decoration: none;
+				font-weight: 600;
+				color: var(--navy-800);
+				font-size: 0.9rem;
+			}
+
+			.footer-rights {
+				margin: 0;
+				font-size: 0.85rem;
+				color: var(--grey-400);
+				width: 100%;
+				text-align: center;
+			}
+
+			@media (min-width: 700px) {
+				.footer-rights {
+					width: auto;
+					text-align: left;
+				}
+			}
+		</style>
+	</body>
+</html>
