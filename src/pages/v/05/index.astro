@@ -1,0 +1,229 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/libre-baskerville/400.css';
+import '@fontsource/libre-baskerville/400-italic.css';
+import '@fontsource/libre-baskerville/700.css';
+import '../../../variants/v05/variant.css';
+import Icon from '../../../variants/v05/components/Icon.astro';
+import Roundel from '../../../variants/v05/components/Roundel.astro';
+import { de } from '../../../i18n/de';
+import { Image } from 'astro:assets';
+import heroImg from '../../../assets/images/hero.jpg';
+import nachhilfeImg from '../../../assets/images/nachhilfe.jpg';
+import businessImg from '../../../assets/images/business.jpg';
+import conversationImg from '../../../assets/images/conversation.jpg';
+import londonImg from '../../../assets/images/london.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const offerImages = [nachhilfeImg, businessImg, conversationImg];
+const offerAccents = ['navy', 'red', 'navy'] as const;
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Variante 05 – English with Kym</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={de.meta.description} />
+		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+	</head>
+	<body class="v05">
+		<a class="skip-link" href="#main">{de.skipLink}</a>
+
+		<div class="triband" aria-hidden="true"><span></span><span></span><span></span></div>
+
+		<header class="site">
+			<div class="wrap header-row">
+				<a class="brand" href={`${base}/`}>
+					{de.hero.brand}
+					<small>Schwabmünchen</small>
+				</a>
+				<nav class="main" aria-label="Hauptnavigation">
+					<ul>
+						<li><a href="#angebot">{de.nav.offer}</a></li>
+						<li><a href="#ueber-kym">{de.nav.about}</a></li>
+						<li><a href="#unterricht">{de.nav.lessons}</a></li>
+						<li><a href="#kontakt">{de.nav.contact}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- Hero -->
+			<section class="hero">
+				<div class="wrap hero-grid">
+					<div>
+						<p class="hero-badge">English with Kym &middot; Est. Schwabmünchen</p>
+						<h1>{de.hero.subtitle}</h1>
+						<p class="tagline">{de.hero.tagline}</p>
+						<p class="intro">{de.hero.intro}</p>
+						<p class="info-line">{de.hero.infoLine}</p>
+						<div class="btn-row">
+							<a class="btn btn-red" href="#kontakt">{de.hero.cta}</a>
+							<a class="btn btn-outline" href="#angebot">{de.nav.offer}</a>
+						</div>
+					</div>
+					<div class="hero-frame">
+						<Image src={heroImg} alt={de.hero.imageAlt} width={480} height={600} format="webp" />
+					</div>
+				</div>
+			</section>
+
+			<!-- Learn -->
+			<section class="learn">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="01" />
+						<div>
+							<p class="eyebrow">Philosophie</p>
+							<h2>{de.learn.heading}</h2>
+						</div>
+					</div>
+					<div class="plaque">
+						{de.learn.paragraphs.map((p) => <p>{p}</p>)}
+					</div>
+				</div>
+			</section>
+
+			<!-- Offers -->
+			<section class="offers" id="angebot">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="02" />
+						<div>
+							<p class="eyebrow">Leistungen</p>
+							<h2>{de.offerHeading}</h2>
+						</div>
+					</div>
+					<div class="offer-list">
+						{
+							de.offers.map((offer, i) => (
+								<article class="offer-card" data-accent={offerAccents[i]}>
+									<div class="offer-media">
+										<Image src={offerImages[i]} alt={offer.imageAlt} width={400} height={300} format="webp" />
+										<span class="offer-roundel">
+											<Roundel label={String(i + 1).padStart(2, '0')} />
+										</span>
+									</div>
+									<div class="offer-body">
+										<h3>{offer.title}</h3>
+										<p class="offer-subtitle">{offer.subtitle}</p>
+										{offer.intro.map((p) => (
+											<p>{p}</p>
+										))}
+										{offer.leadIn && <p class="offer-lead-in">{offer.leadIn}</p>}
+										{offer.bullets && (
+											<ul class="ticklist">
+												{offer.bullets.map((b) => (
+													<li>
+														<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+															<path d="M4 10.5 8 14l8-9" />
+														</svg>
+														<span>{b}</span>
+													</li>
+												))}
+											</ul>
+										)}
+										{offer.outro.map((p) => (
+											<p>{p}</p>
+										))}
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- About -->
+			<section class="about" id="ueber-kym">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="03" />
+						<div>
+							<p class="eyebrow">Hintergrund</p>
+							<h2>{de.about.heading}</h2>
+						</div>
+					</div>
+					<div class="about-grid">
+						<div class="about-media">
+							<Image src={londonImg} alt={de.about.imageAlt} width={440} height={330} format="webp" />
+						</div>
+						<div>
+							<p class="lead">{de.about.lead}</p>
+							{de.about.paragraphs.map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Lessons -->
+			<section class="lessons" id="unterricht">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="04" />
+						<div>
+							<p class="eyebrow">Organisatorisches</p>
+							<h2>{de.lessons.heading}</h2>
+						</div>
+					</div>
+					<div class="lessons-box">
+						<p class="lessons-sub">{de.lessons.subheading}</p>
+						<ul class="info-items">
+							{
+								de.lessons.items.map((item) => (
+									<li>
+										<Icon name={item.icon} />
+										<span>{item.text}</span>
+									</li>
+								))
+							}
+						</ul>
+						{de.lessons.paragraphs.map((p) => <p>{p}</p>)}
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact -->
+			<section class="contact" id="kontakt">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="05" />
+						<div>
+							<p class="eyebrow">{de.contact.tagline}</p>
+							<h2>{de.contact.heading}</h2>
+						</div>
+					</div>
+					<p class="lead">{de.contact.lead}</p>
+					<p class="body-text">{de.contact.body}</p>
+					<div class="btn-row">
+						<a class="btn btn-red" href="mailto:kym-elizabeth@gmx.de">
+							<Icon name="mail" />
+							kym-elizabeth@gmx.de
+						</a>
+						<a class="btn btn-outline" href="tel:+4915140462441">
+							<Icon name="phone" />
+							0151 40462441
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site">
+			<div class="wrap footer-row">
+				<p class="footer-rights">&copy; {new Date().getFullYear()} {de.footer.rights} &middot; {de.footer.tagline}</p>
+				<nav aria-label="Rechtliches">
+					<ul>
+						<li><a href={`${base}/impressum`}>{de.footer.impressum}</a></li>
+						<li><a href={`${base}/datenschutz`}>{de.footer.datenschutz}</a></li>
+						<li><a href={`${base}/v/`}>Alle Varianten</a></li>
+					</ul>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
