@@ -1,0 +1,967 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import '@fontsource/archivo-black';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+
+import { de } from '../../../i18n/de';
+import { CONTACT } from '../../../consts';
+import Icon from '../../../variants/v04/Icon.astro';
+import heroImage from '../../../assets/images/hero.jpg';
+import nachhilfeImage from '../../../assets/images/nachhilfe.jpg';
+import businessImage from '../../../assets/images/business.jpg';
+import conversationImage from '../../../assets/images/conversation.jpg';
+import londonImage from '../../../assets/images/london.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const content = de;
+
+const offerImages: Record<string, ImageMetadata> = {
+	graduation: nachhilfeImage,
+	briefcase: businessImage,
+	chat: conversationImage,
+};
+
+const offerAccents = ['yellow', 'cobalt', 'pink'] as const;
+
+const infoChips = content.hero.infoLine
+	.split('·')
+	.map((s) => s.trim())
+	.filter(Boolean);
+
+const taglineChips = content.hero.tagline
+	.split('·')
+	.map((s) => s.trim())
+	.filter(Boolean);
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Variante 04 – English with Kym</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={content.meta.description} />
+		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">{content.skipLink}</a>
+
+		<header class="site-header">
+			<div class="wrap header-inner">
+				<a class="brand" href="#top">
+					<span class="brand-mark" aria-hidden="true">EwK</span>
+					<span class="brand-text">{content.hero.brand}</span>
+				</a>
+				<nav class="main-nav" aria-label="Haupt­navigation">
+					<a href="#angebot">{content.nav.offer}</a>
+					<a href="#ueber-kym">{content.nav.about}</a>
+					<a href="#unterricht">{content.nav.lessons}</a>
+					<a href="#kontakt" class="nav-cta">{content.nav.contact}</a>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- HERO -->
+			<section id="top" class="hero">
+				<div class="wrap hero-grid">
+					<div class="hero-copy">
+						<p class="eyebrow">
+							<Icon name="pin" class="icon-sm" /> Schwabmünchen · Einzelunterricht
+						</p>
+						<h1 class="hero-title">
+							<span class="hero-title-line">Englisch</span>
+							<span class="hero-title-line hero-title-pop">mit Haltung.</span>
+						</h1>
+						<p class="hero-subtitle">{content.hero.subtitle}</p>
+						<ul class="chip-row" aria-label={content.hero.tagline}>
+							{taglineChips.map((chip, i) => (
+								<li class={`chip chip-${offerAccents[i % offerAccents.length]}`}>{chip}</li>
+							))}
+						</ul>
+						<p class="hero-intro">{content.hero.intro}</p>
+						<ul class="info-list">
+							{infoChips.map((line) => (
+								<li>{line}</li>
+							))}
+						</ul>
+						<a class="btn btn-big btn-cobalt" href="#kontakt">
+							{content.hero.cta}
+							<Icon name="arrow" class="icon-sm" />
+						</a>
+					</div>
+					<div class="hero-art" aria-hidden="true">
+						<div class="hero-frame">
+							<Image src={heroImage} alt={content.hero.imageAlt} width={560} height={373} />
+						</div>
+						<div class="hero-sticker sticker-yellow">35+ Jahre Erfahrung</div>
+						<div class="hero-sticker sticker-pink sticker-two">geboren in London</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- LEARN -->
+			<section class="learn" aria-labelledby="learn-heading">
+				<div class="wrap">
+					<h2 id="learn-heading" class="section-title">{content.learn.heading}</h2>
+					<div class="learn-grid">
+						{content.learn.paragraphs.map((p, i) => (
+							<div class={`learn-card learn-card-${offerAccents[i % offerAccents.length]}`}>
+								<span class="learn-number">{String(i + 1).padStart(2, '0')}</span>
+								<p>{p}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<!-- OFFERS -->
+			<section id="angebot" class="offers" aria-labelledby="offers-heading">
+				<div class="wrap">
+					<h2 id="offers-heading" class="section-title section-title-onlight">
+						<span class="tag-number">02</span>
+						{content.offerHeading}
+					</h2>
+					<div class="offer-list">
+						{content.offers.map((offer, i) => {
+							const accent = offerAccents[i % offerAccents.length];
+							const img = offerImages[offer.icon];
+							return (
+								<article class={`offer-card offer-card-${accent}`}>
+									<div class="offer-media">
+										{img && <Image src={img} alt={offer.imageAlt} width={480} height={320} />}
+										<div class="offer-icon-badge">
+											<Icon name={offer.icon} />
+										</div>
+									</div>
+									<div class="offer-body">
+										<h3 class="offer-title">{offer.title}</h3>
+										<p class="offer-subtitle">{offer.subtitle}</p>
+										{offer.intro.map((p) => (
+											<p>{p}</p>
+										))}
+										{offer.leadIn && <p class="offer-lead-in">{offer.leadIn}</p>}
+										{offer.bullets && (
+											<ul class="offer-bullets">
+												{offer.bullets.map((b) => (
+													<li>{b}</li>
+												))}
+											</ul>
+										)}
+										{offer.outro.map((p) => (
+											<p>{p}</p>
+										))}
+									</div>
+								</article>
+							);
+						})}
+					</div>
+				</div>
+			</section>
+
+			<!-- ABOUT -->
+			<section id="ueber-kym" class="about" aria-labelledby="about-heading">
+				<div class="wrap about-grid">
+					<div class="about-art">
+						<div class="about-frame">
+							<Image src={londonImage} alt={content.about.imageAlt} width={480} height={340} />
+						</div>
+					</div>
+					<div class="about-copy">
+						<h2 id="about-heading" class="section-title">
+							<span class="tag-number">03</span>
+							{content.about.heading}
+						</h2>
+						<p class="about-lead">{content.about.lead}</p>
+						{content.about.paragraphs.map((p) => (
+							<p>{p}</p>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<!-- LESSONS -->
+			<section id="unterricht" class="lessons" aria-labelledby="lessons-heading">
+				<div class="wrap">
+					<h2 id="lessons-heading" class="section-title">
+						<span class="tag-number">04</span>
+						{content.lessons.heading}
+					</h2>
+					<p class="lessons-subheading">{content.lessons.subheading}</p>
+					<ul class="lessons-items">
+						{content.lessons.items.map((item) => (
+							<li>
+								<Icon name={item.icon} />
+								<span>{item.text}</span>
+							</li>
+						))}
+					</ul>
+					<div class="lessons-text">
+						{content.lessons.paragraphs.map((p) => (
+							<p>{p}</p>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<!-- CONTACT -->
+			<section id="kontakt" class="contact" aria-labelledby="contact-heading">
+				<div class="wrap contact-grid">
+					<div>
+						<h2 id="contact-heading" class="section-title section-title-ondark">
+							<span class="tag-number tag-number-dark">05</span>
+							{content.contact.heading}
+						</h2>
+						<p class="contact-lead">{content.contact.lead}</p>
+						<p>{content.contact.body}</p>
+						<p class="contact-brand">
+							{content.contact.brand}
+							<br />
+							<span>{content.contact.tagline}</span>
+						</p>
+					</div>
+					<div class="contact-actions">
+						<a class="btn btn-big btn-yellow" href={`mailto:${CONTACT.email}`}>
+							<Icon name="mail" />
+							{CONTACT.email}
+						</a>
+						<a class="btn btn-big btn-pink" href={`tel:${CONTACT.phone}`}>
+							<Icon name="phone" />
+							{CONTACT.phoneDisplay}
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="wrap footer-inner">
+				<div>
+					<p class="footer-brand">{content.footer.rights}</p>
+					<p class="footer-tagline">{content.footer.tagline}</p>
+				</div>
+				<nav class="footer-nav" aria-label="Rechtliches">
+					<a href={`${base}/impressum`}>{content.footer.impressum}</a>
+					<a href={`${base}/datenschutz`}>{content.footer.datenschutz}</a>
+					<a href={`${base}/v/`}>Alle Varianten</a>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style>
+	:global(:root) {
+		--ink: #111111;
+		--paper: #fff8e9;
+		--white: #ffffff;
+		--yellow: #ffd400;
+		--cobalt: #2a3ffb;
+		--pink: #ff4fa0;
+		--border: 4px;
+		--shadow-offset: 8px;
+	}
+
+	:global(html) {
+		box-sizing: border-box;
+		scroll-behavior: smooth;
+	}
+
+	:global(*),
+	:global(*::before),
+	:global(*::after) {
+		box-sizing: inherit;
+	}
+
+	:global(body) {
+		margin: 0;
+		background: var(--paper);
+		color: var(--ink);
+		font-family: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
+		font-size: 1.0625rem;
+		line-height: 1.55;
+		-webkit-font-smoothing: antialiased;
+		background-image: radial-gradient(var(--ink) 1px, transparent 1.6px);
+		background-size: 22px 22px;
+		background-position: -11px -11px;
+	}
+
+	:global(h1),
+	:global(h2),
+	:global(h3) {
+		font-family: 'Archivo Black', 'Space Grotesk Variable', sans-serif;
+		line-height: 1.05;
+		margin: 0;
+		text-transform: uppercase;
+	}
+
+	:global(p) {
+		margin: 0 0 1rem;
+		max-width: 38rem;
+	}
+
+	:global(a) {
+		color: inherit;
+	}
+
+	:global(ul) {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	:global(img) {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	:global(:focus-visible) {
+		outline: 3px solid var(--cobalt);
+		outline-offset: 3px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:global(html) {
+			scroll-behavior: auto;
+		}
+		:global(*) {
+			animation-duration: 0.001ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.001ms !important;
+		}
+	}
+
+	.skip-link {
+		position: absolute;
+		left: -999px;
+		top: 0;
+		z-index: 100;
+		background: var(--yellow);
+		color: var(--ink);
+		padding: 0.75rem 1.25rem;
+		border: var(--border) solid var(--ink);
+		font-weight: 700;
+		text-decoration: none;
+	}
+	.skip-link:focus {
+		left: 1rem;
+		top: 1rem;
+	}
+
+	.wrap {
+		width: 100%;
+		max-width: 72rem;
+		margin: 0 auto;
+		padding: 0 1.25rem;
+	}
+
+	/* HEADER */
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		background: var(--white);
+		border-bottom: var(--border) solid var(--ink);
+	}
+	.header-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		padding-top: 0.6rem;
+		padding-bottom: 0.6rem;
+		flex-wrap: wrap;
+	}
+	.brand {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		text-decoration: none;
+		font-weight: 700;
+	}
+	.brand-mark {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		background: var(--ink);
+		color: var(--yellow);
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 0.8rem;
+		border: var(--border) solid var(--ink);
+		flex-shrink: 0;
+	}
+	.brand-text {
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 0.95rem;
+		text-transform: uppercase;
+		letter-spacing: 0.01em;
+	}
+	.main-nav {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		flex-wrap: wrap;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+		font-size: 0.78rem;
+		text-transform: uppercase;
+	}
+	.main-nav a {
+		text-decoration: none;
+		padding: 0.45rem 0.7rem;
+		border: 2px solid transparent;
+		font-weight: 700;
+	}
+	.main-nav a:not(.nav-cta):hover {
+		border-color: var(--ink);
+		background: var(--yellow);
+	}
+	.nav-cta {
+		background: var(--ink);
+		color: var(--white);
+		border: 2px solid var(--ink) !important;
+	}
+	.nav-cta:hover {
+		background: var(--cobalt);
+	}
+
+	/* generic brutal button */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-family: 'Archivo Black', sans-serif;
+		text-transform: uppercase;
+		text-decoration: none;
+		border: var(--border) solid var(--ink);
+		box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+		transition:
+			transform 0.12s ease,
+			box-shadow 0.12s ease;
+		cursor: pointer;
+	}
+	.btn:hover {
+		transform: translate(-3px, -3px);
+		box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 var(--ink);
+	}
+	.btn:active {
+		transform: translate(2px, 2px);
+		box-shadow: calc(var(--shadow-offset) - 4px) calc(var(--shadow-offset) - 4px) 0 var(--ink);
+	}
+	.btn-big {
+		padding: 0.9rem 1.4rem;
+		font-size: 0.95rem;
+	}
+	.btn-cobalt {
+		background: var(--cobalt);
+		color: var(--white);
+	}
+	.btn-yellow {
+		background: var(--yellow);
+		color: var(--ink);
+	}
+	.btn-pink {
+		background: var(--pink);
+		color: var(--ink);
+	}
+	.icon-sm {
+		width: 1.1rem !important;
+		height: 1.1rem !important;
+	}
+
+	.tag-number {
+		display: inline-block;
+		background: var(--ink);
+		color: var(--yellow);
+		font-family: 'JetBrains Mono Variable', monospace;
+		font-size: 0.85rem;
+		padding: 0.2rem 0.5rem;
+		margin-right: 0.6rem;
+		transform: translateY(-0.2rem);
+	}
+	.tag-number-dark {
+		background: var(--yellow);
+		color: var(--ink);
+	}
+
+	/* HERO */
+	.hero {
+		background: var(--yellow);
+		border-bottom: var(--border) solid var(--ink);
+		padding: 2.5rem 0 3rem;
+	}
+	.hero-grid {
+		display: grid;
+		gap: 2.5rem;
+	}
+	.eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-family: 'JetBrains Mono Variable', monospace;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		background: var(--ink);
+		color: var(--white);
+		padding: 0.35rem 0.7rem;
+		margin-bottom: 1rem;
+	}
+	.hero-title {
+		font-size: clamp(2.5rem, 9vw, 4.2rem);
+		display: flex;
+		flex-direction: column;
+		gap: 0.1em;
+	}
+	.hero-title-pop {
+		background: var(--ink);
+		color: var(--white);
+		display: inline-block;
+		padding: 0 0.2em;
+		width: fit-content;
+	}
+	.hero-subtitle {
+		font-size: 1.3rem;
+		font-weight: 700;
+		margin: 1rem 0 1rem;
+		max-width: 30rem;
+	}
+	.chip-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1.25rem;
+	}
+	.chip {
+		font-family: 'JetBrains Mono Variable', monospace;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		border: 2px solid var(--ink);
+		padding: 0.3rem 0.6rem;
+		background: var(--white);
+	}
+	.chip-yellow {
+		background: var(--yellow);
+	}
+	.chip-cobalt {
+		background: var(--cobalt);
+		color: var(--white);
+	}
+	.chip-pink {
+		background: var(--pink);
+	}
+	.hero-intro {
+		font-size: 1.05rem;
+	}
+	.info-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		margin-bottom: 1.75rem;
+		font-weight: 700;
+	}
+	.info-list li {
+		position: relative;
+		padding-left: 1.3rem;
+	}
+	.info-list li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.35rem;
+		width: 0.7rem;
+		height: 0.7rem;
+		background: var(--ink);
+	}
+
+	.hero-art {
+		position: relative;
+		justify-self: center;
+		width: 100%;
+	}
+	.hero-frame {
+		border: var(--border) solid var(--ink);
+		box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--cobalt);
+		transform: rotate(-1.5deg);
+		max-width: 30rem;
+		margin: 0 auto;
+		background: var(--white);
+		overflow: hidden;
+	}
+	.hero-frame :global(img) {
+		width: 100%;
+	}
+	.hero-sticker {
+		position: absolute;
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		border: 2px solid var(--ink);
+		padding: 0.5rem 0.75rem;
+		transform: rotate(-6deg);
+		box-shadow: 4px 4px 0 var(--ink);
+	}
+	.sticker-yellow {
+		background: var(--white);
+		top: -0.75rem;
+		left: -0.5rem;
+	}
+	.sticker-pink {
+		background: var(--pink);
+	}
+	.sticker-two {
+		bottom: -0.75rem;
+		right: -0.25rem;
+		transform: rotate(4deg);
+	}
+
+	/* LEARN */
+	.learn {
+		padding: 3rem 0;
+		border-bottom: var(--border) solid var(--ink);
+	}
+	.section-title {
+		font-size: clamp(1.75rem, 5vw, 2.5rem);
+		margin-bottom: 2rem;
+	}
+	.learn-grid {
+		display: grid;
+		gap: 1.25rem;
+	}
+	.learn-card {
+		border: var(--border) solid var(--ink);
+		background: var(--white);
+		padding: 1.25rem;
+		box-shadow: 6px 6px 0 var(--ink);
+	}
+	.learn-card p {
+		margin: 0;
+		max-width: none;
+	}
+	.learn-number {
+		display: inline-block;
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+	}
+	.learn-card-yellow .learn-number {
+		color: var(--yellow);
+		-webkit-text-stroke: 1.5px var(--ink);
+	}
+	.learn-card-cobalt .learn-number {
+		color: var(--cobalt);
+	}
+	.learn-card-pink .learn-number {
+		color: var(--pink);
+		-webkit-text-stroke: 1.5px var(--ink);
+	}
+
+	/* OFFERS */
+	.offers {
+		background: var(--ink);
+		padding: 3rem 0;
+		border-bottom: var(--border) solid var(--ink);
+	}
+	.section-title-onlight {
+		color: var(--white);
+	}
+	.offer-list {
+		display: grid;
+		gap: 2rem;
+	}
+	.offer-card {
+		border: var(--border) solid var(--ink);
+		background: var(--white);
+		box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--yellow);
+		display: grid;
+		overflow: hidden;
+	}
+	.offer-card-cobalt {
+		box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--pink);
+	}
+	.offer-card-pink {
+		box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--cobalt);
+	}
+	.offer-media {
+		position: relative;
+		border-bottom: var(--border) solid var(--ink);
+	}
+	.offer-media :global(img) {
+		width: 100%;
+		aspect-ratio: 3 / 2;
+		object-fit: cover;
+	}
+	.offer-icon-badge {
+		position: absolute;
+		bottom: -1.1rem;
+		left: 1.25rem;
+		width: 3rem;
+		height: 3rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 3px solid var(--ink);
+	}
+	.offer-card-yellow .offer-icon-badge {
+		background: var(--yellow);
+	}
+	.offer-card-cobalt .offer-icon-badge {
+		background: var(--cobalt);
+		color: var(--white);
+	}
+	.offer-card-pink .offer-icon-badge {
+		background: var(--pink);
+	}
+	.offer-body {
+		padding: 2rem 1.5rem 1.5rem;
+	}
+	.offer-title {
+		font-size: 1.5rem;
+		margin-bottom: 0.3rem;
+	}
+	.offer-subtitle {
+		font-family: 'JetBrains Mono Variable', monospace;
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+	.offer-card-yellow .offer-subtitle {
+		color: #9a7b00;
+	}
+	.offer-card-cobalt .offer-subtitle {
+		color: var(--cobalt);
+	}
+	.offer-card-pink .offer-subtitle {
+		color: #c21f73;
+	}
+	.offer-body p {
+		max-width: none;
+	}
+	.offer-lead-in {
+		font-weight: 700;
+	}
+	.offer-bullets {
+		display: grid;
+		gap: 0.5rem;
+		margin: 0 0 1.25rem;
+	}
+	.offer-bullets li {
+		position: relative;
+		padding-left: 1.5rem;
+		font-weight: 600;
+	}
+	.offer-bullets li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.3rem;
+		width: 0.85rem;
+		height: 0.85rem;
+		border: 2px solid var(--ink);
+	}
+	.offer-card-yellow .offer-bullets li::before {
+		background: var(--yellow);
+	}
+	.offer-card-cobalt .offer-bullets li::before {
+		background: var(--cobalt);
+	}
+	.offer-card-pink .offer-bullets li::before {
+		background: var(--pink);
+	}
+
+	/* ABOUT */
+	.about {
+		background: var(--pink);
+		padding: 3rem 0;
+		border-bottom: var(--border) solid var(--ink);
+	}
+	.about-grid {
+		display: grid;
+		gap: 2rem;
+		align-items: start;
+	}
+	.about-frame {
+		border: var(--border) solid var(--ink);
+		box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+		transform: rotate(1.5deg);
+		max-width: 26rem;
+		margin: 0 auto;
+		overflow: hidden;
+		background: var(--white);
+	}
+	.about-frame :global(img) {
+		width: 100%;
+	}
+	.about-lead {
+		font-size: 1.3rem;
+		font-weight: 700;
+		max-width: none;
+	}
+	.about-copy p {
+		max-width: none;
+	}
+
+	/* LESSONS */
+	.lessons {
+		padding: 3rem 0;
+		border-bottom: var(--border) solid var(--ink);
+		background: var(--white);
+	}
+	.lessons-subheading {
+		font-family: 'JetBrains Mono Variable', monospace;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 0.9rem;
+		margin-top: -1rem;
+		margin-bottom: 1.5rem;
+	}
+	.lessons-items {
+		display: grid;
+		gap: 0.9rem;
+		margin-bottom: 2rem;
+	}
+	.lessons-items li {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		border: 3px solid var(--ink);
+		background: var(--yellow);
+		padding: 0.75rem 1rem;
+		font-weight: 700;
+		box-shadow: 5px 5px 0 var(--ink);
+		max-width: 22rem;
+	}
+	.lessons-text p {
+		max-width: 38rem;
+	}
+
+	/* CONTACT */
+	.contact {
+		background: var(--cobalt);
+		color: var(--white);
+		padding: 3.5rem 0;
+	}
+	.section-title-ondark {
+		color: var(--white);
+	}
+	.contact-grid {
+		display: grid;
+		gap: 2rem;
+		align-items: center;
+	}
+	.contact-lead {
+		font-size: 1.2rem;
+		font-weight: 700;
+	}
+	.contact p {
+		max-width: 32rem;
+	}
+	.contact-brand {
+		font-family: 'Archivo Black', sans-serif;
+		text-transform: uppercase;
+		margin-top: 1.5rem;
+	}
+	.contact-brand span {
+		font-family: 'Space Grotesk Variable', sans-serif;
+		text-transform: none;
+		font-weight: 400;
+		font-size: 0.95rem;
+	}
+	.contact-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+	.contact-actions .btn {
+		justify-content: center;
+		text-transform: none;
+		font-family: 'Space Grotesk Variable', sans-serif;
+		font-weight: 700;
+		word-break: break-word;
+	}
+
+	/* FOOTER */
+	.site-footer {
+		background: var(--ink);
+		color: var(--white);
+		border-top: var(--border) solid var(--ink);
+		padding: 2rem 0;
+	}
+	.footer-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.25rem;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+	.footer-brand {
+		font-family: 'Archivo Black', sans-serif;
+		text-transform: uppercase;
+		margin: 0 0 0.25rem;
+	}
+	.footer-tagline {
+		margin: 0;
+		opacity: 0.8;
+		font-size: 0.9rem;
+	}
+	.footer-nav {
+		display: flex;
+		gap: 1.25rem;
+		flex-wrap: wrap;
+		font-family: 'JetBrains Mono Variable', monospace;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+	}
+	.footer-nav a {
+		text-decoration: underline;
+	}
+	.footer-nav a:hover {
+		color: var(--yellow);
+	}
+
+	/* RESPONSIVE */
+	@media (min-width: 640px) {
+		.learn-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (min-width: 900px) {
+		.hero-grid {
+			grid-template-columns: 1.1fr 0.9fr;
+			align-items: center;
+		}
+		.offer-card {
+			grid-template-columns: 22rem 1fr;
+		}
+		.offer-card:nth-of-type(even) {
+			direction: rtl;
+		}
+		.offer-card:nth-of-type(even) .offer-body {
+			direction: ltr;
+		}
+		.offer-media {
+			border-bottom: none;
+			border-right: var(--border) solid var(--ink);
+			height: 100%;
+		}
+		.offer-card:nth-of-type(even) .offer-media {
+			border-right: none;
+			border-left: var(--border) solid var(--ink);
+		}
+		.offer-media :global(img) {
+			height: 100%;
+		}
+		.about-grid {
+			grid-template-columns: 1fr 1.3fr;
+		}
+		.contact-grid {
+			grid-template-columns: 1.2fr 1fr;
+		}
+	}
+</style>
