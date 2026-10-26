@@ -1,0 +1,241 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { de } from '../../../i18n/de';
+import { CONTACT } from '../../../consts';
+import type { IconName } from '../../../i18n/types';
+import '../../../variants/v02/variant.css';
+
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/inter';
+
+import heroImage from '../../../assets/images/hero.jpg';
+import nachhilfeImage from '../../../assets/images/nachhilfe.jpg';
+import businessImage from '../../../assets/images/business.jpg';
+import conversationImage from '../../../assets/images/conversation.jpg';
+import londonImage from '../../../assets/images/london.jpg';
+
+const content = de;
+
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+
+const offerImages: Partial<Record<IconName, ImageMetadata>> = {
+	graduation: nachhilfeImage,
+	briefcase: businessImage,
+	chat: conversationImage,
+};
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Variante 02 – English with Kym</title>
+		<meta name="description" content={content.meta.description} />
+		<meta name="robots" content="noindex" />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">{content.skipLink}</a>
+
+		<header class="masthead">
+			<div class="wrap masthead-inner">
+				<a class="wordmark" href="#hero">English with <span>Kym</span></a>
+				<nav class="nav-list" aria-label="Hauptnavigation">
+					<a href="#angebot"><span class="n">02</span>{content.nav.offer}</a>
+					<a href="#kym"><span class="n">03</span>{content.nav.about}</a>
+					<a href="#unterricht"><span class="n">04</span>{content.nav.lessons}</a>
+					<a href="#kontakt"><span class="n">05</span>{content.nav.contact}</a>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<section id="hero" class="hero ruled on-night" aria-label={content.hero.brand}>
+				<div class="wrap grid hero-grid">
+					<div class="hero-text">
+						<p class="hero-kicker">{content.hero.tagline}</p>
+						<h1 class="hero-headline">{content.hero.brand}</h1>
+						<p class="hero-tagline">{content.hero.subtitle}</p>
+						<p class="hero-intro">{content.hero.intro}</p>
+						<p class="hero-info">{content.hero.infoLine}</p>
+						<a class="btn" href="#kontakt">{content.hero.cta}</a>
+					</div>
+					<figure class="hero-media">
+						<Image
+							src={heroImage}
+							alt={content.hero.imageAlt}
+							width={480}
+							height={360}
+							widths={[320, 480]}
+							sizes="(min-width: 860px) 380px, 90vw"
+							format="webp"
+							loading="eager"
+							fetchpriority="high"
+						/>
+						<figcaption>London — 01</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section id="lernen" class="section ruled" aria-labelledby="lernen-title">
+				<div class="wrap">
+					<div class="section-head">
+						<span class="section-num" aria-hidden="true">01</span>
+						<h2 class="section-title" id="lernen-title">{content.learn.heading}</h2>
+					</div>
+					<div class="grid">
+						<p class="lead-col">{content.learn.paragraphs[0]}</p>
+						<div class="body-col">
+							{content.learn.paragraphs.slice(1).map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="angebot" class="section ruled" aria-labelledby="angebot-title">
+				<div class="wrap">
+					<div class="section-head">
+						<span class="section-num" aria-hidden="true">02</span>
+						<h2 class="section-title" id="angebot-title">{content.offerHeading}</h2>
+					</div>
+					{
+						content.offers.map((card, i) => (
+							<article class="offer">
+								<p class="offer-index" aria-hidden="true">
+									2.{i + 1}
+								</p>
+								<figure class="offer-media">
+									<Image
+										src={offerImages[card.icon]!}
+										alt={card.imageAlt}
+										width={480}
+										height={360}
+										widths={[280, 380, 480]}
+										sizes="(min-width: 860px) 320px, 90vw"
+										format="webp"
+										loading="lazy"
+									/>
+								</figure>
+								<div class="offer-body">
+									<h3 class="offer-title">{card.title}</h3>
+									<span class="offer-subtitle">{card.subtitle}</span>
+									{card.intro.map((p) => <p>{p}</p>)}
+									{card.leadIn && <p class="offer-leadin">{card.leadIn}</p>}
+									{card.bullets && (
+										<ul class="offer-bullets">
+											{card.bullets.map((item) => (
+												<li>{item}</li>
+											))}
+										</ul>
+									)}
+									{card.outro.map((p) => (
+										<p class="offer-outro">{p}</p>
+									))}
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</section>
+
+			<section id="kym" class="section ruled on-night" aria-labelledby="kym-title">
+				<div class="wrap">
+					<div class="section-head">
+						<span class="section-num" aria-hidden="true">03</span>
+						<h2 class="section-title" id="kym-title">{content.about.heading}</h2>
+					</div>
+					<div class="grid about-grid">
+						<div class="about-text">
+							<p class="about-lead">{content.about.lead}</p>
+							<div class="about-body">
+								{content.about.paragraphs.map((p) => <p>{p}</p>)}
+							</div>
+						</div>
+						<figure class="about-media">
+							<Image
+								src={londonImage}
+								alt={content.about.imageAlt}
+								width={480}
+								height={339}
+								widths={[320, 480]}
+								sizes="(min-width: 860px) 400px, 90vw"
+								format="webp"
+								loading="lazy"
+							/>
+							<figcaption>London — 02</figcaption>
+						</figure>
+					</div>
+				</div>
+			</section>
+
+			<section id="unterricht" class="section ruled" aria-labelledby="unterricht-title">
+				<div class="wrap">
+					<div class="section-head">
+						<span class="section-num" aria-hidden="true">04</span>
+						<h2 class="section-title" id="unterricht-title">{content.lessons.heading}</h2>
+					</div>
+					<div class="grid">
+						<div class="facts">
+							{
+								content.lessons.items.map((item, i) => (
+									<div class="fact">
+										<span class="fact-num" aria-hidden="true">
+											4.{i + 1}
+										</span>
+										<span class="fact-text">{item.text}</span>
+									</div>
+								))
+							}
+						</div>
+						<p class="lessons-sub">{content.lessons.subheading}</p>
+						<div class="lessons-body">
+							{content.lessons.paragraphs.map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="kontakt" class="section ruled on-night" aria-labelledby="kontakt-title">
+				<div class="wrap">
+					<div class="section-head">
+						<span class="section-num" aria-hidden="true">05</span>
+						<h2 class="section-title" id="kontakt-title">{content.contact.heading}</h2>
+					</div>
+					<div class="grid">
+						<div class="contact-text">
+							<p class="contact-lead">{content.contact.lead}</p>
+							<p class="contact-body">{content.contact.body}</p>
+							<a class="btn" href={`mailto:${CONTACT.email}`}>{content.contact.cta}</a>
+						</div>
+						<div class="contact-card">
+							<p class="contact-brand">{content.contact.brand}</p>
+							<p class="contact-tagline">{content.contact.tagline}</p>
+							<p class="contact-line">
+								<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+							</p>
+							<p class="contact-line">
+								<a href={`tel:${CONTACT.phone}`}>{CONTACT.phoneDisplay}</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer ruled">
+			<div class="wrap footer-inner">
+				<p class="footer-rights">
+					{content.footer.rights} — {content.footer.tagline}
+				</p>
+				<nav class="footer-links" aria-label="Rechtliches">
+					<a href={`${base}impressum`}>{content.footer.impressum}</a>
+					<a href={`${base}datenschutz`}>{content.footer.datenschutz}</a>
+					<a href={`${base}v/`}>Alle Varianten</a>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
