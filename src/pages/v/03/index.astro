@@ -1,0 +1,235 @@
+---
+import { Image } from 'astro:assets';
+import '@fontsource/caveat/400.css';
+import '@fontsource/caveat/500.css';
+import '@fontsource/caveat/600.css';
+import '@fontsource/caveat/700.css';
+import '@fontsource-variable/nunito';
+
+import { de } from '../../../i18n/de';
+import { CONTACT } from '../../../consts';
+import '../../../variants/v03/styles/notebook.css';
+import Icon from '../../../variants/v03/components/Icon.astro';
+import Doodle from '../../../variants/v03/components/Doodle.astro';
+import StickyNote from '../../../variants/v03/components/StickyNote.astro';
+
+import heroImg from '../../../assets/images/hero.jpg';
+import londonImg from '../../../assets/images/london.jpg';
+import nachhilfeImg from '../../../assets/images/nachhilfe.jpg';
+import businessImg from '../../../assets/images/business.jpg';
+import conversationImg from '../../../assets/images/conversation.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const c = de;
+
+const offerImages = [nachhilfeImg, businessImg, conversationImg];
+const offerColors: Array<'yellow' | 'pink' | 'mint'> = ['yellow', 'pink', 'mint'];
+const offerRotations = [-2.2, 1.6, -1.1];
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Variante 03 – English with Kym</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={c.meta.description} />
+		<link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">{c.skipLink}</a>
+
+		<header class="site-header">
+			<div class="wrap">
+				<a class="brand-mark" href="#hero">{c.hero.brand}</a>
+				<nav aria-label="Hauptnavigation">
+					<ul class="site-nav">
+						<li><a href="#offer">{c.nav.offer}</a></li>
+						<li><a href="#about">{c.nav.about}</a></li>
+						<li><a href="#lessons">{c.nav.lessons}</a></li>
+						<li><a href="#contact">{c.nav.contact}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- Hero -->
+			<section id="hero" class="sheet" aria-labelledby="hero-title">
+				<div class="sheet-inner two-col">
+					<div>
+						<span class="section-tag">Seite 01</span>
+						<h1 id="hero-title" style="font-size: clamp(2.6rem, 7vw, 4.6rem);">
+							{c.hero.brand}
+						</h1>
+						<p style="font-size: clamp(1.2rem, 3vw, 1.6rem); font-family: 'Caveat', cursive; font-weight: 600; color: var(--ink-soft); margin-top: 0.2rem;">
+							{c.hero.subtitle}
+						</p>
+						<p class="lede" style="margin-top: 1rem;">{c.hero.intro}</p>
+						<p class="margin-note" style="margin-top: 1.2rem;">
+							<Doodle type="arrow-left" />
+							<span>{c.hero.tagline}</span>
+						</p>
+						<p style="margin-top: 1.2rem; font-weight: 700;">{c.hero.infoLine}</p>
+						<a class="stamp-btn" href="#contact" style="margin-top: 1rem;">
+							<Icon name="mail" />
+							{c.hero.cta}
+						</a>
+					</div>
+					<figure class="polaroid" style="justify-self: center; max-width: 20rem;">
+						<Image src={heroImg} alt={c.hero.imageAlt} width={480} format="webp" />
+						<figcaption>London calling ✈</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<!-- Learn -->
+			<section id="learn" class="sheet" aria-labelledby="learn-title">
+				<div class="sheet-inner">
+					<span class="section-tag">Seite 02</span>
+					<h2 id="learn-title" class="section-heading">
+						Englisch mit mehr
+						<span class="hl">
+							Selbstvertrauen
+							<Doodle type="underline" class="doodle-underline" />
+						</span>
+						 sprechen
+					</h2>
+					<div class="two-col" style="margin-top: 1.5rem;">
+						<div>
+							{c.learn.paragraphs.map((p) => <p class="lede" style="max-width: 48ch;">{p}</p>)}
+						</div>
+						<p class="margin-note">
+							<Doodle type="circle" style="width: 3.4rem; height: 1.8rem; color: var(--accent-red);" />
+							35+ Jahre Erfahrung mit Seminaren &amp; Vorträgen auf Englisch!
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Offer -->
+			<section id="offer" class="sheet corkboard" aria-labelledby="offer-title">
+				<div class="sheet-inner">
+					<span class="section-tag">Seite 03</span>
+					<h2 id="offer-title" class="section-heading">{c.offerHeading}</h2>
+					<div class="offer-grid">
+						{
+							c.offers.map((offer, i) => (
+								<StickyNote
+									offer={offer}
+									color={offerColors[i]}
+									rotate={offerRotations[i]}
+									number={`0${i + 1}`}
+									image={offerImages[i]}
+								/>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- About -->
+			<section id="about" class="sheet" aria-labelledby="about-title">
+				<div class="sheet-inner two-col reverse">
+					<figure class="polaroid" style="justify-self: center; max-width: 18rem;">
+						<Image src={londonImg} alt={c.about.imageAlt} width={420} format="webp" />
+						<figcaption>Home sweet London</figcaption>
+					</figure>
+					<div>
+						<span class="section-tag">Seite 04</span>
+						<h2 id="about-title" class="section-heading">{c.about.heading}</h2>
+						<p class="lede" style="font-weight: 700; color: var(--ink);">{c.about.lead}</p>
+						{c.about.paragraphs.map((p) => <p>{p}</p>)}
+					</div>
+				</div>
+			</section>
+
+			<!-- Lessons -->
+			<section id="lessons" class="sheet squared" aria-labelledby="lessons-title">
+				<div class="sheet-inner">
+					<span class="section-tag">Seite 05</span>
+					<h2 id="lessons-title" class="section-heading">{c.lessons.heading}</h2>
+					<p class="lede" style="font-weight: 700;">{c.lessons.subheading}</p>
+
+					<div class="card-row">
+						{
+							c.lessons.items.map((item) => (
+								<div class="index-card">
+									<Icon name={item.icon} />
+									<span>{item.text}</span>
+								</div>
+							))
+						}
+					</div>
+
+					{c.lessons.paragraphs.map((p) => <p class="lede" style="max-width: 52ch;">{p}</p>)}
+				</div>
+			</section>
+
+			<!-- Contact -->
+			<section id="contact" class="sheet postcard" aria-labelledby="contact-title">
+				<div class="sheet-inner">
+					<div class="postcard-box">
+						<span class="section-tag">Seite 06</span>
+						<h2 id="contact-title" class="section-heading" style="font-size: clamp(2rem, 5vw, 2.8rem);">
+							{c.contact.heading}
+						</h2>
+						<p class="lede" style="font-weight: 700; color: var(--ink);">{c.contact.lead}</p>
+						<p>{c.contact.body}</p>
+
+						<div class="contact-links">
+							<a href={`mailto:${CONTACT.email}`}>
+								<Icon name="mail" />
+								{CONTACT.email}
+							</a>
+							<a href={`tel:${CONTACT.phone}`}>
+								<Icon name="phone" />
+								{CONTACT.phoneDisplay}
+							</a>
+						</div>
+
+						<a class="stamp-btn" href={`mailto:${CONTACT.email}`} style="margin-top: 1.6rem;">
+							<Icon name="star" />
+							{c.contact.cta}
+						</a>
+
+						<p style="margin-top: 1.8rem; font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--ink-soft);">
+							{c.contact.brand} — {c.contact.tagline}
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="wrap">
+				<p style="margin: 0; font-family: 'Caveat', cursive; font-size: 1.2rem;">{c.footer.tagline}</p>
+				<ul class="footer-links">
+					<li><a href={`${base}/impressum`}>{c.footer.impressum}</a></li>
+					<li><a href={`${base}/datenschutz`}>{c.footer.datenschutz}</a></li>
+					<li><a href={`${base}/v/`}>Alle Varianten</a></li>
+				</ul>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style>
+	.offer-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+		gap: 2.75rem 1.75rem;
+		margin-top: 2rem;
+	}
+
+	@media (max-width: 26rem) {
+		.offer-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.polaroid img {
+		height: auto;
+	}
+</style>
