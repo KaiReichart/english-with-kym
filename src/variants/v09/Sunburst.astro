@@ -1,0 +1,30 @@
+---
+interface Props {
+	class?: string;
+	rays?: number;
+}
+
+const { class: className, rays = 16 } = Astro.props;
+
+const paths = Array.from({ length: rays }, (_, i) => {
+	const angle = (360 / rays) * i;
+	return `<rect x="-3" y="-50" width="6" height="26" rx="3" transform="rotate(${angle})"/>`;
+}).join('');
+---
+
+<svg
+	class={`sunburst ${className ?? ''}`}
+	viewBox="-50 -50 100 100"
+	aria-hidden="true"
+	focusable="false"
+	set:html={paths}
+/>
+
+<style>
+	.sunburst {
+		width: 100%;
+		height: 100%;
+		fill: currentColor;
+		display: block;
+	}
+</style>

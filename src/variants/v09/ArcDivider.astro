@@ -1,0 +1,43 @@
+---
+interface Props {
+	class?: string;
+	flip?: boolean;
+}
+
+const { class: className, flip = false } = Astro.props;
+---
+
+<svg
+	class={`arc-divider ${className ?? ''} ${flip ? 'flip' : ''}`}
+	viewBox="0 0 400 48"
+	preserveAspectRatio="none"
+	aria-hidden="true"
+	focusable="false"
+>
+	<path
+		d="M0 48 C 50 8, 100 8, 150 48 C 200 8, 250 8, 300 48 C 340 20, 370 20, 400 48 Z"
+		class="arc-a"
+	/>
+	<path d="M0 48 C 60 24, 140 24, 200 48 C 260 24, 340 24, 400 48 Z" class="arc-b" />
+</svg>
+
+<style>
+	.arc-divider {
+		display: block;
+		width: 100%;
+		height: 3rem;
+	}
+
+	.arc-divider.flip {
+		transform: scaleY(-1);
+	}
+
+	.arc-a {
+		fill: var(--arc-a, #c2541f);
+		opacity: 0.9;
+	}
+
+	.arc-b {
+		fill: var(--arc-b, #f4e3c1);
+	}
+</style>

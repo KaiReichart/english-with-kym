@@ -1,0 +1,837 @@
+---
+import '@fontsource/shrikhand';
+import '@fontsource/bebas-neue';
+import '@fontsource-variable/nunito';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { de } from '../../../i18n/de';
+import type { IconName } from '../../../i18n/types';
+import Icon09 from '../../../variants/v09/Icon09.astro';
+import Sunburst from '../../../variants/v09/Sunburst.astro';
+import ArcDivider from '../../../variants/v09/ArcDivider.astro';
+import OfferCard09 from '../../../variants/v09/OfferCard09.astro';
+import heroImage from '../../../assets/images/hero.jpg';
+import nachhilfeImage from '../../../assets/images/nachhilfe.jpg';
+import businessImage from '../../../assets/images/business.jpg';
+import conversationImage from '../../../assets/images/conversation.jpg';
+import londonImage from '../../../assets/images/london.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const offerImages: Partial<Record<IconName, ImageMetadata>> = {
+	graduation: nachhilfeImage,
+	briefcase: businessImage,
+	chat: conversationImage,
+};
+
+const content = de;
+const EMAIL = 'kym-elizabeth@gmx.de';
+const PHONE_TEL = '+4915140462441';
+const PHONE_DISPLAY = '0151 40462441';
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Variante 09 – English with Kym</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={content.meta.description} />
+		<link rel="icon" href={`${base}/favicon.svg`} />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">{content.skipLink}</a>
+
+		<div class="grain" aria-hidden="true"></div>
+
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="brand-mark" href="#top">
+					<span class="brand-sun" aria-hidden="true"><Sunburst rays={12} /></span>
+					<span class="brand-text">English<br />with Kym</span>
+				</a>
+				<nav class="main-nav" aria-label="Hauptnavigation">
+					<a href="#angebot">{content.nav.offer}</a>
+					<a href="#ueber-kym">{content.nav.about}</a>
+					<a href="#unterricht">{content.nav.lessons}</a>
+					<a href="#kontakt" class="nav-cta">{content.nav.contact}</a>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- HERO -->
+			<section class="hero" id="top" aria-labelledby="hero-heading">
+				<div class="hero-sun-decor" aria-hidden="true">
+					<Sunburst rays={20} />
+				</div>
+				<div class="hero-inner">
+					<div class="hero-copy">
+						<p class="section-tag">01 · Willkommen</p>
+						<h1 id="hero-heading" class="hero-brand">{content.hero.brand}</h1>
+						<p class="hero-subtitle">{content.hero.subtitle}</p>
+						<p class="hero-tagline">{content.hero.tagline}</p>
+						<p class="hero-intro">{content.hero.intro}</p>
+						<p class="hero-info">{content.hero.infoLine}</p>
+						<a class="btn btn-primary" href="#kontakt">{content.hero.cta}</a>
+					</div>
+					<div class="hero-media">
+						<div class="hero-frame">
+							<Image
+								src={heroImage}
+								alt={content.hero.imageAlt}
+								width={560}
+								height={620}
+								format="webp"
+								class="hero-img"
+							/>
+						</div>
+						<span class="hero-blob blob-mustard" aria-hidden="true"></span>
+						<span class="hero-blob blob-rust" aria-hidden="true"></span>
+					</div>
+				</div>
+			</section>
+
+			<ArcDivider class="section-arc" />
+
+			<!-- LEARN -->
+			<section class="learn" aria-labelledby="learn-heading">
+				<div class="wrap">
+					<p class="section-tag">02 · Philosophie</p>
+					<h2 id="learn-heading" class="display-heading">{content.learn.heading}</h2>
+					<div class="learn-grid">
+						{content.learn.paragraphs.map((p, i) => (
+							<p class="learn-paragraph" style={`--stripe: var(--stripe-${(i % 3) + 1})`}>
+								{p}
+							</p>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<ArcDivider class="section-arc" flip />
+
+			<!-- OFFER -->
+			<section class="offer" id="angebot" aria-labelledby="offer-heading">
+				<div class="wrap">
+					<p class="section-tag">03 · Leistungen</p>
+					<h2 id="offer-heading" class="display-heading">{content.offerHeading}</h2>
+					<div class="offer-grid">
+						{content.offers.map((card, i) => (
+							<OfferCard09
+								card={card}
+								image={offerImages[card.icon]!}
+								index={String(i + 1).padStart(2, '0')}
+							/>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<ArcDivider class="section-arc" />
+
+			<!-- ABOUT -->
+			<section class="about" id="ueber-kym" aria-labelledby="about-heading">
+				<div class="wrap about-grid">
+					<div class="about-media">
+						<div class="about-frame">
+							<Image
+								src={londonImage}
+								alt={content.about.imageAlt}
+								width={520}
+								height={620}
+								format="webp"
+								class="about-img"
+							/>
+						</div>
+						<span class="hero-blob blob-mustard about-blob" aria-hidden="true"></span>
+					</div>
+					<div class="about-copy">
+						<p class="section-tag">04 · Hintergrund</p>
+						<h2 id="about-heading" class="display-heading">{content.about.heading}</h2>
+						<p class="about-lead">{content.about.lead}</p>
+						{content.about.paragraphs.map((p) => <p>{p}</p>)}
+					</div>
+				</div>
+			</section>
+
+			<ArcDivider class="section-arc" flip />
+
+			<!-- LESSONS -->
+			<section class="lessons" id="unterricht" aria-labelledby="lessons-heading">
+				<div class="wrap">
+					<p class="section-tag">05 · Organisatorisches</p>
+					<h2 id="lessons-heading" class="display-heading">{content.lessons.heading}</h2>
+					<p class="lessons-subheading">{content.lessons.subheading}</p>
+					<ul class="lessons-items">
+						{content.lessons.items.map((item) => (
+							<li class="lessons-item">
+								<span class="lessons-icon">
+									<Icon09 name={item.icon} />
+								</span>
+								<span>{item.text}</span>
+							</li>
+						))}
+					</ul>
+					<div class="lessons-text">
+						{content.lessons.paragraphs.map((p) => <p>{p}</p>)}
+					</div>
+				</div>
+			</section>
+
+			<!-- CONTACT -->
+			<section class="contact" id="kontakt" aria-labelledby="contact-heading">
+				<div class="contact-sun-decor" aria-hidden="true">
+					<Sunburst rays={24} />
+				</div>
+				<div class="wrap contact-inner">
+					<p class="section-tag section-tag-inverse">06 · Kontakt</p>
+					<h2 id="contact-heading" class="display-heading contact-heading">{content.contact.heading}</h2>
+					<p class="contact-lead">{content.contact.lead}</p>
+					<p class="contact-body">{content.contact.body}</p>
+					<div class="contact-card">
+						<p class="contact-brand">{content.contact.brand}</p>
+						<p class="contact-tagline">{content.contact.tagline}</p>
+						<div class="contact-links">
+							<a class="contact-link" href={`mailto:${EMAIL}`}>
+								<Icon09 name="mail" />
+								{EMAIL}
+							</a>
+							<a class="contact-link" href={`tel:${PHONE_TEL}`}>
+								<Icon09 name="phone" />
+								{PHONE_DISPLAY}
+							</a>
+						</div>
+						<a class="btn btn-secondary" href={`mailto:${EMAIL}`}>{content.contact.cta}</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="wrap footer-inner">
+				<div>
+					<p class="footer-brand">{content.footer.rights}</p>
+					<p class="footer-tagline">{content.footer.tagline}</p>
+				</div>
+				<nav class="footer-nav" aria-label="Rechtliches">
+					<a href={`${base}/impressum`}>{content.footer.impressum}</a>
+					<a href={`${base}/datenschutz`}>{content.footer.datenschutz}</a>
+					<a href={`${base}/v/`}>Alle Varianten</a>
+				</nav>
+			</div>
+		</footer>
+
+		<style>
+			:global(html) {
+				box-sizing: border-box;
+				scroll-behavior: smooth;
+			}
+
+			:global(*),
+			:global(*::before),
+			:global(*::after) {
+				box-sizing: inherit;
+			}
+
+			:global(body) {
+				margin: 0;
+				--cream: #f6e8c9;
+				--cream-light: #fcf4e2;
+				--mustard: #e3a23c;
+				--orange: #d9622b;
+				--rust: #a8401e;
+				--brown: #4a2a18;
+				--brown-dark: #2e1a0f;
+				--stripe-1: #e3a23c;
+				--stripe-2: #d9622b;
+				--stripe-3: #a8401e;
+				background: var(--cream);
+				color: var(--brown-dark);
+				font-family: 'Nunito Variable', sans-serif;
+				font-size: 1rem;
+				line-height: 1.6;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			.grain {
+				position: fixed;
+				inset: 0;
+				pointer-events: none;
+				z-index: 999;
+				opacity: 0.06;
+				mix-blend-mode: multiply;
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+			}
+
+			.skip-link {
+				position: absolute;
+				left: -999px;
+				top: 0;
+				background: var(--brown-dark);
+				color: var(--cream-light);
+				padding: 0.75rem 1.25rem;
+				border-radius: 0 0 10px 0;
+				z-index: 1000;
+				font-weight: 700;
+			}
+
+			.skip-link:focus {
+				left: 0;
+			}
+
+			:global(a) {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			:global(*:focus-visible) {
+				outline: 3px solid var(--rust);
+				outline-offset: 3px;
+				border-radius: 4px;
+			}
+
+			.wrap {
+				max-width: 72rem;
+				margin: 0 auto;
+				padding: 0 1.25rem;
+			}
+
+			.section-tag {
+				font-family: 'Bebas Neue', sans-serif;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				font-size: 0.95rem;
+				color: var(--rust);
+				margin: 0 0 0.5rem;
+			}
+
+			.section-tag-inverse {
+				color: var(--mustard);
+			}
+
+			.display-heading {
+				font-family: 'Shrikhand', cursive;
+				font-weight: 400;
+				line-height: 1.1;
+				margin: 0 0 1.25rem;
+				color: var(--brown-dark);
+				font-size: clamp(1.9rem, 4.5vw, 3rem);
+			}
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 0.5rem;
+				font-family: 'Bebas Neue', sans-serif;
+				letter-spacing: 0.06em;
+				font-size: 1.1rem;
+				padding: 0.85rem 1.75rem;
+				border-radius: 999px;
+				border: 3px solid var(--brown-dark);
+				transition: transform 0.15s ease, box-shadow 0.15s ease;
+			}
+
+			@media (prefers-reduced-motion: no-preference) {
+				.btn {
+					transition: transform 0.15s ease, box-shadow 0.15s ease;
+				}
+			}
+
+			.btn-primary {
+				background: var(--orange);
+				color: var(--cream-light);
+				box-shadow: 5px 5px 0 var(--brown-dark);
+			}
+
+			.btn-secondary {
+				background: var(--mustard);
+				color: var(--brown-dark);
+				box-shadow: 5px 5px 0 var(--brown-dark);
+			}
+
+			.btn:hover {
+				transform: translate(-2px, -2px);
+				box-shadow: 7px 7px 0 var(--brown-dark);
+			}
+
+			.btn:active {
+				transform: translate(0, 0);
+				box-shadow: 3px 3px 0 var(--brown-dark);
+			}
+
+			/* HEADER */
+			.site-header {
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				background: var(--cream-light);
+				border-bottom: 3px solid var(--brown-dark);
+			}
+
+			.header-inner {
+				max-width: 72rem;
+				margin: 0 auto;
+				padding: 0.6rem 1.25rem;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1rem;
+			}
+
+			.brand-mark {
+				display: flex;
+				align-items: center;
+				gap: 0.6rem;
+				flex-shrink: 0;
+			}
+
+			.brand-sun {
+				width: 2.1rem;
+				height: 2.1rem;
+				color: var(--orange);
+				flex-shrink: 0;
+			}
+
+			.brand-text {
+				font-family: 'Shrikhand', cursive;
+				font-size: 0.95rem;
+				line-height: 1.05;
+				color: var(--brown-dark);
+			}
+
+			.main-nav {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				overflow-x: auto;
+				font-family: 'Bebas Neue', sans-serif;
+				letter-spacing: 0.05em;
+				font-size: 0.95rem;
+				white-space: nowrap;
+				scrollbar-width: thin;
+			}
+
+			.main-nav a {
+				padding: 0.3rem 0.1rem;
+				color: var(--brown-dark);
+				border-bottom: 2px solid transparent;
+			}
+
+			.main-nav a:hover {
+				border-bottom-color: var(--orange);
+			}
+
+			.nav-cta {
+				background: var(--orange);
+				color: var(--cream-light);
+				padding: 0.45rem 0.9rem;
+				border-radius: 999px;
+				border: 2px solid var(--brown-dark);
+			}
+
+			.nav-cta:hover {
+				border-bottom-color: transparent;
+			}
+
+			/* HERO */
+			.hero {
+				position: relative;
+				padding: 3rem 0 3.5rem;
+				overflow: hidden;
+			}
+
+			.hero-sun-decor {
+				position: absolute;
+				top: -10%;
+				right: -12%;
+				width: 26rem;
+				height: 26rem;
+				color: var(--mustard);
+				opacity: 0.35;
+				z-index: 0;
+			}
+
+			@media (prefers-reduced-motion: no-preference) {
+				.hero-sun-decor {
+					animation: spin 60s linear infinite;
+				}
+			}
+
+			@keyframes spin {
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			.hero-inner {
+				position: relative;
+				z-index: 1;
+				max-width: 72rem;
+				margin: 0 auto;
+				padding: 0 1.25rem;
+				display: grid;
+				gap: 2.5rem;
+				grid-template-columns: 1fr;
+				align-items: center;
+			}
+
+			@media (min-width: 64rem) {
+				.hero-inner {
+					grid-template-columns: 1.1fr 0.9fr;
+				}
+			}
+
+			.hero-brand {
+				font-family: 'Shrikhand', cursive;
+				font-size: clamp(2.5rem, 7vw, 4.2rem);
+				color: var(--rust);
+				margin: 0 0 0.5rem;
+				line-height: 1.05;
+			}
+
+			.hero-subtitle {
+				font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+				font-weight: 800;
+				margin: 0 0 0.75rem;
+				color: var(--brown-dark);
+			}
+
+			.hero-tagline {
+				font-family: 'Bebas Neue', sans-serif;
+				letter-spacing: 0.06em;
+				color: var(--orange);
+				font-size: 1.05rem;
+				margin: 0 0 1rem;
+			}
+
+			.hero-intro,
+			.hero-info {
+				margin: 0 0 1rem;
+				max-width: 38rem;
+			}
+
+			.hero-info {
+				font-weight: 700;
+			}
+
+			.hero-media {
+				position: relative;
+				justify-self: center;
+			}
+
+			.hero-frame {
+				width: min(100%, 320px);
+				border-radius: 50% 50% 46% 46% / 55% 55% 45% 45%;
+				overflow: hidden;
+				border: 5px solid var(--brown-dark);
+				box-shadow: 10px 10px 0 var(--orange);
+				position: relative;
+				z-index: 2;
+			}
+
+			.hero-img,
+			.about-img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				filter: sepia(0.4) saturate(1.3) contrast(1.05);
+			}
+
+			.hero-blob {
+				position: absolute;
+				border-radius: 50%;
+				z-index: 1;
+			}
+
+			.blob-mustard {
+				width: 6rem;
+				height: 6rem;
+				background: var(--mustard);
+				bottom: -1.5rem;
+				left: -1.5rem;
+			}
+
+			.blob-rust {
+				width: 3.5rem;
+				height: 3.5rem;
+				background: var(--rust);
+				top: -1rem;
+				right: 0.5rem;
+			}
+
+			.section-arc {
+				display: block;
+				color: var(--brown-dark);
+			}
+
+			/* LEARN */
+			.learn {
+				background: var(--brown-dark);
+				color: var(--cream-light);
+				padding: 3rem 0 3.5rem;
+			}
+
+			.learn .section-tag {
+				color: var(--mustard);
+			}
+
+			.learn .display-heading {
+				color: var(--cream-light);
+			}
+
+			.learn-grid {
+				display: grid;
+				gap: 1.25rem;
+				margin-top: 1.5rem;
+			}
+
+			@media (min-width: 48rem) {
+				.learn-grid {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+
+			.learn-paragraph {
+				margin: 0;
+				padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+				background: rgba(246, 232, 201, 0.06);
+				border-left: 6px solid var(--stripe);
+				border-radius: 4px;
+				line-height: 1.6;
+			}
+
+			/* OFFER */
+			.offer {
+				padding: 3rem 0 3.5rem;
+			}
+
+			.offer-grid {
+				display: grid;
+				gap: 1.75rem;
+				margin-top: 1.5rem;
+			}
+
+			@media (min-width: 56rem) {
+				.offer-grid {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+
+			/* ABOUT */
+			.about {
+				background: var(--mustard);
+				padding: 3rem 0 3.5rem;
+			}
+
+			.about-grid {
+				display: grid;
+				gap: 2.5rem;
+				align-items: center;
+			}
+
+			@media (min-width: 56rem) {
+				.about-grid {
+					grid-template-columns: 0.8fr 1.2fr;
+				}
+			}
+
+			.about-media {
+				position: relative;
+				justify-self: center;
+			}
+
+			.about-frame {
+				width: min(100%, 280px);
+				border-radius: 24px;
+				overflow: hidden;
+				border: 5px solid var(--brown-dark);
+				box-shadow: 10px 10px 0 var(--rust);
+				aspect-ratio: 4 / 5;
+			}
+
+			.about-blob {
+				bottom: -1.25rem;
+				right: -1.25rem;
+				left: auto;
+			}
+
+			.about .section-tag {
+				color: var(--brown-dark);
+			}
+
+			.about-lead {
+				font-weight: 800;
+				font-size: 1.15rem;
+			}
+
+			/* LESSONS */
+			.lessons {
+				padding: 3rem 0 3.5rem;
+			}
+
+			.lessons-subheading {
+				font-family: 'Bebas Neue', sans-serif;
+				letter-spacing: 0.05em;
+				color: var(--orange);
+				margin: -0.5rem 0 1.5rem;
+			}
+
+			.lessons-items {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				list-style: none;
+				padding: 0;
+				margin: 0 0 1.5rem;
+			}
+
+			.lessons-item {
+				display: flex;
+				align-items: center;
+				gap: 0.6rem;
+				background: var(--cream-light);
+				border: 3px solid var(--brown-dark);
+				border-radius: 999px;
+				padding: 0.6rem 1.25rem;
+				font-weight: 800;
+			}
+
+			.lessons-icon {
+				color: var(--rust);
+				display: flex;
+			}
+
+			.lessons-text p {
+				max-width: 42rem;
+			}
+
+			/* CONTACT */
+			.contact {
+				position: relative;
+				background: var(--rust);
+				color: var(--cream-light);
+				padding: 3.5rem 0 4rem;
+				overflow: hidden;
+			}
+
+			.contact-sun-decor {
+				position: absolute;
+				bottom: -20%;
+				left: -15%;
+				width: 24rem;
+				height: 24rem;
+				color: var(--orange);
+				opacity: 0.4;
+			}
+
+			.contact-inner {
+				position: relative;
+				z-index: 1;
+			}
+
+			.contact-heading {
+				color: var(--cream-light);
+			}
+
+			.contact-lead {
+				font-size: 1.2rem;
+				font-weight: 800;
+				margin: 0 0 0.75rem;
+			}
+
+			.contact-body {
+				max-width: 38rem;
+				margin: 0 0 2rem;
+			}
+
+			.contact-card {
+				background: var(--cream-light);
+				color: var(--brown-dark);
+				border-radius: 28px;
+				border: 4px solid var(--brown-dark);
+				padding: 2rem;
+				max-width: 30rem;
+				box-shadow: 10px 10px 0 var(--brown-dark);
+			}
+
+			.contact-brand {
+				font-family: 'Shrikhand', cursive;
+				font-size: 1.6rem;
+				color: var(--rust);
+				margin: 0 0 0.25rem;
+			}
+
+			.contact-tagline {
+				margin: 0 0 1.25rem;
+				font-weight: 700;
+			}
+
+			.contact-links {
+				display: flex;
+				flex-direction: column;
+				gap: 0.75rem;
+				margin-bottom: 1.5rem;
+			}
+
+			.contact-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.6rem;
+				font-weight: 800;
+				word-break: break-word;
+			}
+
+			.contact-link :global(svg) {
+				color: var(--orange);
+			}
+
+			/* FOOTER */
+			.site-footer {
+				background: var(--brown-dark);
+				color: var(--cream-light);
+				padding: 2rem 0;
+			}
+
+			.footer-inner {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1.5rem;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.footer-brand {
+				font-family: 'Shrikhand', cursive;
+				margin: 0 0 0.25rem;
+				color: var(--mustard);
+			}
+
+			.footer-tagline {
+				margin: 0;
+				opacity: 0.85;
+				font-size: 0.9rem;
+			}
+
+			.footer-nav {
+				display: flex;
+				gap: 1.25rem;
+				flex-wrap: wrap;
+				font-size: 0.9rem;
+			}
+
+			.footer-nav a:hover {
+				color: var(--mustard);
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				:global(html) {
+					scroll-behavior: auto;
+				}
+			}
+		</style>
+	</body>
+</html>
