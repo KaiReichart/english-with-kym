@@ -1,0 +1,203 @@
+---
+import '@fontsource-variable/cormorant-garamond';
+import '@fontsource-variable/manrope';
+import '../../../variants/v07/styles/variant.css';
+import Icon from '../../../variants/v07/components/Icon.astro';
+import { de } from '../../../i18n/de';
+import { CONTACT } from '../../../consts';
+import { Image } from 'astro:assets';
+import heroImg from '../../../assets/images/hero.jpg';
+import nachhilfeImg from '../../../assets/images/nachhilfe.jpg';
+import businessImg from '../../../assets/images/business.jpg';
+import conversationImg from '../../../assets/images/conversation.jpg';
+import londonImg from '../../../assets/images/london.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+const year = new Date().getFullYear();
+
+const offerImages = [nachhilfeImg, businessImg, conversationImg];
+const offerNumerals = ['I', 'II', 'III'];
+---
+
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Variante 07 – English with Kym</title>
+		<meta name="robots" content="noindex" />
+		<link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+	</head>
+	<body class="v07">
+		<div class="v07-grain" aria-hidden="true"></div>
+		<a class="v07-skip-link" href="#main">{de.skipLink}</a>
+
+		<header class="v07-header">
+			<div class="v07-container v07-header-inner">
+				<a class="v07-brand" href="#start">
+					<span class="v07-brand-mark" aria-hidden="true"></span>
+					{de.hero.brand}
+				</a>
+				<nav class="v07-nav" aria-label="Hauptnavigation">
+					<a href="#angebot">{de.nav.offer}</a>
+					<a href="#ueber-kym">{de.nav.about}</a>
+					<a href="#unterricht">{de.nav.lessons}</a>
+					<a href="#kontakt">{de.nav.contact}</a>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- Hero -->
+			<section id="start" class="v07-hero" aria-label={de.hero.subtitle}>
+				<div class="v07-container">
+					<div class="v07-hero-grid">
+						<div>
+							<p class="v07-hero-tagline">{de.hero.tagline}</p>
+							<h1>{de.hero.subtitle}</h1>
+							<p class="v07-hero-intro">{de.hero.intro}</p>
+							<p class="v07-hero-info">{de.hero.infoLine}</p>
+							<a class="v07-btn v07-btn--solid" href={`mailto:${CONTACT.email}`}>
+								{de.hero.cta}
+								<Icon name="arrow" />
+							</a>
+						</div>
+						<figure class="v07-hero-figure">
+							<Image src={heroImg} alt={de.hero.imageAlt} width={640} height={800} />
+							<figcaption class="v07-hero-figcaption">London</figcaption>
+						</figure>
+					</div>
+				</div>
+			</section>
+
+			<!-- Learn -->
+			<section class="v07-section" aria-labelledby="learn-heading">
+				<div class="v07-container">
+					<p class="v07-eyebrow"><span class="v07-num">01</span> {de.hero.brand}</p>
+					<div class="v07-learn-grid">
+						<h2 id="learn-heading" class="v07-learn-heading">{de.learn.heading}</h2>
+						<div class="v07-learn-paras">
+							{de.learn.paragraphs.map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Offers -->
+			<section id="angebot" class="v07-section" aria-labelledby="offer-heading">
+				<div class="v07-container">
+					<div class="v07-offer-head">
+						<p class="v07-eyebrow"><span class="v07-num">02</span> Leistungen</p>
+					</div>
+					<h2 id="offer-heading" class="v07-visually-hidden">{de.offerHeading}</h2>
+					<div class="v07-offers">
+						{de.offers.map((offer, i) => (
+							<article class="v07-offer">
+								<div class="v07-offer-media">
+									<figure class="v07-offer-figure">
+										<Image src={offerImages[i]} alt={offer.imageAlt} width={440} height={330} />
+									</figure>
+								</div>
+								<div class="v07-offer-body">
+									<span class="v07-offer-index">{offerNumerals[i]}</span>
+									<Icon name={offer.icon} class="v07-offer-icon" />
+									<h3>{offer.title}</h3>
+									<p class="v07-offer-subtitle">{offer.subtitle}</p>
+									{offer.intro.map((p) => <p>{p}</p>)}
+									{offer.leadIn && <p class="v07-offer-leadin">{offer.leadIn}</p>}
+									{offer.bullets && (
+										<ul class="v07-offer-bullets">
+											{offer.bullets.map((b) => <li>{b}</li>)}
+										</ul>
+									)}
+									{offer.outro.map((p) => <p>{p}</p>)}
+								</div>
+							</article>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<!-- About -->
+			<section id="ueber-kym" class="v07-section" aria-labelledby="about-heading">
+				<div class="v07-container">
+					<p class="v07-eyebrow"><span class="v07-num">03</span> {de.about.heading}</p>
+					<div class="v07-about-grid">
+						<figure class="v07-about-figure">
+							<Image src={londonImg} alt={de.about.imageAlt} width={480} height={600} />
+						</figure>
+						<div>
+							<h2 id="about-heading" class="v07-visually-hidden">{de.about.heading}</h2>
+							<p class="v07-about-lead">{de.about.lead}</p>
+							{de.about.paragraphs.map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Lessons -->
+			<section id="unterricht" class="v07-section" aria-labelledby="lessons-heading">
+				<div class="v07-container">
+					<p class="v07-eyebrow"><span class="v07-num">04</span> {de.lessons.subheading}</p>
+					<div class="v07-lessons-grid">
+						<div>
+							<h2 id="lessons-heading">{de.lessons.heading}</h2>
+							<ul class="v07-lessons-items">
+								{de.lessons.items.map((item) => (
+									<li>
+										<Icon name={item.icon} />
+										{item.text}
+									</li>
+								))}
+							</ul>
+						</div>
+						<div>
+							{de.lessons.paragraphs.map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact -->
+			<section id="kontakt" class="v07-section v07-contact" aria-labelledby="contact-heading">
+				<div class="v07-container">
+					<p class="v07-eyebrow"><span class="v07-num">05</span> {de.contact.brand}</p>
+					<div class="v07-contact-panel">
+						<h2 id="contact-heading">{de.contact.heading}</h2>
+						<p class="v07-contact-lead">{de.contact.lead}</p>
+						<p class="v07-contact-body">{de.contact.body}</p>
+						<div class="v07-contact-actions">
+							<a class="v07-btn v07-btn--solid" href={`mailto:${CONTACT.email}`}>
+								{de.contact.cta}
+								<Icon name="arrow" />
+							</a>
+						</div>
+						<div class="v07-contact-direct">
+							<a href={`mailto:${CONTACT.email}`}>
+								<Icon name="mail" />
+								{CONTACT.email}
+							</a>
+							<a href={`tel:${CONTACT.phone}`}>
+								<Icon name="phone" />
+								{CONTACT.phoneDisplay}
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="v07-footer">
+			<div class="v07-container v07-footer-inner">
+				<p class="v07-footer-brand">
+					{de.footer.rights} — {de.footer.tagline}
+				</p>
+				<nav class="v07-footer-links" aria-label="Rechtliches und weitere Varianten">
+					<a href={`${base}impressum`}>{de.footer.impressum}</a>
+					<a href={`${base}datenschutz`}>{de.footer.datenschutz}</a>
+					<a href={`${base}v/`}>Alle Varianten</a>
+					<span>© {year}</span>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
