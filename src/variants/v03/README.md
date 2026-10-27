@@ -1,17 +1,17 @@
-# Variant 03 — Teacher's Notebook
+# Variant 03: Teacher's Notebook
 
 A warm, handmade "teacher's desk" look: cream ruled-paper backgrounds, a cork
 board of pinned sticky notes for the three offers, polaroid-style taped photos,
 and handwritten Caveat annotations (underlines, margin notes, arrows) sketched
 in inline SVG to stand in for a teacher's red pen. The whole page reads like
-flipping through Kym's own lesson notebook — friendly, personal, unpolished
+flipping through Kym's own lesson notebook: friendly, personal, unpolished
 in the best way, never generic.
 
 ## Fonts
 
-- **Caveat** (400/500/600/700, self-hosted via `@fontsource/caveat`) — headings,
+- **Caveat** (400/500/600/700, self-hosted via `@fontsource/caveat`): headings,
   margin notes, section tags, stamp button, sticky-note titles.
-- **Nunito Variable** (`@fontsource-variable/nunito`) — all body copy.
+- **Nunito Variable** (`@fontsource-variable/nunito`): all body copy.
 
 ## Palette
 

@@ -1,4 +1,4 @@
-/* Variant 05b — "Next Stop: Abitur"
+/* Variant 05b: "Next Stop: Abitur"
    Refined sub-variant of 05 (British heritage / classic London). Same navy,
    pillar-box red, cream palette and Libre Baskerville + Inter pairing, but a
    tighter type scale, a steadier spacing rhythm, a compact header, and one
@@ -73,7 +73,7 @@
 }
 
 /* Tri-band rule: the recurring British-rail / Penguin-spine motif. Used
-   sparingly — once at the very top of the page, once above the footer —
+   sparingly (once at the very top of the page, once above the footer)
    rather than between every section, so it reads as a signature, not wallpaper. */
 .v05b .triband {
 	display: flex;

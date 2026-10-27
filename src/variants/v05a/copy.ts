@@ -1,4 +1,4 @@
-// Copy for Variant 05a — "The Classic". German, informal "du", first person
+// Copy for Variant 05a: "The Classic". German, informal "du", first person
 // "ich" from Kym. Keep this file the single source of truth for all page
 // text so headlines/CTAs can be compared against the other sub-variants.
 
@@ -21,7 +21,7 @@ export interface InfoItem {
 
 export const copy = {
 	meta: {
-		title: 'Variante 05a – English with Kym',
+		title: 'Variante 05a · English with Kym',
 		description:
 			'Englischunterricht in Schwabmünchen von einer Muttersprachlerin aus London: Nachhilfe, Business English und Konversation im persönlichen Einzelunterricht.',
 	},
@@ -42,7 +42,7 @@ export const copy = {
 		bylineLabel: 'Unterrichtet von',
 		bylineName: 'Kym, geboren in London',
 		intro:
-			'Ich bin Muttersprachlerin aus London und lebe seit über 30 Jahren in Deutschland. Seit 15 Jahren unterrichte ich Englisch – persönlich, praxisnah und genau auf dich abgestimmt.',
+			'Ich bin Muttersprachlerin aus London und lebe seit über 30 Jahren in Deutschland. Seit 15 Jahren unterrichte ich Englisch: persönlich, praxisnah und genau auf dich abgestimmt.',
 		infoLine: 'Einzelunterricht in Schwabmünchen, abends ab 17 Uhr und samstags.',
 		ctaPrimary: 'Schreib mir',
 		ctaSecondary: 'Zum Angebot',
@@ -52,7 +52,7 @@ export const copy = {
 		station: 'Philosophie',
 		heading: 'Praxis statt Theorie',
 		paragraphs: [
-			'Englisch soll funktionieren – im Gespräch, in der Schule, im Beruf. Deshalb steht bei mir das Sprechen im Mittelpunkt, nicht nur die Regel dahinter.',
+			'Englisch soll funktionieren: im Gespräch, in der Schule, im Beruf. Deshalb steht bei mir das Sprechen im Mittelpunkt, nicht nur die Regel dahinter.',
 			'Seit mehr als 35 Jahren halte ich selbst Schulungen und Vorträge auf Englisch. Diese Praxis bringe ich in jede Unterrichtsstunde ein.',
 			'Dazu kommen über 15 Jahre privater Unterricht. Mein Unterricht ist entspannt, persönlich und auf dich zugeschnitten.',
 		],
@@ -65,7 +65,7 @@ export const copy = {
 				title: 'Englischnachhilfe',
 				subtitle: '5. Klasse bis Abitur',
 				imageAlt: 'Ein Mädchen macht Hausaufgaben an einem Schreibtisch',
-				intro: ['Ob Vokabeltest oder Abiturklausur – ich unterstütze dich genau da, wo es gerade hakt.'],
+				intro: ['Ob Vokabeltest oder Abiturklausur, ich unterstütze dich genau da, wo es gerade hakt.'],
 				leadIn: 'Gemeinsam üben wir:',
 				bullets: [
 					'Grammatik und Wortschatz',
@@ -109,7 +109,7 @@ export const copy = {
 				],
 				bullets: [],
 				outro: [
-					'Wir sprechen über Alltag, Reisen, Beruf, Hobbys oder was dich gerade beschäftigt – und verbessern dabei Wortschatz, Aussprache und Redefluss.',
+					'Wir sprechen über Alltag, Reisen, Beruf, Hobbys oder was dich gerade beschäftigt, und verbessern dabei Wortschatz, Aussprache und Redefluss.',
 					'Das Ziel ist sicheres Englisch, nicht perfektes Englisch.',
 				],
 			},
@@ -122,7 +122,7 @@ export const copy = {
 		paragraphs: [
 			'Geboren und aufgewachsen bin ich in London.',
 			'Seit mehr als 35 Jahren halte ich Schulungen und Vorträge auf Englisch, seit über 15 Jahren unterrichte ich privat.',
-			'Ob Schüler, Berufstätige oder jemand, der einfach entspannter Englisch sprechen möchte – mir geht es immer um dasselbe: mehr Sicherheit im Englischen.',
+			'Ob Schüler, Berufstätige oder jemand, der einfach entspannter Englisch sprechen möchte, mir geht es immer um dasselbe: mehr Sicherheit im Englischen.',
 			'Mein Unterricht bleibt dabei persönlich: praxisnah, entspannt und auf dich zugeschnitten.',
 		],
 		imageAlt: 'Eine rote Telefonzelle in London bei Nacht mit Lichtspuren vorbeifahrender Autos',
@@ -138,7 +138,7 @@ export const copy = {
 		] satisfies InfoItem[],
 		paragraphs: [
 			'Der Unterricht findet in der Regel als Einzelunterricht statt, damit wir uns ganz auf dich konzentrieren können.',
-			'Ob Prüfungsvorbereitung, Berufsalltag oder einfach mehr Sicherheit im Sprechen – wir setzen den Schwerpunkt dort, wo er dir am meisten hilft.',
+			'Ob Prüfungsvorbereitung, Berufsalltag oder einfach mehr Sicherheit im Sprechen, wir setzen den Schwerpunkt dort, wo er dir am meisten hilft.',
 		],
 	},
 	contact: {

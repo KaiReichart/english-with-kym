@@ -1,4 +1,4 @@
-/* Variant 02 — Swiss / International Typographic Style
+/* Variant 02: Swiss / International Typographic Style
    Strict modular grid, flush-left type, single red accent. */
 
 :root {
@@ -112,7 +112,7 @@ button:focus-visible {
 	}
 }
 
-/* Faint vertical grid lines behind each section — the only decoration besides type */
+/* Faint vertical grid lines behind each section, the only decoration besides type */
 .ruled {
 	position: relative;
 	background-image: linear-gradient(to right, var(--line-on-paper) 0 1px, transparent 1px 100%);

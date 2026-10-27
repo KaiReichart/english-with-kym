@@ -2,9 +2,9 @@ import type { SiteContent } from './types';
 
 export const de: SiteContent = {
 	meta: {
-		title: 'English with Kym — Englisch lernen und mehr Sicherheit gewinnen',
+		title: 'English with Kym · Englisch lernen und mehr Sicherheit gewinnen',
 		description:
-			"Ob du dich auf die nächste Englischarbeit oder das Abitur vorbereitest, deine Englischkenntnisse für den Beruf verbessern möchtest oder einfach sicherer Englisch sprechen willst – ich biete dir individuellen Englischunterricht, der auf deine persönlichen Bedürfnisse abgestimmt ist.",
+			"Ob du dich auf die nächste Englischarbeit oder das Abitur vorbereitest, deine Englischkenntnisse für den Beruf verbessern möchtest oder einfach sicherer Englisch sprechen willst, ich biete dir individuellen Englischunterricht, der auf deine persönlichen Bedürfnisse abgestimmt ist.",
 	},
 	nav: {
 		offer: 'Mein Angebot',
@@ -19,7 +19,7 @@ export const de: SiteContent = {
 		subtitle: 'Englisch lernen und mehr Sicherheit gewinnen',
 		tagline: 'Englischnachhilfe · Business English · Englisch-Konversation',
 		intro:
-			"Ob du dich auf die nächste Englischarbeit oder das Abitur vorbereitest, deine Englischkenntnisse für den Beruf verbessern möchtest oder einfach sicherer Englisch sprechen willst – ich biete dir individuellen Englischunterricht, der auf deine persönlichen Bedürfnisse abgestimmt ist.",
+			"Ob du dich auf die nächste Englischarbeit oder das Abitur vorbereitest, deine Englischkenntnisse für den Beruf verbessern möchtest oder einfach sicherer Englisch sprechen willst, ich biete dir individuellen Englischunterricht, der auf deine persönlichen Bedürfnisse abgestimmt ist.",
 		infoLine: 'Unterricht in Schwabmünchen · Einzelunterricht · Abends und samstags',
 		cta: 'Kontakt aufnehmen',
 		imageAlt: 'Big Ben in London mit einer Statue im Vordergrund vor blauem Himmel',
@@ -29,7 +29,7 @@ export const de: SiteContent = {
 		paragraphs: [
 			'Englisch ist mehr als Grammatik und Vokabeln. Es geht darum, sich klar, natürlich und selbstbewusst verständigen zu können.',
 			'Durch meine über 35-jährige Erfahrung mit Schulungsseminaren und Vorträgen auf Englisch bringe ich viel praktische Erfahrung in die Gestaltung meines Unterrichts ein.',
-			'Mein Unterricht ist entspannt, praxisnah und auf dich abgestimmt – denn jeder Mensch lernt anders.',
+			'Mein Unterricht ist entspannt, praxisnah und auf dich abgestimmt, denn jeder Mensch lernt anders.',
 		],
 	},
 	offerHeading: 'Mein Angebot',
@@ -51,7 +51,7 @@ export const de: SiteContent = {
 				'Abiturvorbereitung',
 			],
 			outro: [
-				'Egal, ob du Schwierigkeiten mit einem bestimmten Thema hast oder einfach deine Englischkenntnisse und deine Noten verbessern möchtest – wir arbeiten gemeinsam in deinem Tempo.',
+				'Egal, ob du Schwierigkeiten mit einem bestimmten Thema hast oder einfach deine Englischkenntnisse und deine Noten verbessern möchtest, wir arbeiten gemeinsam in deinem Tempo.',
 				'Individueller Englischunterricht von der 5. Klasse bis zum Abitur.',
 			],
 		},
@@ -98,8 +98,8 @@ export const de: SiteContent = {
 		paragraphs: [
 			'Ich wurde in London geboren und lebe seit über 30 Jahren in Deutschland.',
 			'Seit mehr als 35 Jahren halte ich Schulungsseminare und Vorträge auf Englisch. Außerdem unterrichte ich seit über 15 Jahren privat Englisch.',
-			'Es macht mir Freude, Menschen dabei zu helfen, mehr Sicherheit im Umgang mit der englischen Sprache zu gewinnen – egal, ob es sich um Schüler handelt, die Unterstützung in der Schule benötigen, Berufstätige, die im Job besser kommunizieren möchten, oder Menschen, die einfach entspannter Englisch sprechen wollen.',
-			'Mein Unterricht ist individuell, praxisnah und persönlich – mit einer freundlichen und entspannten Atmosphäre.',
+			'Es macht mir Freude, Menschen dabei zu helfen, mehr Sicherheit im Umgang mit der englischen Sprache zu gewinnen, egal, ob es sich um Schüler handelt, die Unterstützung in der Schule benötigen, Berufstätige, die im Job besser kommunizieren möchten, oder Menschen, die einfach entspannter Englisch sprechen wollen.',
+			'Mein Unterricht ist individuell, praxisnah und persönlich. Dazu gehört eine freundliche und entspannte Atmosphäre.',
 		],
 		imageAlt: 'Eine rote Telefonzelle in London bei Nacht mit Lichtspuren vorbeifahrender Autos',
 	},
@@ -113,7 +113,7 @@ export const de: SiteContent = {
 		],
 		paragraphs: [
 			'Der Unterricht findet in der Regel als Einzelunterricht statt. So können wir uns ganz auf deine persönlichen Bedürfnisse und Ziele konzentrieren.',
-			'Egal, ob du dich auf eine Prüfung vorbereitest, dein Englisch für den Beruf verbessern möchtest oder einfach sicherer sprechen willst – wir konzentrieren uns auf das, was dir am meisten hilft.',
+			'Egal, ob du dich auf eine Prüfung vorbereitest, dein Englisch für den Beruf verbessern möchtest oder einfach sicherer sprechen willst, wir konzentrieren uns auf das, was dir am meisten hilft.',
 		],
 	},
 	contact: {

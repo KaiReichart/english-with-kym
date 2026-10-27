@@ -1,4 +1,4 @@
-# Variante 06 — „Pastellwolke"
+# Variante 06: „Pastellwolke"
 
 Ein weiches, verspieltes Design für Schüler:innen und Eltern: große Blob-Formen,
 wellige SVG-Trenner zwischen den Abschnitten und durchgängig abgerundete Karten
@@ -9,9 +9,9 @@ Kontaktbereich in sattem Pflaumenton landet und so als klarer Abschluss wirkt.
 
 ## Fonts
 
-- **Nunito Variable** — für Fließtext und alle Überschriften (rund, freundlich,
+- **Nunito Variable**: für Fließtext und alle Überschriften (rund, freundlich,
   gut lesbar in allen Gewichten von 500–900).
-- **Caveat** — handschriftlicher Akzent für kleine „Eyebrow"-Labels und die
+- **Caveat**: handschriftlicher Akzent für kleine „Eyebrow"-Labels und die
   Signatur im Über-Kym-Abschnitt, sparsam eingesetzt, um verspielt statt
   kindlich zu wirken.
 

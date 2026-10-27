@@ -1,4 +1,4 @@
-// Copy for design variant 05c — "The Business Line".
+// Copy for design variant 05c: "The Business Line".
 // All page text lives here so it can be compared against other variants.
 
 export type IconName =
@@ -95,7 +95,7 @@ export interface Copy05c {
 
 export const copy: Copy05c = {
 	meta: {
-		title: 'Variante 05c – English with Kym',
+		title: 'Variante 05c · English with Kym',
 		description:
 			'Business English, Englischnachhilfe und Konversation im Einzelunterricht in Schwabmünchen. Native Speaker mit über 35 Jahren Erfahrung in Schulungen und Vorträgen auf Englisch.',
 	},

@@ -45,9 +45,9 @@ export const contactDetails = {
 
 export const copy = {
 	meta: {
-		title: 'Variante 05e – English with Kym',
+		title: 'Variante 05e · English with Kym',
 		description:
-			'Englisch-Einzelunterricht in Schwabmünchen für Schule, Beruf und mehr Sprechsicherheit. Unter der Woche abends ab 17 Uhr oder samstags – schreib mir, wo du stehst und was du erreichen willst.',
+			'Englisch-Einzelunterricht in Schwabmünchen für Schule, Beruf und mehr Sprechsicherheit. Unter der Woche abends ab 17 Uhr oder samstags, schreib mir, wo du stehst und was du erreichen willst.',
 	},
 	skipLink: 'Zum Inhalt springen',
 	brand: {
@@ -64,9 +64,9 @@ export const copy = {
 		badge: 'English with Kym · Schwabmünchen',
 		headline: 'Englisch-Einzelunterricht in Schwabmünchen.',
 		headlineLine2: 'Für Schule, Beruf oder einfach mehr Sprechsicherheit.',
-		sub: 'Persönlich, flexibel und ganz auf dich abgestimmt – unter der Woche abends oder samstags, bei mir vor Ort.',
+		sub: 'Persönlich, flexibel und ganz auf dich abgestimmt, unter der Woche abends oder samstags, bei mir vor Ort.',
 		infoLine: 'Schwabmünchen · Einzelunterricht · Werktags ab 17 Uhr & samstags',
-		intro: 'Schreib mir kurz, wo du aktuell stehst und was du erreichen willst – den Rest besprechen wir gemeinsam.',
+		intro: 'Schreib mir kurz, wo du aktuell stehst und was du erreichen willst. Den Rest besprechen wir gemeinsam.',
 		ctaPrimary: 'Schreib mir eine E-Mail',
 		ctaSecondary: 'Oder anrufen',
 		imageAlt: 'Big Ben in London vor blauem Himmel',
@@ -77,7 +77,7 @@ export const copy = {
 		items: [
 			{
 				title: 'Du meldest dich',
-				body: 'Per E-Mail oder Telefon – erzähl mir kurz, wer du bist, wo du aktuell stehst und was du erreichen willst.',
+				body: 'Per E-Mail oder Telefon: erzähl mir kurz, wer du bist, wo du aktuell stehst und was du erreichen willst.',
 			},
 			{
 				title: 'Wir sprechen darüber',
@@ -85,7 +85,7 @@ export const copy = {
 			},
 			{
 				title: 'Dein Unterricht beginnt',
-				body: 'Einzelunterricht in Schwabmünchen – unter der Woche abends ab 17 Uhr oder samstags.',
+				body: 'Einzelunterricht in Schwabmünchen, unter der Woche abends ab 17 Uhr oder samstags.',
 			},
 		] as StepCopy[],
 	},
@@ -147,7 +147,7 @@ export const copy = {
 				'Du verstehst Englisch gut, kommst im Gespräch aber selten dazu, es selbst zu sprechen? Im Einzelunterricht übst du in Ruhe und ohne Publikum.',
 			],
 			outro: [
-				'Wir sprechen über Alltag, Reisen, Beruf, Hobbys oder aktuelle Themen – was dich interessiert, wird zum Thema. Nebenbei wachsen Wortschatz, Aussprache und Redefluss.',
+				'Wir sprechen über Alltag, Reisen, Beruf, Hobbys oder aktuelle Themen: was dich interessiert, wird zum Thema. Nebenbei wachsen Wortschatz, Aussprache und Redefluss.',
 				'Ziel ist nicht perfektes Englisch, sondern Englisch mit Selbstvertrauen.',
 			],
 		},
@@ -163,11 +163,11 @@ export const copy = {
 	},
 	about: {
 		heading: 'Über Kym',
-		lead: 'Englisch ist meine Muttersprache – Menschen beim Sprechen zu unterstützen, ist meine Erfahrung.',
+		lead: 'Englisch ist meine Muttersprache. Menschen beim Sprechen zu unterstützen, ist meine Erfahrung.',
 		paragraphs: [
 			'Geboren bin ich in London, seit über 30 Jahren lebe ich in Deutschland.',
 			'Seit mehr als 35 Jahren halte ich Schulungen und Vorträge auf Englisch, seit über 15 Jahren unterrichte ich privat Englisch.',
-			'Ob Schüler/in, berufstätig oder einfach auf der Suche nach mehr Sprechsicherheit – mein Unterricht ist persönlich, praxisnah und auf dich abgestimmt.',
+			'Ob Schüler/in, berufstätig oder einfach auf der Suche nach mehr Sprechsicherheit, mein Unterricht ist persönlich, praxisnah und auf dich abgestimmt.',
 		],
 		imageAlt: 'Eine rote Telefonzelle in London bei Nacht mit Lichtspuren vorbeifahrender Autos',
 	},
@@ -179,7 +179,7 @@ export const copy = {
 			{ q: 'Ist es Einzelunterricht?', a: 'Ja, der Unterricht findet in der Regel als Einzelunterricht statt, ganz auf dich abgestimmt.' },
 			{
 				q: 'Für welches Niveau oder Alter ist der Unterricht geeignet?',
-				a: 'Für Schüler/innen von der 5. Klasse bis zum Abitur, für Berufstätige und für alle, die einfach mehr Englisch sprechen möchten – ganz gleich, wo du aktuell stehst.',
+				a: 'Für Schüler/innen von der 5. Klasse bis zum Abitur, für Berufstätige und für alle, die einfach mehr Englisch sprechen möchten, ganz gleich, wo du aktuell stehst.',
 			},
 			{
 				q: 'Wie melde ich mich an?',
@@ -191,7 +191,7 @@ export const copy = {
 		eyebrow: 'Nächster Halt: dein Unterricht',
 		heading: 'Bereit, loszulegen?',
 		lead: 'Ich freue mich, von dir zu hören.',
-		body: 'Schreib mir kurz etwas über dich, dein aktuelles Englischniveau und deine Ziele – dann melde ich mich bei dir zurück.',
+		body: 'Schreib mir kurz etwas über dich, dein aktuelles Englischniveau und deine Ziele, dann melde ich mich bei dir zurück.',
 		ctaPrimary: 'Schreib mir eine E-Mail',
 		ctaSecondary: 'Oder ruf mich an',
 	},

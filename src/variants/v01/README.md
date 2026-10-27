@@ -1,4 +1,4 @@
-# Variant 01 — Editorial
+# Variant 01: Editorial
 
 An editorial-magazine take on the homepage: large expressive serif headlines, a
 sticky "masthead" nameplate, multi-column body text with a drop cap opening each
@@ -9,10 +9,10 @@ terracotta accent against warm off-white paper.
 
 ## Fonts
 
-- **Fraunces Variable** — display headlines, drop caps, pull quotes, numerals
+- **Fraunces Variable**: display headlines, drop caps, pull quotes, numerals
   (italic + soft axis for a touch of character).
-- **Lora Variable** — body copy, captions, lists.
-- **Space Grotesk Variable** — small-caps labels: nav, masthead folios, footer legal
+- **Lora Variable**: body copy, captions, lists.
+- **Space Grotesk Variable**: small-caps labels: nav, masthead folios, footer legal
   links.
 
 ## Colour palette

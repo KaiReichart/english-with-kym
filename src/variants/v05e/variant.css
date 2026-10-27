@@ -1,4 +1,4 @@
-/* Variant 05e — "Mind the Gap"
+/* Variant 05e: "Mind the Gap"
    Refined sub-variant of 05 (British heritage / London Underground signage),
    rebuilt as a conversion-first page: clear hero, three-step process line,
    an audience chooser, a facts strip and an FAQ. Same navy / pillar-box red /
@@ -63,7 +63,7 @@
 	max-width: 46rem;
 }
 
-/* Tri-band rule — thinner, more restrained than the original */
+/* Tri-band rule: thinner, more restrained than the original */
 .v05e .triband {
 	display: flex;
 	height: 4px;

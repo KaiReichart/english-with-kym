@@ -1,4 +1,4 @@
-# Variant 07 — "The Private Study"
+# Variant 07: "The Private Study"
 
 A dark-luxury, premium-coaching take on the homepage, aimed at Business
 English clients: near-black backdrop, champagne-gold hairlines, generous
@@ -9,9 +9,9 @@ gold-toned to sit inside the palette.
 
 ## Fonts
 
-- **Cormorant Garamond Variable** — display serif for headings, italic
+- **Cormorant Garamond Variable**: display serif for headings, italic
   pull-quotes and numerals.
-- **Manrope Variable** — body copy, nav, labels, buttons.
+- **Manrope Variable**: body copy, nav, labels, buttons.
 
 ## Colour palette
 

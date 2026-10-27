@@ -1,8 +1,8 @@
-# Variant 05d — Letters from London
+# Variant 05d: Letters from London
 
 A refined sub-variant of 05 ("The Schwabmünchen Line"). Same British-heritage
-DNA — navy / pillar-box red / cream, Libre Baskerville + Inter, the
-Penguin-paperback and Underground-signage grammar — but told as a personal
+DNA: navy / pillar-box red / cream, Libre Baskerville + Inter, the
+Penguin-paperback and Underground-signage grammar, but told as a personal
 letter from Kym rather than a brochure. The hero reads like a postcard she
 sent from London; every section below it is a numbered chapter of that
 story, closing with a proper letter sign-off at the contact section.
@@ -16,18 +16,18 @@ Vorträgen davor."
 
 - **Hero → postcard.** The oval "cameo" photo frame is replaced with a
   rectangular postcard mount: a dashed-border postage stamp (original
-  artwork — a mini tri-band, not a copied postal mark) and a postmark
+  artwork: a mini tri-band, not a copied postal mark) and a postmark
   medallion overlap its corners. The copy itself reads as a short letter,
   not a feature list.
 - **Roundel → postmark.** The numbered marker keeps the original ring + bar
   grammar but gains a dashed outer "cancellation" ring, and gets an explicit
-  narrative job: it numbers chapters of a story, not arbitrary sections —
+  narrative job: it numbers chapters of a story, not arbitrary sections,
   so the device is earned rather than decorative. It also now ships in
   three colour variants (`on="paper" | "navy" | "red"`) so it stays legible
   on every section background, including the one component-level thing
   Astro's scoped styles can't reach from outside.
 - **Eyebrows → chapter labels.** v05's tracked-uppercase sans eyebrows
-  ("PHILOSOPHIE", "LEISTUNGEN") are gone — a known generic-AI tell. In their
+  ("PHILOSOPHIE", "LEISTUNGEN") are gone (a known generic-AI tell). In their
   place, an italic serif line ("Kapitel Eins", "Kapitel Zwei"…) that fits
   the paperback voice instead of SaaS-template chrome.
 - **Conversation gets top billing.** Per the brief, one-to-one conversation
@@ -43,7 +43,7 @@ Vorträgen davor."
   mobile, and the nav becomes a horizontally scrollable strip (no wrap,
   no overflow) instead of stacking.
 - **One dry-humour beat, not a running joke.** The brief asked for a "touch"
-  of British dry humour, not a bit — it appears exactly once, in the About
+  of British dry humour, not a bit. It appears exactly once, in the About
   chapter ("wo man früh lernt, dass der Tee kalt wird, wenn man nicht
   aufpasst"), and nowhere else.
 
@@ -55,9 +55,9 @@ testimonials/numbers, no certificates, no online lessons.
 
 ## Fonts
 
-- **Libre Baskerville** (incl. italic, now also bold-italic) — headings,
+- **Libre Baskerville** (incl. italic, now also bold-italic): headings,
   letter body, chapter labels, pull-quotes.
-- **Inter** (variable) — nav, buttons, small labels, the stamp/postmark.
+- **Inter** (variable): nav, buttons, small labels, the stamp/postmark.
 
 ## Palette
 

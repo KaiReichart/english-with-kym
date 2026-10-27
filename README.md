@@ -13,7 +13,7 @@ one-to-one conversation) in Schwabmünchen, Germany. A small static site built w
 All page text lives in `src/i18n/de.ts` and `src/i18n/en.ts`, typed by
 `src/i18n/types.ts`. The shared page markup is `src/components/HomePage.astro`; the two
 route files (`src/pages/index.astro` and `src/pages/en/index.astro`) just pass in the
-language-specific data. To change copy, edit the `de.ts`/`en.ts` files — not the
+language-specific data. To change copy, edit the `de.ts`/`en.ts` files, not the
 components.
 
 The original source text (extracted from the client-provided PDF) is kept for
@@ -24,10 +24,10 @@ language versions, since the real details are the same for both.
 
 Some fields in `/impressum` and `/datenschutz` are placeholders (e.g. `[Vollständiger
 Name]`, `[Straße und Hausnummer]`) because the postal address/legal name were not
-available yet — fill these in before going live.
+available yet. Fill these in before going live.
 
 Photos live in `src/assets/images/` and are rendered via `astro:assets`. They're all
-CC0 (public domain, no attribution required) — see `src/assets/images/CREDITS.md` for
+CC0 (public domain, no attribution required). See `src/assets/images/CREDITS.md` for
 sources.
 
 ## Commands
@@ -49,8 +49,8 @@ repo settings, **Pages → Source** must be set to **"GitHub Actions"** (not a b
 
 It's served at the default Pages URL for a project site:
 `https://kaireichart.github.io/english-with-kym/`. Because of that, `astro.config.mjs`
-sets both `site` (the domain) and `base` (`/english-with-kym`, the repo name) — every
+sets both `site` (the domain) and `base` (`/english-with-kym`, the repo name): every
 internal link/asset uses `import.meta.env.BASE_URL` or the `astro:i18n` helpers
 (`getRelativeLocaleUrl` / `getAbsoluteLocaleUrl`) so it resolves correctly under that
 path. If a custom domain is set up later, switch to it by removing `base` and changing
-`site` to the new domain — no other code changes needed.
+`site` to the new domain: no other code changes needed.

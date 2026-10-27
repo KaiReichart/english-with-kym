@@ -1,31 +1,31 @@
-# Variant 05e — Mind the Gap
+# Variant 05e: Mind the Gap
 
 A conversion-focused refinement of variant 05 ("The Schwabmünchen Line"). Same
-British heritage / London Underground DNA — navy, pillar-box red, cream;
-Libre Baskerville + Inter — but restructured end to end around answering a
+British heritage / London Underground DNA (navy, pillar-box red, cream;
+Libre Baskerville + Inter), but restructured end to end around answering a
 visitor's real questions in order: what is this, is it for me, how does it
 start, and what does it actually cost in time and effort.
 
 **Headline:** "Englisch-Einzelunterricht in Schwabmünchen." / "Für Schule,
 Beruf oder einfach mehr Sprechsicherheit."
 
-**Subline:** "Persönlich, flexibel und ganz auf dich abgestimmt – unter der
+**Subline:** "Persönlich, flexibel und ganz auf dich abgestimmt: unter der
 Woche abends oder samstags, bei mir vor Ort."
 
 ## What's different from 05
 
-- **New copy throughout**, written for this direction specifically — see
-  `copy.ts`. Shorter sentences, no translated-English rhythm, no invented
+- **New copy throughout**, written for this direction specifically (see
+  `copy.ts`). Shorter sentences, no translated-English rhythm, no invented
   claims (prices, trials, testimonials, etc. were never in the brief and
   stayed out).
 - **Restrained use of the Underground roundel.** 05 numbered every section
   (01–05) with the ring-and-bar roundel, even sections that aren't a
   sequence. 05e keeps that device only for the one thing that genuinely *is*
-  a sequence — the three-step "Mind the Gap" process line — and connects the
+  a sequence (the three-step "Mind the Gap" process line) and connects the
   three markers with a dashed rail, like stops on a line. Every other
   section drops the numbering in favour of a plain eyebrow + heading.
 - **New sections for conversion, not decoration:**
-  - A three-step "So läuft's ab" block (Mind the Gap eyebrow) — the real
+  - A three-step "So läuft's ab" block (Mind the Gap eyebrow), the real
     process only: get in touch and say where you're at → we talk it through
     → one-to-one lessons in Schwabmünchen.
   - An audience chooser styled as Underground direction signs (cream plate,
@@ -35,7 +35,7 @@ Woche abends oder samstags, bei mir vor Ort."
     17 Uhr · samstags) for a one-glance recap before the trust-building
     About section.
   - A short FAQ (`<details>`/`<summary>`, no JS) answering only Wo? Wann?
-    Einzelunterricht? Niveau/Alter? Anmeldung? — pulled straight from the
+    Einzelunterricht? Niveau/Alter? Anmeldung? It's pulled straight from the
     given facts, nothing invented.
 - **Tighter typographic scale and rhythm.** `clamp()`-based heading sizes
   instead of fixed breakpoint jumps, a narrower measure on body copy and
@@ -47,7 +47,7 @@ Woche abends oder samstags, bei mir vor Ort."
   roundel, so each card reads by subject (graduation cap / briefcase /
   speech bubble) rather than by position.
 - Hero keeps one primary CTA (email) with phone as a clearly secondary,
-  outlined action — both appear again at the bottom of the page.
+  outlined action. Both appear again at the bottom of the page.
 
 ## Facts used
 

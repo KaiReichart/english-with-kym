@@ -20,3 +20,9 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+## Style
+
+- Never use em dashes or spaced en dashes (Gedankenstriche) in copy, titles, comments
+  or docs; use commas, colons, full stops or brackets. En dash only in numeric ranges
+  like 7.–9.

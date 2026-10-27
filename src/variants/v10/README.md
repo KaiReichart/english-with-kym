@@ -1,4 +1,4 @@
-# Variant 10 — Stille Stunden (Scandinavian / Japandi calm)
+# Variant 10: Stille Stunden (Scandinavian / Japandi calm)
 
 A slow, airy reading of the homepage: sand and sage tones, soft rounded photo
 frames, and generous whitespace instead of boxes and shadows. Numbered section
@@ -8,8 +8,8 @@ together as one calm palette.
 
 ## Fonts
 
-- **DM Serif Display** — headings, brand, section numbers (`@fontsource/dm-serif-display`)
-- **Inter Variable** — body text, navigation, UI (`@fontsource-variable/inter`)
+- **DM Serif Display**: headings, brand, section numbers (`@fontsource/dm-serif-display`)
+- **Inter Variable**: body text, navigation, UI (`@fontsource-variable/inter`)
 
 ## Palette
 

@@ -29,9 +29,9 @@ export interface InfoItem {
 
 export const copy = {
 	meta: {
-		title: 'Variante 05b – English with Kym',
+		title: 'Variante 05b · English with Kym',
 		description:
-			'Englisch-Nachhilfe von der 5. Klasse bis zum Abitur, Business English und Konversation – individueller Unterricht in Schwabmünchen bei English with Kym.',
+			'Englisch-Nachhilfe von der 5. Klasse bis zum Abitur, Business English und Konversation: individueller Unterricht in Schwabmünchen bei English with Kym.',
 	},
 	skipLink: 'Zum Inhalt springen',
 	nav: {
@@ -49,11 +49,11 @@ export const copy = {
 		heading: 'Nächster Halt: Abitur.',
 		tagline: '5. Klasse bis Abitur · Business English · Konversation',
 		intro:
-			'Du willst in Englisch wieder mitkommen – oder richtig gut werden? Ich begleite dich von der nächsten Vokabelarbeit bis zur Abiturprüfung, Station für Station und in deinem Tempo.',
+			'Du willst in Englisch wieder mitkommen oder richtig gut werden? Ich begleite dich von der nächsten Vokabelarbeit bis zur Abiturprüfung, Station für Station und in deinem Tempo.',
 		infoLine: 'Einzelunterricht in Schwabmünchen · unter der Woche ab 17 Uhr und samstags',
 		parentNote: {
 			label: 'Für Eltern',
-			text: 'Ihr Kind lernt einzeln und in seinem Tempo – ohne Druck, mit einem klaren Ziel vor Augen: mehr Sicherheit in der Schule.',
+			text: 'Ihr Kind lernt einzeln und in seinem Tempo, ohne Druck, mit einem klaren Ziel vor Augen: mehr Sicherheit in der Schule.',
 		},
 		ctaPrimary: 'Schreib mir',
 		ctaSecondary: 'Linie ansehen',
@@ -70,7 +70,7 @@ export const copy = {
 			{ label: 'Oberstufe', focus: 'Ausdruck und Aussprache auf ein neues Niveau heben.' },
 			{ label: 'Abitur', focus: 'Gezielt und ruhig auf die Prüfung vorbereiten.', terminus: true },
 		] satisfies Station[],
-		leadIn: 'Ganz gleich, an welcher Station du gerade stehst – wir arbeiten konkret an diesen Themen:',
+		leadIn: 'Ganz gleich, an welcher Station du gerade stehst, wir arbeiten konkret an diesen Themen:',
 		bullets: [
 			'Grammatik und Wortschatz',
 			'Hausaufgaben und Schulaufgaben',
@@ -120,10 +120,10 @@ export const copy = {
 				imageAlt: 'Hände, Kaffeetassen und ein Gebäckstück auf einem Tisch bei einem entspannten Gespräch',
 				intro: [
 					'Du verstehst schon viel, sprichst aber selten frei Englisch?',
-					'Im Einzelunterricht übst du in einer entspannten Atmosphäre – ohne Bewertung, ohne Druck.',
+					'Im Einzelunterricht übst du in einer entspannten Atmosphäre, ohne Bewertung, ohne Druck.',
 				],
 				outro: [
-					'Wir sprechen über Alltag, Reisen, Beruf, Hobbys oder aktuelle Themen – was dich interessiert. Dabei wachsen Wortschatz, Aussprache und Redefluss ganz nebenbei.',
+					'Wir sprechen über Alltag, Reisen, Beruf, Hobbys oder aktuelle Themen: was dich interessiert. Dabei wachsen Wortschatz, Aussprache und Redefluss ganz nebenbei.',
 					'Das Ziel ist nicht perfektes Englisch, sondern selbstbewusstes Englisch.',
 				],
 			},
@@ -135,7 +135,7 @@ export const copy = {
 		lead: 'Englisch ist meine Muttersprache. Menschen Mut zum Sprechen zu machen, ist meine Erfahrung.',
 		paragraphs: [
 			'Ich bin in London geboren und lebe seit über 30 Jahren in Deutschland.',
-			'Seit mehr als 35 Jahren halte ich Schulungen und Vorträge auf Englisch, seit über 15 Jahren unterrichte ich privat – von der ersten Vokabelarbeit bis zum Abitur, vom ersten Meeting auf Englisch bis zum entspannten Alltagsgespräch.',
+			'Seit mehr als 35 Jahren halte ich Schulungen und Vorträge auf Englisch, seit über 15 Jahren unterrichte ich privat: von der ersten Vokabelarbeit bis zum Abitur, vom ersten Meeting auf Englisch bis zum entspannten Alltagsgespräch.',
 			'Am meisten freut es mich, wenn aus „Ich kann kein Englisch" ein „Das schaffe ich" wird.',
 		],
 		imageAlt: 'Eine rote Telefonzelle in London bei Nacht mit Lichtspuren vorbeifahrender Autos',
@@ -150,7 +150,7 @@ export const copy = {
 			{ icon: 'calendar', text: 'Samstags' },
 		] satisfies InfoItem[],
 		paragraphs: [
-			'Der Unterricht findet in der Regel einzeln statt, ganz auf die jeweiligen Ziele abgestimmt – entspannt, praxisnah und persönlich.',
+			'Der Unterricht findet in der Regel einzeln statt, ganz auf die jeweiligen Ziele abgestimmt, entspannt, praxisnah und persönlich.',
 			'Ob Vorbereitung auf die nächste Arbeit, auf das Abitur, auf den Berufsalltag oder einfach mehr Sicherheit im Sprechen: Der Unterricht richtet sich nach dem, was am meisten weiterhilft.',
 		],
 	},
@@ -158,7 +158,7 @@ export const copy = {
 		eyebrow: 'Kontakt',
 		heading: 'Bereit für die nächste Station?',
 		lead: 'Ich freue mich, von dir zu hören.',
-		body: 'Schreib mir kurz, wer du bist, wo du gerade stehst und was du erreichen möchtest – den Rest besprechen wir persönlich.',
+		body: 'Schreib mir kurz, wer du bist, wo du gerade stehst und was du erreichen möchtest. Den Rest besprechen wir persönlich.',
 		email: 'kym-elizabeth@gmx.de',
 		phone: '0151 40462441',
 		phoneHref: 'tel:+4915140462441',

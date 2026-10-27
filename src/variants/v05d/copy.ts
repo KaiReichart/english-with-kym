@@ -23,7 +23,7 @@ export interface InfoItemContent {
 export const copy = {
 	meta: {
 		description:
-			'Englischunterricht in Schwabmünchen von einer gebürtigen Londonerin: Nachhilfe, Business English und Konversation – persönlich, eins zu eins, praxisnah.',
+			'Englischunterricht in Schwabmünchen von einer gebürtigen Londonerin: Nachhilfe, Business English und Konversation, persönlich, eins zu eins, praxisnah.',
 	},
 	skipLink: 'Zum Inhalt springen',
 	nav: {
@@ -37,13 +37,13 @@ export const copy = {
 		brandSub: 'Schwabmünchen',
 		eyebrow: 'Ein Brief aus London',
 		h1: 'Geboren in London. Seit über 30 Jahren in Deutschland.',
-		letter: ['Ich unterrichte Englisch in Schwabmünchen, meistens eins zu eins.', 'Seit über 15 Jahren privat – und seit über 35 Jahren halte ich Schulungen und Vorträge auf Englisch.'],
+		letter: ['Ich unterrichte Englisch in Schwabmünchen, meistens eins zu eins.', 'Seit über 15 Jahren privat, und seit über 35 Jahren halte ich Schulungen und Vorträge auf Englisch.'],
 		infoLine: 'Unterricht in Schwabmünchen, eins zu eins, unter der Woche ab 17 Uhr und samstags.',
 		ctaPrimary: 'Schreib mir',
 		ctaSecondary: 'Mein Angebot',
 		imageAlt: 'Big Ben und die Houses of Parliament in London vor blauem Himmel',
 		stampLabel: 'Luftpost',
-		stampRoute: 'London – Schwabmünchen',
+		stampRoute: 'London nach Schwabmünchen',
 		postcardCaption: 'Grüße aus London',
 		postmarkLabel: 'GB',
 	},
@@ -112,7 +112,7 @@ export const copy = {
 					'Vorstellungsgespräche',
 					'allgemeine Kommunikation im Berufsalltag',
 				],
-				outro: ['Ich habe selbst über 35 Jahre lang auf Englisch geschult und vorgetragen – ich weiß, worauf es im Berufsalltag ankommt.'],
+				outro: ['Ich habe selbst über 35 Jahre lang auf Englisch geschult und vorgetragen, ich weiß, worauf es im Berufsalltag ankommt.'],
 			},
 		] as OfferContent[],
 	},

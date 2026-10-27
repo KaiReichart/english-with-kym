@@ -2,9 +2,9 @@ import type { SiteContent } from './types';
 
 export const en: SiteContent = {
 	meta: {
-		title: 'English with Kym — English lessons that build confidence',
+		title: 'English with Kym · English lessons that build confidence',
 		description:
-			"Whether you're a student preparing for your next English test or your Abitur, a professional looking to improve your Business English, or simply someone who wants to speak English with more confidence — I offer individual English tuition tailored to your needs.",
+			"Whether you're a student preparing for your next English test or your Abitur, a professional looking to improve your Business English, or simply someone who wants to speak English with more confidence, I offer individual English tuition tailored to your needs.",
 	},
 	nav: {
 		offer: 'What I offer',
@@ -19,7 +19,7 @@ export const en: SiteContent = {
 		subtitle: 'English lessons that build confidence',
 		tagline: 'Tuition · Business English · Conversation',
 		intro:
-			"Whether you're a student preparing for your next English test or your Abitur, a professional looking to improve your Business English, or simply someone who wants to speak English with more confidence — I offer individual English tuition tailored to your needs.",
+			"Whether you're a student preparing for your next English test or your Abitur, a professional looking to improve your Business English, or simply someone who wants to speak English with more confidence, I offer individual English tuition tailored to your needs.",
 		infoLine: 'Lessons in Schwabmünchen · Individual tuition · Evenings & Saturdays',
 		cta: 'Get in touch',
 		imageAlt: 'Big Ben in London with a statue in the foreground against a blue sky',
@@ -29,7 +29,7 @@ export const en: SiteContent = {
 		paragraphs: [
 			"English is more than grammar and vocabulary. It's about being able to communicate clearly, naturally and confidently.",
 			'With more than 35 years of experience giving training seminars and public speaking in English, I bring real-world communication experience to every lesson.',
-			'My lessons are relaxed, practical and tailored to you — because everyone learns differently.',
+			'My lessons are relaxed, practical and tailored to you, because everyone learns differently.',
 		],
 	},
 	offerHeading: 'What I offer',
@@ -86,7 +86,7 @@ export const en: SiteContent = {
 				'One-to-one conversation lessons give you the chance to practise in a relaxed and supportive environment.',
 			],
 			outro: [
-				'We can talk about everyday life, travel, work, hobbies, current topics or whatever interests you — while naturally improving your vocabulary, pronunciation and fluency.',
+				'We can talk about everyday life, travel, work, hobbies, current topics or whatever interests you, while naturally improving your vocabulary, pronunciation and fluency.',
 				"The aim isn't perfect English. It's confident English.",
 			],
 		},
@@ -97,7 +97,7 @@ export const en: SiteContent = {
 		paragraphs: [
 			'I was born in London and have been living in Germany for more than 30 years.',
 			'For over 35 years, I have been giving training seminars and public speaking in English, and for more than 15 years I have also been teaching English privately.',
-			"I enjoy helping people find the confidence to use English — whether that's a student who needs support at school, a professional who wants to communicate more effectively at work, or someone who simply wants to feel more comfortable speaking English.",
+			"I enjoy helping people find the confidence to use English: whether that's a student who needs support at school, a professional who wants to communicate more effectively at work, or someone who simply wants to feel more comfortable speaking English.",
 			'My lessons are individual, practical and personal, with a friendly and relaxed approach.',
 		],
 		imageAlt: 'A red telephone box in London at night with light trails from passing traffic',
