@@ -1,0 +1,54 @@
+---
+// Original artwork: a ring + nameplate bar, styled after enamel station
+// signage. Carries the section name, standing in for a stop on "the
+// Schwabmünchen Line" rather than a generic 01/02/03 sequence counter.
+interface Props {
+	label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<span class="station" aria-hidden="true">
+	<span class="station-ring"></span>
+	<span class="station-bar"><span class="station-label">{label}</span></span>
+</span>
+
+<style>
+	.station {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		height: 2.75rem;
+		flex-shrink: 0;
+	}
+	.station-ring {
+		position: relative;
+		z-index: 2;
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 50%;
+		border: 3px solid var(--red);
+	}
+	.station-bar {
+		position: absolute;
+		z-index: 1;
+		left: 1.375rem;
+		top: 50%;
+		transform: translateY(-50%);
+		height: 1.1rem;
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+		background: var(--navy);
+		padding: 0 0.9rem 0 1.7rem;
+	}
+	.station-label {
+		font-family: var(--sans);
+		font-weight: 700;
+		font-size: 0.95rem;
+		letter-spacing: 0.01em;
+		font-variant-caps: all-small-caps;
+		color: var(--cream);
+	}
+</style>

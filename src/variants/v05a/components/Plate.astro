@@ -1,0 +1,91 @@
+---
+// Rectangular photo frame with four corner ticks — a refinement of v05's
+// oval postcard frame into a more precise, signage-like plate.
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['plate', className]}>
+	<span class="tick tick-tl" aria-hidden="true"></span>
+	<span class="tick tick-tr" aria-hidden="true"></span>
+	<span class="tick tick-bl" aria-hidden="true"></span>
+	<span class="tick tick-br" aria-hidden="true"></span>
+	<div class="plate-frame">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.plate {
+		position: relative;
+	}
+	.plate-frame {
+		border: 1px solid var(--cream);
+		overflow: hidden;
+	}
+	.plate-frame :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.tick {
+		position: absolute;
+		z-index: 2;
+		width: 16px;
+		height: 16px;
+	}
+	.tick::before,
+	.tick::after {
+		content: '';
+		position: absolute;
+		background: var(--red);
+	}
+	.tick::before {
+		width: 16px;
+		height: 2px;
+	}
+	.tick::after {
+		width: 2px;
+		height: 16px;
+	}
+	.tick-tl {
+		top: -7px;
+		left: -7px;
+	}
+	.tick-tl::before,
+	.tick-tl::after {
+		top: 0;
+		left: 0;
+	}
+	.tick-tr {
+		top: -7px;
+		right: -7px;
+	}
+	.tick-tr::before,
+	.tick-tr::after {
+		top: 0;
+		right: 0;
+	}
+	.tick-bl {
+		bottom: -7px;
+		left: -7px;
+	}
+	.tick-bl::before,
+	.tick-bl::after {
+		bottom: 0;
+		left: 0;
+	}
+	.tick-br {
+		bottom: -7px;
+		right: -7px;
+	}
+	.tick-br::before,
+	.tick-br::after {
+		bottom: 0;
+		right: 0;
+	}
+</style>
