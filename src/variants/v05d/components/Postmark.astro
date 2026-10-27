@@ -1,0 +1,76 @@
+---
+// A chapter marker drawn like a postmark / cancellation stamp: a dashed
+// outer ring (the cancellation mark), a solid inner ring, and a bar
+// carrying the chapter number. Original artwork, not a copy of any postal
+// authority's mark. `on` picks a colour set readable against the section
+// background it sits on, since Astro's scoped styles can't be overridden
+// from outside this component.
+interface Props {
+	label: string;
+	on?: 'paper' | 'navy' | 'red';
+	class?: string;
+}
+
+const { label, on = 'paper', class: className } = Astro.props;
+---
+
+<span class:list={['postmark', `postmark-on-${on}`, className]} aria-hidden="true">
+	<svg viewBox="0 0 64 64" width="100%" height="100%">
+		<circle class="postmark-dash" cx="32" cy="32" r="30" fill="none" stroke-width="1.5" stroke-dasharray="2.2 3.4" />
+		<circle class="postmark-ring" cx="32" cy="32" r="24.5" fill="none" stroke-width="3" />
+		<rect class="postmark-bar" x="8" y="27" width="48" height="10" />
+		<text x="32" y="36" text-anchor="middle" class="postmark-label">{label}</text>
+	</svg>
+</span>
+
+<style>
+	.postmark {
+		display: inline-block;
+		width: 3.25rem;
+		height: 3.25rem;
+		flex-shrink: 0;
+	}
+
+	.postmark-ring {
+		stroke: var(--red);
+	}
+	.postmark-bar {
+		fill: var(--navy);
+	}
+	.postmark-label {
+		font-family: 'Inter Variable', Inter, sans-serif;
+		font-weight: 700;
+		font-size: 1rem;
+		fill: var(--cream);
+		letter-spacing: 0.02em;
+	}
+	.postmark-dash {
+		stroke: var(--navy);
+		opacity: 0.45;
+	}
+
+	.postmark-on-navy .postmark-dash {
+		stroke: var(--cream);
+		opacity: 0.55;
+	}
+	.postmark-on-navy .postmark-bar {
+		fill: var(--cream);
+	}
+	.postmark-on-navy .postmark-label {
+		fill: var(--navy);
+	}
+
+	.postmark-on-red .postmark-dash {
+		stroke: var(--cream);
+		opacity: 0.7;
+	}
+	.postmark-on-red .postmark-ring {
+		stroke: var(--navy);
+	}
+	.postmark-on-red .postmark-bar {
+		fill: var(--cream);
+	}
+	.postmark-on-red .postmark-label {
+		fill: var(--red-deep);
+	}
+</style>

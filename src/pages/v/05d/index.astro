@@ -1,0 +1,263 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/libre-baskerville/400.css';
+import '@fontsource/libre-baskerville/400-italic.css';
+import '@fontsource/libre-baskerville/700.css';
+import '@fontsource/libre-baskerville/700-italic.css';
+import '../../../variants/v05d/variant.css';
+import Icon from '../../../variants/v05d/components/Icon.astro';
+import Postmark from '../../../variants/v05d/components/Postmark.astro';
+import { copy } from '../../../variants/v05d/copy';
+import { Image } from 'astro:assets';
+import heroImg from '../../../assets/images/hero.jpg';
+import nachhilfeImg from '../../../assets/images/nachhilfe.jpg';
+import businessImg from '../../../assets/images/business.jpg';
+import conversationImg from '../../../assets/images/conversation.jpg';
+import londonImg from '../../../assets/images/london.jpg';
+
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+
+const offerImages = [nachhilfeImg, businessImg];
+const offerAccents = ['navy', 'red'] as const;
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Variante 05d – English with Kym</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={copy.meta.description} />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+	</head>
+	<body class="v05d">
+		<a class="skip-link" href="#main">{copy.skipLink}</a>
+
+		<div class="triband" aria-hidden="true"><span></span><span></span><span></span></div>
+
+		<header class="site">
+			<div class="wrap header-row">
+				<a class="brand" href={base}>
+					{copy.hero.brand}
+					<small>{copy.hero.brandSub}</small>
+				</a>
+				<nav class="main" aria-label="Hauptnavigation">
+					<ul>
+						<li><a href="#angebot">{copy.nav.offer}</a></li>
+						<li><a href="#meine-geschichte">{copy.nav.about}</a></li>
+						<li><a href="#unterricht">{copy.nav.lessons}</a></li>
+						<li><a href="#kontakt">{copy.nav.contact}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- Hero: a postcard from Kym -->
+			<section class="hero">
+				<div class="wrap hero-grid">
+					<div>
+						<p class="hero-eyebrow">{copy.hero.eyebrow}</p>
+						<h1>{copy.hero.h1}</h1>
+						<div class="letter">
+							{copy.hero.letter.map((p) => <p>{p}</p>)}
+						</div>
+						<p class="info-line">{copy.hero.infoLine}</p>
+						<div class="btn-row">
+							<a class="btn btn-red" href="#kontakt">{copy.hero.ctaPrimary}</a>
+							<a class="btn btn-outline" href="#angebot">{copy.hero.ctaSecondary}</a>
+						</div>
+					</div>
+					<div class="hero-image-col">
+						<div class="postcard">
+							<div class="postcard-frame">
+								<Image src={heroImg} alt={copy.hero.imageAlt} width={480} height={600} format="webp" />
+							</div>
+							<p class="postcard-caption">{copy.hero.postcardCaption}</p>
+							<span class="stamp">
+								<span class="stamp-band" aria-hidden="true"><span></span><span></span></span>
+								<span class="stamp-label">{copy.hero.stampLabel}</span>
+								<span class="stamp-route">{copy.hero.stampRoute}</span>
+							</span>
+							<Postmark class="hero-postmark" label={copy.hero.postmarkLabel} on="navy" />
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Kapitel Eins -->
+			<section class="learn">
+				<div class="wrap">
+					<div class="chapter-head">
+						<Postmark label={copy.learn.chapterNumber} on="paper" />
+						<div>
+							<span class="label">{copy.learn.chapterLabel}</span>
+							<h2>{copy.learn.heading}</h2>
+						</div>
+					</div>
+					<div class="plaque">
+						{copy.learn.paragraphs.map((p) => <p>{p}</p>)}
+					</div>
+				</div>
+			</section>
+
+			<!-- Kapitel Zwei: Konversation, the featured chapter -->
+			<section class="conversation" id="angebot">
+				<div class="wrap">
+					<div class="chapter-head">
+						<Postmark label={copy.conversation.chapterNumber} on="paper" />
+						<div>
+							<span class="label">{copy.conversation.chapterLabel}</span>
+							<h2>{copy.conversation.heading}</h2>
+						</div>
+					</div>
+					<div class="conversation-grid">
+						<div class="conversation-media">
+							<Image src={conversationImg} alt={copy.conversation.imageAlt} width={440} height={350} format="webp" />
+						</div>
+						<div class="conversation-body">
+							<p class="conversation-subtitle">{copy.conversation.subtitle}</p>
+							{copy.conversation.paragraphs.map((p) => <p>{p}</p>)}
+							<div class="conversation-closing">
+								{copy.conversation.closing.map((p) => <p>{p}</p>)}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Kapitel Drei: Für Schule und Beruf -->
+			<section class="offers">
+				<div class="wrap">
+					<div class="chapter-head">
+						<Postmark label={copy.workAndSchool.chapterNumber} on="paper" />
+						<div>
+							<span class="label">{copy.workAndSchool.chapterLabel}</span>
+							<h2>{copy.workAndSchool.heading}</h2>
+						</div>
+					</div>
+					<div class="offer-list">
+						{
+							copy.workAndSchool.offers.map((offer, i) => (
+								<article class="offer-card" data-accent={offerAccents[i]}>
+									<div class="offer-part">
+										<Icon name={offer.icon} class="offer-icon" />
+										<span>{offer.chapterPart}</span>
+									</div>
+									<h3>{offer.title}</h3>
+									<p class="offer-subtitle">{offer.subtitle}</p>
+									<div class="offer-media">
+										<Image src={offerImages[i]} alt={offer.imageAlt} width={400} height={260} format="webp" />
+									</div>
+									{offer.intro.map((p) => <p>{p}</p>)}
+									<p class="offer-lead-in">{offer.leadIn}</p>
+									<ul class="ticklist">
+										{offer.bullets.map((b) => (
+											<li>
+												<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+													<path d="M4 10.5 8 14l8-9" />
+												</svg>
+												<span>{b}</span>
+											</li>
+										))}
+									</ul>
+									{offer.outro.map((p) => <p>{p}</p>)}
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- Kapitel Vier: Meine Geschichte -->
+			<section class="about" id="meine-geschichte">
+				<div class="wrap">
+					<div class="chapter-head">
+						<Postmark label={copy.about.chapterNumber} on="navy" />
+						<div>
+							<span class="label">{copy.about.chapterLabel}</span>
+							<h2>{copy.about.heading}</h2>
+						</div>
+					</div>
+					<div class="about-grid">
+						<div class="about-media">
+							<Image src={londonImg} alt={copy.about.imageAlt} width={440} height={330} format="webp" />
+						</div>
+						<div>
+							<p class="lead">{copy.about.lead}</p>
+							{copy.about.paragraphs.map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Kapitel Fünf: Zeit und Ort -->
+			<section class="lessons" id="unterricht">
+				<div class="wrap">
+					<div class="chapter-head">
+						<Postmark label={copy.lessons.chapterNumber} on="paper" />
+						<div>
+							<span class="label">{copy.lessons.chapterLabel}</span>
+							<h2>{copy.lessons.heading}</h2>
+						</div>
+					</div>
+					<div class="lessons-box">
+						<p class="lessons-sub">{copy.lessons.subheading}</p>
+						<ul class="info-items">
+							{
+								copy.lessons.items.map((item) => (
+									<li>
+										<Icon name={item.icon} />
+										<span>{item.text}</span>
+									</li>
+								))
+							}
+						</ul>
+						{copy.lessons.paragraphs.map((p) => <p>{p}</p>)}
+					</div>
+				</div>
+			</section>
+
+			<!-- Kapitel Sechs: der Briefschluss -->
+			<section class="contact" id="kontakt">
+				<div class="wrap">
+					<div class="chapter-head">
+						<Postmark label={copy.contact.chapterNumber} on="red" />
+						<div>
+							<span class="label">{copy.contact.chapterLabel}</span>
+							<h2>{copy.contact.heading}</h2>
+						</div>
+					</div>
+					<p class="lead">{copy.contact.lead}</p>
+					<p class="body-text">{copy.contact.body}</p>
+					<p class="sign-off">{copy.contact.signOff}</p>
+					<div class="btn-row">
+						<a class="btn btn-red" href={`mailto:${copy.contact.email}`}>
+							<Icon name="mail" />
+							{copy.contact.email}
+						</a>
+						<a class="btn btn-outline" href="tel:+4915140462441">
+							<Icon name="phone" />
+							{copy.contact.phone}
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site">
+			<div class="wrap footer-row">
+				<p class="footer-rights">&copy; {new Date().getFullYear()} {copy.footer.rights} &middot; {copy.footer.tagline}</p>
+				<nav aria-label="Rechtliches">
+					<ul>
+						<li><a href={`${base}impressum`}>{copy.footer.impressum}</a></li>
+						<li><a href={`${base}datenschutz`}>{copy.footer.datenschutz}</a></li>
+						<li><a href={base}>{copy.footer.allVariants}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
