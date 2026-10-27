@@ -1,0 +1,237 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/libre-baskerville/400.css';
+import '@fontsource/libre-baskerville/400-italic.css';
+import '@fontsource/libre-baskerville/700.css';
+import '../../../variants/v05c/variant.css';
+import Icon from '../../../variants/v05c/components/Icon.astro';
+import Roundel from '../../../variants/v05c/components/Roundel.astro';
+import { copy } from '../../../variants/v05c/copy';
+import { Image } from 'astro:assets';
+import heroImg from '../../../assets/images/hero.jpg';
+import businessImg from '../../../assets/images/business.jpg';
+import nachhilfeImg from '../../../assets/images/nachhilfe.jpg';
+import conversationImg from '../../../assets/images/conversation.jpg';
+import londonImg from '../../../assets/images/london.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const offerImages = [businessImg, nachhilfeImg, conversationImg];
+const offerAccents = ['red', 'navy', 'navy'] as const;
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{copy.meta.title}</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={copy.meta.description} />
+		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+	</head>
+	<body class="v05c">
+		<a class="skip-link" href="#main">{copy.skipLink}</a>
+
+		<div class="railline" aria-hidden="true"></div>
+
+		<header class="site">
+			<div class="wrap header-row">
+				<a class="brand" href={`${base}/`}>
+					English with Kym
+					<small>Schwabmünchen</small>
+				</a>
+				<nav class="main" aria-label="Hauptnavigation">
+					<ul>
+						<li><a href="#angebot">{copy.nav.offer}</a></li>
+						<li><a href="#ueber-kym">{copy.nav.about}</a></li>
+						<li><a href="#unterricht">{copy.nav.lessons}</a></li>
+						<li><a href="#kontakt">{copy.nav.contact}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- Hero -->
+			<section class="hero">
+				<div class="wrap hero-grid">
+					<div>
+						<p class="eyebrow">{copy.hero.kicker}</p>
+						<h1>{copy.hero.headline}</h1>
+						<p class="tagline">{copy.hero.tagline}</p>
+						<p class="intro">{copy.hero.intro}</p>
+						<p class="info-line">{copy.hero.infoLine}</p>
+						<div class="btn-row">
+							<a class="btn btn-red" href="#kontakt">{copy.hero.ctaPrimary}</a>
+							<a class="btn btn-outline" href="#angebot">{copy.hero.ctaSecondary}</a>
+						</div>
+					</div>
+					<div class="hero-frame">
+						<Image src={heroImg} alt={copy.hero.imageAlt} width={480} height={600} format="webp" />
+					</div>
+				</div>
+			</section>
+
+			<!-- Scenarios -->
+			<section class="scenarios">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="I" />
+						<div>
+							<p class="eyebrow">{copy.scenarios.eyebrow}</p>
+							<h2>{copy.scenarios.heading}</h2>
+						</div>
+					</div>
+					<div class="scenario-line">
+						{
+							copy.scenarios.stops.map((stop) => (
+								<div class="scenario-stop">
+									<h3>{stop.title}</h3>
+									<p>{stop.body}</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="scenario-bridge">{copy.scenarios.bridge}</p>
+				</div>
+			</section>
+
+			<!-- Offers -->
+			<section class="offers" id="angebot">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="II" />
+						<div>
+							<p class="eyebrow">{copy.offerEyebrow}</p>
+							<h2>{copy.offerHeading}</h2>
+						</div>
+					</div>
+					<div class="offer-list">
+						{
+							copy.offers.map((offer, i) => (
+								<article class="offer-card" data-accent={offerAccents[i]}>
+									<div class="offer-media">
+										<Image src={offerImages[i]} alt={offer.imageAlt} width={400} height={300} format="webp" />
+										<span class="offer-medallion">
+											<Icon name={offer.icon} />
+										</span>
+									</div>
+									<div class="offer-body">
+										<h3>{offer.title}</h3>
+										<p class="offer-subtitle">{offer.subtitle}</p>
+										{offer.intro.map((p) => (
+											<p>{p}</p>
+										))}
+										{offer.leadIn && <p class="offer-lead-in">{offer.leadIn}</p>}
+										{offer.bullets && (
+											<ul class="ticklist">
+												{offer.bullets.map((b) => (
+													<li>
+														<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+															<path d="M4 10.5 8 14l8-9" />
+														</svg>
+														<span>{b}</span>
+													</li>
+												))}
+											</ul>
+										)}
+										{offer.outro.map((p) => (
+											<p>{p}</p>
+										))}
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- About -->
+			<section class="about" id="ueber-kym">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="III" />
+						<div>
+							<p class="eyebrow">{copy.about.eyebrow}</p>
+							<h2>{copy.about.heading}</h2>
+						</div>
+					</div>
+					<div class="about-grid">
+						<div class="about-media">
+							<Image src={londonImg} alt={copy.about.imageAlt} width={440} height={330} format="webp" />
+						</div>
+						<div>
+							<p class="lead">{copy.about.lead}</p>
+							{copy.about.paragraphs.map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Lessons -->
+			<section class="lessons" id="unterricht">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="IV" />
+						<div>
+							<p class="eyebrow">{copy.lessons.eyebrow}</p>
+							<h2>{copy.lessons.heading}</h2>
+						</div>
+					</div>
+					<div class="lessons-box">
+						<p class="lessons-sub">{copy.lessons.subheading}</p>
+						<ul class="info-items">
+							{
+								copy.lessons.items.map((item) => (
+									<li>
+										<Icon name={item.icon} />
+										<span>{item.text}</span>
+									</li>
+								))
+							}
+						</ul>
+						{copy.lessons.paragraphs.map((p) => <p>{p}</p>)}
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact -->
+			<section class="contact" id="kontakt">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="V" />
+						<div>
+							<p class="eyebrow">{copy.contact.eyebrow}</p>
+							<h2>{copy.contact.heading}</h2>
+						</div>
+					</div>
+					<p class="lead">{copy.contact.lead}</p>
+					<p class="body-text">{copy.contact.body}</p>
+					<div class="btn-row">
+						<a class="btn btn-red" href="mailto:kym-elizabeth@gmx.de">
+							<Icon name="mail" />
+							kym-elizabeth@gmx.de
+						</a>
+						<a class="btn btn-outline" href="tel:+4915140462441">
+							<Icon name="phone" />
+							0151 40462441
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site">
+			<div class="wrap footer-row">
+				<p class="footer-rights">&copy; {new Date().getFullYear()} {copy.footer.rights} &middot; {copy.footer.tagline}</p>
+				<nav aria-label="Rechtliches">
+					<ul>
+						<li><a href={`${base}/impressum`}>{copy.footer.impressum}</a></li>
+						<li><a href={`${base}/datenschutz`}>{copy.footer.datenschutz}</a></li>
+						<li><a href={`${base}/`}>{copy.footer.allVariants}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>

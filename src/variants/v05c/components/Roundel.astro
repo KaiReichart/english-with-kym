@@ -1,0 +1,41 @@
+---
+interface Props {
+	label: string;
+	class?: string;
+}
+
+const { label, class: className } = Astro.props;
+---
+
+<span class:list={['roundel', className]} aria-hidden="true">
+	<svg viewBox="0 0 64 64" width="100%" height="100%">
+		<circle class="roundel-ring" cx="32" cy="32" r="29" fill="none" stroke-width="2.5" />
+		<rect class="roundel-bar" x="4" y="28.5" width="56" height="7" />
+		<text x="32" y="35.5" text-anchor="middle" class="roundel-label">{label}</text>
+	</svg>
+</span>
+
+<style>
+	.roundel {
+		display: inline-block;
+		width: 3rem;
+		height: 3rem;
+		flex-shrink: 0;
+	}
+
+	.roundel-ring {
+		stroke: var(--navy);
+	}
+
+	.roundel-bar {
+		fill: var(--red);
+	}
+
+	.roundel-label {
+		font-family: 'Libre Baskerville', Georgia, serif;
+		font-weight: 700;
+		font-size: 0.95rem;
+		fill: var(--cream);
+		letter-spacing: 0.03em;
+	}
+</style>
