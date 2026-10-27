@@ -85,7 +85,7 @@ export const copy = {
 			},
 			{
 				title: 'Dein Unterricht beginnt',
-				body: 'Einzelunterricht bei mir in Schwabmünchen – unter der Woche abends ab 17 Uhr oder samstags.',
+				body: 'Einzelunterricht in Schwabmünchen – unter der Woche abends ab 17 Uhr oder samstags.',
 			},
 		] as StepCopy[],
 	},
@@ -174,7 +174,7 @@ export const copy = {
 	faq: {
 		heading: 'Häufige Fragen',
 		items: [
-			{ q: 'Wo findet der Unterricht statt?', a: 'Bei mir in Schwabmünchen.' },
+			{ q: 'Wo findet der Unterricht statt?', a: 'In Schwabmünchen.' },
 			{ q: 'Wann hast du Zeit?', a: 'Unter der Woche abends ab 17:00 Uhr sowie samstags.' },
 			{ q: 'Ist es Einzelunterricht?', a: 'Ja, der Unterricht findet in der Regel als Einzelunterricht statt, ganz auf dich abgestimmt.' },
 			{

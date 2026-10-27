@@ -648,3 +648,28 @@
 			border-color 0.15s ease;
 	}
 }
+
+/* ---------- Small screens: nav on its own row, marker above heading ---------- */
+@media (max-width: 560px) {
+	.v05a .header-row {
+		flex-wrap: wrap;
+		row-gap: 0.35rem;
+	}
+	.v05a .brand {
+		white-space: nowrap;
+	}
+	.v05a nav.main {
+		width: 100%;
+		overflow-x: auto;
+	}
+	.v05a nav.main a {
+		white-space: nowrap;
+	}
+	.v05a .section-head {
+		flex-wrap: wrap;
+		row-gap: 0.75rem;
+	}
+	.v05a .section-head h2 {
+		flex-basis: 100%;
+	}
+}

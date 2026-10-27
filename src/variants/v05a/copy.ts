@@ -38,7 +38,7 @@ export const copy = {
 	},
 	hero: {
 		kicker: 'Englischunterricht in Schwabmünchen',
-		titleLines: ['Englisch aus London,', 'zuhause in Schwabmünchen.'],
+		titleLines: ['Englisch aus London,', 'Unterricht in Schwabmünchen.'],
 		bylineLabel: 'Unterrichtet von',
 		bylineName: 'Kym, geboren in London',
 		intro:
