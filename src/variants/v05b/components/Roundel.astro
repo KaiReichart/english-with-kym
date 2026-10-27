@@ -1,0 +1,60 @@
+---
+interface Props {
+	label: string;
+	class?: string;
+	terminus?: boolean;
+	size?: 'sm' | 'md';
+}
+
+const { label, class: className, terminus = false, size = 'md' } = Astro.props;
+---
+
+<span class:list={['roundel', `roundel-${size}`, terminus && 'roundel-terminus', className]} aria-hidden="true">
+	<svg viewBox="0 0 64 64" width="100%" height="100%">
+		<circle class="roundel-ring" cx="32" cy="32" r="29" fill="none" stroke-width="5" />
+		<rect class="roundel-bar" x="4" y="27" width="56" height="10" />
+		<text x="32" y="36" text-anchor="middle" class="roundel-label">{label}</text>
+	</svg>
+</span>
+
+<style>
+	.roundel {
+		display: inline-block;
+		width: 3.5rem;
+		height: 3.5rem;
+		flex-shrink: 0;
+	}
+
+	.roundel-sm {
+		width: 2.75rem;
+		height: 2.75rem;
+	}
+
+	.roundel-ring {
+		stroke: var(--red);
+	}
+
+	.roundel-bar {
+		fill: var(--navy);
+	}
+
+	.roundel-terminus .roundel-ring {
+		stroke: var(--navy);
+	}
+
+	.roundel-terminus .roundel-bar {
+		fill: var(--red);
+	}
+
+	.roundel-label {
+		font-family: 'Inter Variable', Inter, sans-serif;
+		font-weight: 700;
+		font-size: 1rem;
+		fill: var(--cream);
+		letter-spacing: 0.02em;
+	}
+
+	.roundel-sm .roundel-label {
+		font-size: 1.15rem;
+	}
+</style>

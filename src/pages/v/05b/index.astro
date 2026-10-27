@@ -1,0 +1,273 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/libre-baskerville/400.css';
+import '@fontsource/libre-baskerville/400-italic.css';
+import '@fontsource/libre-baskerville/700.css';
+import '../../../variants/v05b/variant.css';
+import Icon from '../../../variants/v05b/components/Icon.astro';
+import Roundel from '../../../variants/v05b/components/Roundel.astro';
+import { copy } from '../../../variants/v05b/copy';
+import { Image } from 'astro:assets';
+import heroImg from '../../../assets/images/hero.jpg';
+import nachhilfeImg from '../../../assets/images/nachhilfe.jpg';
+import businessImg from '../../../assets/images/business.jpg';
+import conversationImg from '../../../assets/images/conversation.jpg';
+import londonImg from '../../../assets/images/london.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const otherLineImages = [businessImg, conversationImg];
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{copy.meta.title}</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={copy.meta.description} />
+		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+	</head>
+	<body class="v05b">
+		<a class="skip-link" href="#main">{copy.skipLink}</a>
+
+		<div class="triband" aria-hidden="true"><span></span><span></span><span></span></div>
+
+		<header class="site">
+			<div class="wrap header-row">
+				<a class="brand" href={`${base}/`}>
+					<span class="brand-mark"><Roundel label="EK" size="sm" /></span>
+					<span class="brand-text">
+						<span class="brand-name">{copy.header.brand}</span>
+						<span class="brand-tag">{copy.header.brandTag}</span>
+					</span>
+				</a>
+				<nav class="main" aria-label="Hauptnavigation">
+					<ul>
+						<li><a href="#angebot">{copy.nav.offer}</a></li>
+						<li><a href="#ueber-kym">{copy.nav.about}</a></li>
+						<li><a href="#unterricht">{copy.nav.lessons}</a></li>
+						<li><a href="#kontakt">{copy.nav.contact}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- Hero -->
+			<section class="hero">
+				<div class="wrap hero-grid">
+					<div>
+						<p class="hero-badge">{copy.hero.badge}</p>
+						<h1>{copy.hero.heading}</h1>
+						<p class="tagline">{copy.hero.tagline}</p>
+						<p class="intro">{copy.hero.intro}</p>
+						<p class="info-line">{copy.hero.infoLine}</p>
+						<div class="parent-note">
+							<p class="parent-label">{copy.hero.parentNote.label}</p>
+							<p>{copy.hero.parentNote.text}</p>
+						</div>
+						<div class="btn-row">
+							<a class="btn btn-red" href="#kontakt">
+								<Icon name="mail" />
+								{copy.hero.ctaPrimary}
+							</a>
+							<a class="btn btn-outline" href="#angebot">{copy.hero.ctaSecondary}</a>
+						</div>
+					</div>
+					<div class="hero-frame">
+						<Image src={heroImg} alt={copy.hero.imageAlt} width={440} height={550} format="webp" />
+					</div>
+				</div>
+			</section>
+
+			<!-- Line: Nachhilfe as an Underground line from 5. Klasse to Abitur -->
+			<section class="line-section" id="angebot">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="01" />
+						<div>
+							<p class="eyebrow">{copy.line.eyebrow}</p>
+							<h2>{copy.line.heading}</h2>
+						</div>
+					</div>
+					<p class="line-lead">{copy.line.lead}</p>
+					<div class="line-grid">
+						<div>
+							<ol class="tube-line">
+								{
+									copy.line.stations.map((station, i) => (
+										<li class="tube-stop" data-terminus={station.terminus ? 'true' : undefined}>
+											<Roundel label={String(i + 1)} size="sm" terminus={station.terminus} />
+											<div class="tube-stop-text">
+												<p class="tube-stop-label">{station.label}</p>
+												<p class="tube-stop-focus">{station.focus}</p>
+											</div>
+										</li>
+									))
+								}
+							</ol>
+							<p class="line-lead-in">{copy.line.leadIn}</p>
+							<ul class="ticklist">
+								{
+									copy.line.bullets.map((b) => (
+										<li>
+											<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+												<path d="M4 10.5 8 14l8-9" />
+											</svg>
+											<span>{b}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="line-outro">{copy.line.outro}</p>
+						</div>
+						<div class="frame">
+							<Image src={nachhilfeImg} alt={copy.line.imageAlt} width={400} height={300} format="webp" />
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Other lines: Business English + Conversation -->
+			<section class="lines-section" id="andere-linien">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="02" />
+						<div>
+							<p class="eyebrow">{copy.otherLines.eyebrow}</p>
+							<h2>{copy.otherLines.heading}</h2>
+						</div>
+					</div>
+					<p class="lines-intro">{copy.otherLines.intro}</p>
+					<div class="line-card-list">
+						{
+							copy.otherLines.cards.map((card, i) => (
+								<article class="line-card" data-accent={card.accent}>
+									<div class="line-card-media">
+										<Image src={otherLineImages[i]} alt={card.imageAlt} width={400} height={300} format="webp" />
+										<span class="line-card-roundel">
+											<Roundel label={card.number} />
+										</span>
+									</div>
+									<div class="line-card-body">
+										<h3>{card.title}</h3>
+										<p class="line-card-subtitle">{card.subtitle}</p>
+										{card.intro.map((p) => (
+											<p>{p}</p>
+										))}
+										{card.leadIn && <p class="line-lead-in">{card.leadIn}</p>}
+										{card.bullets && (
+											<ul class="ticklist">
+												{card.bullets.map((b) => (
+													<li>
+														<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+															<path d="M4 10.5 8 14l8-9" />
+														</svg>
+														<span>{b}</span>
+													</li>
+												))}
+											</ul>
+										)}
+										{card.outro.map((p) => (
+											<p>{p}</p>
+										))}
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- About -->
+			<section class="about" id="ueber-kym">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="03" />
+						<div>
+							<p class="eyebrow">{copy.about.eyebrow}</p>
+							<h2>{copy.about.heading}</h2>
+						</div>
+					</div>
+					<div class="about-grid">
+						<div class="frame">
+							<Image src={londonImg} alt={copy.about.imageAlt} width={440} height={330} format="webp" />
+						</div>
+						<div>
+							<p class="lead">{copy.about.lead}</p>
+							{copy.about.paragraphs.map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Lessons -->
+			<section class="lessons" id="unterricht">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="04" />
+						<div>
+							<p class="eyebrow">{copy.lessons.eyebrow}</p>
+							<h2>{copy.lessons.heading}</h2>
+						</div>
+					</div>
+					<div class="lessons-box">
+						<p class="lessons-sub">{copy.lessons.subheading}</p>
+						<ul class="info-items">
+							{
+								copy.lessons.items.map((item) => (
+									<li>
+										<Icon name={item.icon} />
+										<span>{item.text}</span>
+									</li>
+								))
+							}
+						</ul>
+						{copy.lessons.paragraphs.map((p) => <p>{p}</p>)}
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact -->
+			<section class="contact" id="kontakt">
+				<div class="wrap">
+					<div class="section-head">
+						<Roundel label="05" />
+						<div>
+							<p class="eyebrow">{copy.contact.eyebrow}</p>
+							<h2>{copy.contact.heading}</h2>
+						</div>
+					</div>
+					<p class="lead">{copy.contact.lead}</p>
+					<p class="body-text">{copy.contact.body}</p>
+					<div class="btn-row">
+						<a class="btn btn-red" href={`mailto:${copy.contact.email}`}>
+							<Icon name="mail" />
+							{copy.contact.email}
+						</a>
+						<a class="btn btn-outline" href={copy.contact.phoneHref}>
+							<Icon name="phone" />
+							{copy.contact.phone}
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<div class="triband" aria-hidden="true"><span></span><span></span><span></span></div>
+
+		<footer class="site">
+			<div class="wrap footer-row">
+				<p class="footer-rights">&copy; {new Date().getFullYear()} {copy.footer.rights} &middot; {copy.footer.tagline}</p>
+				<nav aria-label="Rechtliches">
+					<ul>
+						<li><a href={`${base}/impressum`}>{copy.footer.impressum}</a></li>
+						<li><a href={`${base}/datenschutz`}>{copy.footer.datenschutz}</a></li>
+						<li><a href={`${base}/v/`}>{copy.footer.allVariants}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
