@@ -1,0 +1,39 @@
+---
+interface Props {
+	n: number;
+}
+
+const { n } = Astro.props;
+---
+
+<span class="step-marker" aria-hidden="true">
+	<svg viewBox="0 0 64 64" width="100%" height="100%">
+		<circle class="step-marker-ring" cx="32" cy="32" r="29" fill="none" stroke-width="5" />
+		<rect class="step-marker-bar" x="4" y="27" width="56" height="10" />
+		<text x="32" y="36" text-anchor="middle" class="step-marker-label">{n}</text>
+	</svg>
+</span>
+
+<style>
+	.step-marker {
+		display: inline-block;
+		width: 3.25rem;
+		height: 3.25rem;
+		flex-shrink: 0;
+	}
+
+	.step-marker-ring {
+		stroke: var(--red);
+	}
+
+	.step-marker-bar {
+		fill: var(--navy);
+	}
+
+	.step-marker-label {
+		font-family: 'Inter Variable', Inter, sans-serif;
+		font-weight: 700;
+		font-size: 1.1rem;
+		fill: var(--cream);
+	}
+</style>

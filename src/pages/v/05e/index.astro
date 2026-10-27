@@ -1,0 +1,275 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/libre-baskerville/400.css';
+import '@fontsource/libre-baskerville/400-italic.css';
+import '@fontsource/libre-baskerville/700.css';
+import '../../../variants/v05e/variant.css';
+import Icon from '../../../variants/v05e/components/Icon.astro';
+import StepMarker from '../../../variants/v05e/components/StepMarker.astro';
+import { copy, contactDetails } from '../../../variants/v05e/copy';
+import { Image } from 'astro:assets';
+import heroImg from '../../../assets/images/hero.jpg';
+import nachhilfeImg from '../../../assets/images/nachhilfe.jpg';
+import businessImg from '../../../assets/images/business.jpg';
+import conversationImg from '../../../assets/images/conversation.jpg';
+import londonImg from '../../../assets/images/london.jpg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const offerImages: Record<string, ImageMetadata> = {
+	nachhilfe: nachhilfeImg,
+	business: businessImg,
+	konversation: conversationImg,
+};
+const offerAccents: Record<string, 'navy' | 'red'> = {
+	nachhilfe: 'navy',
+	business: 'red',
+	konversation: 'navy',
+};
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{copy.meta.title}</title>
+		<meta name="robots" content="noindex" />
+		<meta name="description" content={copy.meta.description} />
+		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+	</head>
+	<body class="v05e">
+		<a class="skip-link" href="#main">{copy.skipLink}</a>
+
+		<div class="triband" aria-hidden="true"><span></span><span></span><span></span></div>
+
+		<header class="site">
+			<div class="wrap header-row">
+				<a class="brand" href={`${base}/`}>
+					{copy.brand.name}
+					<small>{copy.brand.place}</small>
+				</a>
+				<nav class="main" aria-label="Hauptnavigation">
+					<ul>
+						<li><a href="#angebot">{copy.nav.offer}</a></li>
+						<li><a href="#ablauf">{copy.nav.steps}</a></li>
+						<li><a href="#faq">{copy.nav.faq}</a></li>
+						<li><a href="#kontakt">{copy.nav.contact}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- Hero -->
+			<section class="hero">
+				<div class="wrap hero-grid">
+					<div>
+						<p class="hero-badge">{copy.hero.badge}</p>
+						<h1>
+							{copy.hero.headline}
+							<span class="line-2">{copy.hero.headlineLine2}</span>
+						</h1>
+						<p class="sub">{copy.hero.sub}</p>
+						<p class="info-line">{copy.hero.infoLine}</p>
+						<p class="intro">{copy.hero.intro}</p>
+						<div class="btn-row">
+							<a class="btn btn-red" href="#kontakt">
+								<Icon name="mail" />
+								{copy.hero.ctaPrimary}
+							</a>
+							<a class="btn btn-outline" href={contactDetails.phoneHref}>
+								<Icon name="phone" />
+								{copy.hero.ctaSecondary}: {contactDetails.phoneDisplay}
+							</a>
+						</div>
+					</div>
+					<div class="hero-frame">
+						<Image src={heroImg} alt={copy.hero.imageAlt} width={480} height={600} format="webp" loading="eager" fetchpriority="high" />
+					</div>
+				</div>
+			</section>
+
+			<!-- So läuft's ab -->
+			<section class="steps" id="ablauf">
+				<div class="wrap">
+					<div class="section-head center">
+						<p class="eyebrow">{copy.steps.eyebrow}</p>
+						<h2>{copy.steps.heading}</h2>
+					</div>
+					<ol class="step-line">
+						{
+							copy.steps.items.map((step, i) => (
+								<li class="step">
+									<StepMarker n={i + 1} />
+									<h3>{step.title}</h3>
+									<p>{step.body}</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- Audience chooser -->
+			<section class="chooser">
+				<div class="wrap">
+					<div class="section-head">
+						<h2>{copy.chooser.heading}</h2>
+					</div>
+					<div class="chooser-grid">
+						{
+							copy.chooser.items.map((item) => (
+								<a class="sign" href={item.href}>
+									<span class="sign-text">
+										<span class="sign-label">{item.label}</span>
+										<span class="sign-note">{item.note}</span>
+									</span>
+									<Icon name="arrow" />
+								</a>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- Offers -->
+			<section class="offers" id="angebot">
+				<div class="wrap">
+					<div class="section-head">
+						<h2>{copy.offerHeading}</h2>
+					</div>
+					<div class="offer-list">
+						{
+							copy.offers.map((offer) => (
+								<article class="offer-card" id={offer.id} data-accent={offerAccents[offer.id]}>
+									<div class="offer-media">
+										<Image src={offerImages[offer.id]} alt={offer.imageAlt} width={400} height={300} format="webp" />
+									</div>
+									<div class="offer-body">
+										<div class="offer-heading">
+											<span class="offer-icon">
+												<Icon name={offer.icon} />
+											</span>
+											<h3>{offer.title}</h3>
+										</div>
+										<p class="offer-subtitle">{offer.subtitle}</p>
+										{offer.intro.map((p) => (
+											<p>{p}</p>
+										))}
+										{offer.leadIn && <p class="offer-lead-in">{offer.leadIn}</p>}
+										{offer.bullets && (
+											<ul class="ticklist">
+												{offer.bullets.map((b) => (
+													<li>
+														<Icon name="check" />
+														<span>{b}</span>
+													</li>
+												))}
+											</ul>
+										)}
+										{offer.outro.map((p) => (
+											<p>{p}</p>
+										))}
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- Facts strip -->
+			<section class="facts">
+				<div class="wrap">
+					<p class="eyebrow">{copy.facts.heading}</p>
+					<ul class="facts-grid">
+						{
+							copy.facts.items.map((fact) => (
+								<li class="fact">
+									<Icon name={fact.icon} />
+									<span>{fact.label}</span>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- About -->
+			<section class="about" id="ueber-kym">
+				<div class="wrap">
+					<div class="section-head">
+						<h2>{copy.about.heading}</h2>
+					</div>
+					<div class="about-grid">
+						<div class="about-media">
+							<Image src={londonImg} alt={copy.about.imageAlt} width={440} height={330} format="webp" />
+						</div>
+						<div>
+							<p class="lead">{copy.about.lead}</p>
+							{copy.about.paragraphs.map((p) => <p>{p}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- FAQ -->
+			<section class="faq" id="faq">
+				<div class="wrap">
+					<div class="section-head">
+						<h2>{copy.faq.heading}</h2>
+					</div>
+					<div class="faq-list">
+						{
+							copy.faq.items.map((item) => (
+								<details class="faq-item">
+									<summary>{item.q}</summary>
+									<p>{item.a}</p>
+								</details>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact -->
+			<section class="contact" id="kontakt">
+				<div class="wrap">
+					<div class="section-head center">
+						<p class="eyebrow">{copy.contact.eyebrow}</p>
+						<h2>{copy.contact.heading}</h2>
+					</div>
+					<p class="lead">{copy.contact.lead}</p>
+					<p class="body-text">{copy.contact.body}</p>
+					<div class="btn-row">
+						<a class="btn btn-red" href={contactDetails.emailHref}>
+							<Icon name="mail" />
+							{copy.contact.ctaPrimary}
+						</a>
+						<a class="btn btn-outline" href={contactDetails.phoneHref}>
+							<Icon name="phone" />
+							{copy.contact.ctaSecondary}
+						</a>
+					</div>
+					<p class="contact-detail">
+						<a href={contactDetails.emailHref}>{contactDetails.email}</a> &middot;
+						<a href={contactDetails.phoneHref}>{contactDetails.phoneDisplay}</a>
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site">
+			<div class="wrap footer-row">
+				<p class="footer-rights">&copy; {new Date().getFullYear()} {copy.footer.rights} &middot; {copy.footer.tagline}</p>
+				<nav aria-label="Rechtliches">
+					<ul>
+						<li><a href={`${base}/impressum`}>{copy.footer.impressum}</a></li>
+						<li><a href={`${base}/datenschutz`}>{copy.footer.datenschutz}</a></li>
+						<li><a href={`${base}/v/`}>{copy.footer.allVariants}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
